@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Architectural Process Workflow | ARCHITECTS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#68f91f",
+                        "background-light": "#f6f8f5",
+                        "background-dark": "#0a0d09",
+                        "charcoal": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #0a0c08;
+            color: #f6f8f5;
+        }
+
+        .glass-nav {
+            background: rgba(10, 12, 8, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(104, 249, 31, 0.1);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+            font-size: 48px;
+        }
+
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(104, 249, 31, 0.4);
+        }
+
+        .grid-overlay {
+            background-image: radial-gradient(circle, #2f4a21 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.1;
+        }
+    </style>
+    <link rel="stylesheet" href="cursor.css">
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-white selection:bg-primary selection:text-background-dark">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+        <!-- Background Grid Overlay -->
+        <div class="absolute inset-0 grid-overlay pointer-events-none"></div>
+        <div class="layout-container flex h-full grow flex-col relative z-10">
+            <!-- Navigation -->
+            <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+                <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+                    <a href="home.html" class="flex items-center gap-3">
+                        <img src="assets/logo.png" alt="Chrissels Logo" class="h-20 w-auto object-contain">
+                    </a>
+                    <div class="hidden md:flex items-center gap-10 text-sm font-medium tracking-widest uppercase">
+                        <a class="hover:text-primary transition-colors" href="home.html">Home</a>
+                        <a class="hover:text-primary transition-colors" href="portfolio.html">Portfolio</a>
+                        <a class="hover:text-primary transition-colors" href="services.html">Services</a>
+                        <a class="text-primary" href="process.html">Process</a>
+                        <a class="hover:text-primary transition-colors" href="about.html">About</a>
+                        <a class="hover:text-primary transition-colors" href="contact.html">Contact</a>
+                    </div>
+                    <a href="https://wa.me/256773748198" target="_blank"
+                        class="bg-primary hover:bg-white text-black px-6 py-2 rounded-sm font-bold transition-all flex items-center gap-2">
+                        <span class="text-xs uppercase tracking-widest">Start a Project</span>
+                        <span class="material-icons text-sm">arrow_forward</span>
+                    </a>
+                </div>
+            </nav>
+            <main class="flex-1">
+                <!-- Hero Section -->
+                <section class="px-6 md:px-20 pt-20 pb-12 text-center max-w-5xl mx-auto">
+                    <span
+                        class="text-primary text-sm font-bold tracking-[0.3em] uppercase mb-4 block">Methodology</span>
+                    <h1
+                        class="text-white tracking-tighter text-6xl md:text-8xl font-black leading-[0.9] uppercase mb-8">
+                        Our <br /><span class="text-primary">Workflow</span>
+                    </h1>
+                    <p class="text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+                        Precision-engineered architectural excellence. From initial site intelligence to final spatial
+                        delivery, our process is built on high-energy innovation and technical rigor.
+                    </p>
+                </section>
+
+                <!-- Vertical Timeline Section -->
+                <section class="relative px-6 md:px-10 py-32 overflow-hidden min-h-screen" id="process-timeline">
+                    <!-- Vertical Line Container -->
+                    <div
+                        class="absolute left-6 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/10 -translate-x-1/2 h-full z-0">
+                        <!-- Neon Progress Bar -->
+                        <div id="timeline-progress"
+                            class="w-full bg-primary neon-glow h-0 transition-all duration-100 linear"></div>
+                    </div>
+
+                    <div class="max-w-5xl mx-auto relative z-10 flex flex-col gap-32 pb-40">
+
+                        <!-- Stage 01 - Right -->
+                        <div
+                            class="process-step opacity-0 translate-y-20 transition-all duration-1000 ease-out grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                            <div class="hidden md:block"></div> <!-- Spacer -->
+                            <div class="relative pl-12 md:pl-16">
+                                <!-- Dot -->
+                                <div
+                                    class="absolute left-0 md:-left-[39px] top-0 z-20 flex items-center justify-center w-6 h-6">
+                                    <div class="absolute w-full h-full bg-primary/20 rounded-full animate-ping"></div>
+                                    <div
+                                        class="absolute w-full h-full border border-primary rounded-full animate-spin-slow">
+                                    </div>
+                                    <div class="w-2 h-2 bg-primary rounded-full shadow-[0_0_10px_#68f91f]"></div>
+                                </div>
+
+                                <span class="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-2 block">01 —
+                                    Analysis</span>
+                                <h2 class="text-5xl font-black uppercase tracking-tighter mb-6">Research</h2>
+                                <p class="text-white/60 text-lg leading-relaxed">
+                                    We dive deep into site intelligence, feasibility studies, and client vision. Every
+                                    project starts with a rigorous interrogation of the constraints and opportunities.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Stage 02 - Left -->
+                        <div
+                            class="process-step opacity-0 translate-y-20 transition-all duration-1000 ease-out grid grid-cols-1 md:grid-cols-2 gap-10 items-center text-left md:text-right">
+                            <div class="relative pl-12 md:pr-16 md:pl-0">
+                                <!-- Dot -->
+                                <div
+                                    class="absolute left-0 md:-right-[39px] md:left-auto top-0 z-20 flex items-center justify-center w-6 h-6">
+                                    <div class="absolute w-full h-full bg-primary/20 rounded-full animate-ping"></div>
+                                    <div
+                                        class="absolute w-full h-full border border-primary rounded-full animate-spin-slow">
+                                    </div>
+                                    <div class="w-2 h-2 bg-primary rounded-full shadow-[0_0_10px_#68f91f]"></div>
+                                </div>
+
+                                <span class="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-2 block">02 —
+                                    Ideation</span>
+                                <h2 class="text-5xl font-black uppercase tracking-tighter mb-6">Concept</h2>
+                                <p class="text-white/60 text-lg leading-relaxed ml-auto">
+                                    Schematic design and spatial narrative. We forge the core identity of the structure,
+                                    selecting materiality and defining the flow of human interaction.
+                                </p>
+                            </div>
+                            <div class="hidden md:block"></div> <!-- Spacer -->
+                        </div>
+
+                        <!-- Stage 03 - Right -->
+                        <div
+                            class="process-step opacity-0 translate-y-20 transition-all duration-1000 ease-out grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                            <div class="hidden md:block"></div> <!-- Spacer -->
+                            <div class="relative pl-12 md:pl-16">
+                                <!-- Dot -->
+                                <div
+                                    class="absolute left-0 md:-left-[39px] top-0 z-20 flex items-center justify-center w-6 h-6">
+                                    <div class="absolute w-full h-full bg-primary/20 rounded-full animate-ping"></div>
+                                    <div
+                                        class="absolute w-full h-full border border-primary rounded-full animate-spin-slow">
+                                    </div>
+                                    <div class="w-2 h-2 bg-primary rounded-full shadow-[0_0_10px_#68f91f]"></div>
+                                </div>
+
+                                <span class="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-2 block">03 —
+                                    Engineering</span>
+                                <h2 class="text-5xl font-black uppercase tracking-tighter mb-6">Development</h2>
+                                <p class="text-white/60 text-lg leading-relaxed">
+                                    Advanced 3D modeling, BIM integration, and technical detailing. We translate the
+                                    vision into a constructible, optimized web of structural logic.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Stage 04 - Left -->
+                        <div
+                            class="process-step opacity-0 translate-y-20 transition-all duration-1000 ease-out grid grid-cols-1 md:grid-cols-2 gap-10 items-center text-left md:text-right">
+                            <div class="relative pl-12 md:pr-16 md:pl-0">
+                                <!-- Dot -->
+                                <div
+                                    class="absolute left-0 md:-right-[39px] md:left-auto top-0 z-20 flex items-center justify-center w-6 h-6">
+                                    <div class="absolute w-full h-full bg-primary/20 rounded-full animate-ping"></div>
+                                    <div
+                                        class="absolute w-full h-full border border-primary rounded-full animate-spin-slow">
+                                    </div>
+                                    <div class="w-2 h-2 bg-primary rounded-full shadow-[0_0_10px_#68f91f]"></div>
+                                </div>
+
+                                <span class="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-2 block">04 —
+                                    Materialization</span>
+                                <h2 class="text-5xl font-black uppercase tracking-tighter mb-6">Execution</h2>
+                                <p class="text-white/60 text-lg leading-relaxed ml-auto">
+                                    On-site coordination and rigorous oversight. We ensure the digital twin becomes
+                                    physical reality with zero deviation from the standard of excellence.
+                                </p>
+                            </div>
+                            <div class="hidden md:block"></div> <!-- Spacer -->
+                        </div>
+
+                        <!-- Stage 05 - Right -->
+                        <div
+                            class="process-step opacity-0 translate-y-20 transition-all duration-1000 ease-out grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                            <div class="hidden md:block"></div> <!-- Spacer -->
+                            <div class="relative pl-12 md:pl-16">
+                                <!-- Icon -->
+                                <!-- Dot -->
+                                <div
+                                    class="absolute left-0 md:-left-[39px] top-0 z-20 flex items-center justify-center w-6 h-6">
+                                    <div class="absolute w-full h-full bg-primary/20 rounded-full animate-ping"></div>
+                                    <div
+                                        class="absolute w-full h-full border border-primary rounded-full animate-spin-slow">
+                                    </div>
+                                    <div class="w-2 h-2 bg-primary rounded-full shadow-[0_0_10px_#68f91f]"></div>
+                                </div>
+
+                                <span class="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-2 block">05 —
+                                    Handover</span>
+                                <h2 class="text-5xl font-black uppercase tracking-tighter mb-6">Delivery</h2>
+                                <p class="text-white/60 text-lg leading-relaxed">
+                                    Final inspection and operational launch. We deliver not just a building, but a fully
+                                    realized environment ready for life.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Detailed Value Propositions -->
+                <section class="px-6 md:px-20 py-24 bg-charcoal">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1440px] mx-auto">
+                        <div class="p-8 border border-primary/20 rounded-lg hover:border-primary transition-all">
+                            <h4 class="text-primary font-bold mb-4 uppercase text-xs tracking-widest">Structural Rigor
+                            </h4>
+                            <p class="text-white text-lg font-medium leading-normal">Our modeling phase utilizes
+                                cutting-edge BIM software for zero-error tolerance.</p>
+                        </div>
+                        <div class="p-8 border border-primary/20 rounded-lg hover:border-primary transition-all">
+                            <h4 class="text-primary font-bold mb-4 uppercase text-xs tracking-widest">Sustainable Vision
+                            </h4>
+                            <p class="text-white text-lg font-medium leading-normal">Environmental analysis is baked
+                                into our Research stage to ensure longevity.</p>
+                        </div>
+                        <div class="p-8 border border-primary/20 rounded-lg hover:border-primary transition-all">
+                            <h4 class="text-primary font-bold mb-4 uppercase text-xs tracking-widest">Client Synergy
+                            </h4>
+                            <p class="text-white text-lg font-medium leading-normal">Transparency at every stage via our
+                                dedicated digital project dashboard.</p>
+                        </div>
+                    </div>
+                </section>
+                <!-- Call to Action -->
+                <section class="px-6 md:px-20 py-32 text-center bg-background-dark relative">
+                    <div class="max-w-3xl mx-auto flex flex-col items-center gap-10">
+                        <h2 class="text-white tracking-tighter text-4xl md:text-6xl font-black leading-tight uppercase">
+                            Ready to build <br /><span
+                                class="text-primary underline decoration-4 underline-offset-8">your vision?</span>
+                        </h2>
+                        <p class="text-white/60 text-lg max-w-xl">
+                            We are currently accepting high-end residential and commercial projects for the upcoming
+                            quarter.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button
+                                class="bg-primary text-background-dark px-10 py-5 font-black uppercase text-sm tracking-widest hover:bg-white transition-all">
+                                Start a Project
+                            </button>
+                            <button
+                                class="border border-white/20 text-white px-10 py-5 font-black uppercase text-sm tracking-widest hover:border-primary hover:text-primary transition-all">
+                                View Portfolio
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <!-- Footer -->
+            <footer class="px-6 md:px-20 py-12 border-t border-primary/10 bg-background-dark">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div class="flex items-center gap-4 text-white">
+                        <div class="size-6 text-primary">
+                            <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
+                                    fill="currentColor"></path>
+                            </svg>
+                        </div>
+                        <h2 class="text-white text-sm font-bold tracking-widest">ARCHITECTS © 2024</h2>
+                    </div>
+                    <div class="flex gap-8 text-white/40 text-xs uppercase tracking-widest font-bold">
+                        <a class="hover:text-primary" href="#">Instagram</a>
+                        <a class="hover:text-primary" href="#">LinkedIn</a>
+                        <a class="hover:text-primary" href="#">Behance</a>
+                        <a class="hover:text-primary" href="#">Contact</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="cursor.js"></script>
+    <script>
+        // Vertical Timeline Scroll Animation
+        document.addEventListener('scroll', () => {
+            const timelineSection = document.getElementById('process-timeline');
+            if (timelineSection) {
+                const rect = timelineSection.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
+
+                // Calculate progress based on scroll position relative to the section
+                // Start filling when section top hits middle of viewport
+                const startOffet = viewportHeight / 2;
+                const endOffset = viewportHeight / 2;
+
+                let progress = 0;
+
+                // If section is in view
+                if (rect.top < startOffet && rect.bottom > 0) {
+                    const totalDist = rect.height - startOffet;
+                    const currentDist = startOffet - rect.top;
+                    progress = (currentDist / totalDist) * 100;
+                } else if (rect.top >= startOffet) {
+                    progress = 0;
+                } else {
+                    progress = 100;
+                }
+
+                // Clamp progress between 0 and 100
+                progress = Math.min(Math.max(progress, 0), 100);
+
+                document.getElementById('timeline-progress').style.height = `${progress}%`;
+            }
+        });
+
+        // Reveal Steps on Scroll
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: "0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('opacity-0', 'translate-y-20');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.process-step').forEach(step => {
+            observer.observe(step);
+        });
+    </script>
+</body>
+
+</html>

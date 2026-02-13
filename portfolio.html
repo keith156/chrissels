@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>High-End Project Portfolio | Architectural Excellence</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#68f91f",
+                        "background-light": "#f6f8f5",
+                        "background-dark": "#16230f",
+                        "surface-dark": "#1a2a12",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #0a0c08;
+            color: #f6f8f5;
+            cursor: none;
+        }
+
+        .glass-nav {
+            background: rgba(10, 12, 8, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(104, 249, 31, 0.1);
+        }
+
+        .masonry-grid {
+            columns: 1;
+        }
+
+        @media (min-width: 768px) {
+            .masonry-grid {
+                columns: 2;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .masonry-grid {
+                columns: 3;
+                gap: 2rem;
+            }
+        }
+
+        .project-card {
+            break-inside: avoid;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+            filter: grayscale(100%) contrast(120%);
+        }
+
+        .project-overlay {
+            opacity: 0;
+            background: linear-gradient(to top, rgba(22, 35, 15, 0.95) 0%, rgba(22, 35, 15, 0.4) 100%);
+            transition: opacity 0.4s ease;
+        }
+
+        .stroke-text {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+            color: transparent;
+        }
+    </style>
+    <link rel="stylesheet" href="cursor.css">
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 font-display transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <a href="home.html" class="flex items-center gap-3">
+                <img src="assets/logo.png" alt="Chrissels Logo" class="h-20 w-auto object-contain">
+            </a>
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium tracking-widest uppercase">
+                <a class="hover:text-primary transition-colors" href="home.html">Home</a>
+                <a class="text-primary" href="portfolio.html">Portfolio</a>
+                <a class="hover:text-primary transition-colors" href="services.html">Services</a>
+                <a class="hover:text-primary transition-colors" href="process.html">Process</a>
+                <a class="hover:text-primary transition-colors" href="about.html">About</a>
+                <a class="hover:text-primary transition-colors" href="contact.html">Contact</a>
+            </div>
+            <a href="https://wa.me/256773748198" target="_blank"
+                class="bg-primary hover:bg-white text-black px-6 py-2 rounded-sm font-bold transition-all flex items-center gap-2">
+                <span class="text-xs uppercase tracking-widest">Start a Project</span>
+                <span class="material-icons text-sm">arrow_forward</span>
+            </a>
+        </div>
+    </nav>
+    <main class="pt-32 md:pt-48 pb-24 px-6 md:px-12 max-w-[1600px] mx-auto">
+        <!-- Header Section -->
+        <header class="mb-16 md:mb-24">
+            <div class="relative">
+                <h1
+                    class="text-7xl md:text-[12rem] font-bold leading-none tracking-tighter uppercase mb-4 opacity-10 absolute -top-12 md:-top-24 left-0 select-none">
+                    Portfolio
+                </h1>
+                <h2 class="text-5xl md:text-8xl font-bold leading-none tracking-tighter uppercase relative z-10">
+                    Selected <br /> <span class="text-primary italic">Works</span>
+                </h2>
+            </div>
+            <div class="mt-12 flex flex-wrap gap-4 items-center">
+                <span class="text-xs uppercase tracking-[0.2em] font-bold text-primary/60 mr-4">Filter by
+                    category:</span>
+                <button
+                    class="px-6 py-2 rounded-full border border-primary bg-primary text-background-dark font-bold text-xs uppercase tracking-widest">All
+                    Projects</button>
+                <button
+                    class="px-6 py-2 rounded-full border border-white/10 hover:border-primary transition-all text-white/60 hover:text-primary font-bold text-xs uppercase tracking-widest">Residential</button>
+                <button
+                    class="px-6 py-2 rounded-full border border-white/10 hover:border-primary transition-all text-white/60 hover:text-primary font-bold text-xs uppercase tracking-widest">Commercial</button>
+                <button
+                    class="px-6 py-2 rounded-full border border-white/10 hover:border-primary transition-all text-white/60 hover:text-primary font-bold text-xs uppercase tracking-widest">Sustainable</button>
+                <button
+                    class="px-6 py-2 rounded-full border border-white/10 hover:border-primary transition-all text-white/60 hover:text-primary font-bold text-xs uppercase tracking-widest">Interior</button>
+            </div>
+        </header>
+        <!-- Masonry Grid -->
+        <div class="masonry-grid">
+            <!-- Project 1 -->
+            <div class="project-card rounded-lg group cursor-pointer">
+                <img class="w-full h-auto transition-transform duration-700"
+                    data-alt="Modern minimalist concrete villa in forest"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhz5mW7mr879Ek164tMXr8l9p6MRWtqtJFfsCDxT12_1QaBdPC2fLAebVq2C3EwQGlPoPzOt6Nb4Q6oURPONewP8TdpNfJTg2wLPy6Pqjimn2bHZ9ep-UXQlG6BKhO2zmZ5QmIULC4IEE--CZZB9tB4IW3d_4lf67yGuHuRM-8jwed0UAdqmob2od4CGHEwnyMIn2bwK6r8Zrq3A_AtxqhvoF4KX9jXROrqxax8drNalN00KcnrQyzwLKFoXUzLHKQJ8UdIvSDTXA" />
+                <div class="project-overlay absolute inset-0 flex flex-col justify-end p-8">
+                    <span class="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-2">Sustainable •
+                        2023</span>
+                    <h3
+                        class="text-primary text-4xl md:text-6xl font-bold leading-none tracking-tighter uppercase break-words">
+                        Ethereal <br />Monolith</h3>
+                    <div
+                        class="mt-4 flex items-center gap-4 text-white/40 text-xs font-medium uppercase tracking-widest">
+                        <span>Oslo, Norway</span>
+                        <span class="w-12 h-px bg-white/20"></span>
+                        <span>01/12</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="project-card rounded-lg group cursor-pointer">
+                <img class="w-full h-auto transition-transform duration-700"
+                    data-alt="High-end luxury apartment interior design"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPGkawSmBwYFE5OmaLonlbZMjueTYBF00vmgGXZXmLf88oEytYD5dTboiLxBe0h40SCgy4Ppycydif7VsF3rClF0dzaRmD5d0DVy4GHhpcrUct30Z6DHmXtWToTZgcKRTkSoY84doDgy80T9RgzIiLzacapfZpaVowDPcg2wR3N2wj0VFY1vYStJgt10Bod_L88TMF1xKjJvwPV0GnwQy92Ndq3t3FevhtnvNafLWDLMol5dj5bByGb03kUceY66xWd-9RChaPPN8" />
+                <div class="project-overlay absolute inset-0 flex flex-col justify-end p-8">
+                    <span class="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-2">Interior • 2024</span>
+                    <h3
+                        class="text-primary text-4xl md:text-6xl font-bold leading-none tracking-tighter uppercase break-words">
+                        Obsidian <br />Loft</h3>
+                    <div
+                        class="mt-4 flex items-center gap-4 text-white/40 text-xs font-medium uppercase tracking-widest">
+                        <span>Kampala, UG</span>
+                        <span class="w-12 h-px bg-white/20"></span>
+                        <span>02/12</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 3 -->
+            <div class="project-card rounded-lg group cursor-pointer">
+                <img class="w-full h-auto transition-transform duration-700"
+                    data-alt="Brutalist glass and steel skyscraper"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlwAq6Cr185fkvuFclK8shV1CdTu_WE9yZtXZxhDbUeiW4B2Oi6CfmWrA0DfCzThAowgxrareehvUWcSoCMOKE_kawfHpcTmCKJ4D_HyWDjWtt1wToyY_UonGiTIWwhazjBcbknozH2DSRKB8oKwU5YuUhf3k1a0IxidGHZ3qOSiZIt6WHiA_dBtgn9m-2sgMJ83NofCLnuliIJ6c7I8B241-mm_sU7w65iC1rPpg-pli7d0ZA-GIJEfDBs40aQhaQeyXuVJOV8mo" />
+                <div class="project-overlay absolute inset-0 flex flex-col justify-end p-8">
+                    <span class="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-2">Commercial •
+                        2022</span>
+                    <h3
+                        class="text-primary text-4xl md:text-6xl font-bold leading-none tracking-tighter uppercase break-words">
+                        Vertex <br />Towers</h3>
+                    <div
+                        class="mt-4 flex items-center gap-4 text-white/40 text-xs font-medium uppercase tracking-widest">
+                        <span>Uganda, Kampala</span>
+                        <span class="w-12 h-px bg-white/20"></span>
+                        <span>03/12</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 4 -->
+            <div class="project-card rounded-lg group cursor-pointer">
+                <img class="w-full h-auto transition-transform duration-700"
+                    data-alt="Minimalist geometric cabin in snow"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNW5LIVUvnfZdngwG0D3b77oiahnDXov226URDzDw0RyA7pIVk_PC-RwPIlWHJ6QacKNO7rXixsQx1d-PKZGSqc3tVjoHFwqrYLlIxwY5lWNAD5fXtFHp5wTnPglG599_kh5-hoXTXPfVHciTHiZyMWFyp_jpmV1g3a61EmoAWAZkAONXReLZSPOUU-MDykycJvlzS3e8O7Vwd7cLD3zAMfOu_eLlanY-P97cBuUXCITGTUyJHu5RENxFrj4UB0msIaqPdChaVnNQ" />
+                <div class="project-overlay absolute inset-0 flex flex-col justify-end p-8">
+                    <span class="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-2">Residential •
+                        2023</span>
+                    <h3
+                        class="text-primary text-4xl md:text-6xl font-bold leading-none tracking-tighter uppercase break-words">
+                        Arctic <br />Prism</h3>
+                    <div
+                        class="mt-4 flex items-center gap-4 text-white/40 text-xs font-medium uppercase tracking-widest">
+                        <span>Reykjavík, IS</span>
+                        <span class="w-12 h-px bg-white/20"></span>
+                        <span>04/12</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 5 -->
+            <div class="project-card rounded-lg group cursor-pointer">
+                <img class="w-full h-auto transition-transform duration-700"
+                    data-alt="Luxury beachfront mansion pool area"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSKn6nneK_bDV7Wvz2dp5_59750VX6X2yehlSuoEMXjh2ZRBuzHbNm0c2kmTmYHW7XqPDPRiZ5wFe5fd-2eS8LJp722RbLN6gJ4o08rXMHUJ2CV3fLMc2wgb6Rl1-ip9mUTXhQdxbOzjpw5z7L2N0pJdBkGODnEC2mZoClgaCAWGqZM2_ZLNXOsX7h1FK7I3wEEUk3WDNhmy_DSc8qEXfDKBFDAHxqgMqNolOSTMW50jgK_xEWX0PT-Ro5wuZfP0l7LreuzXjvoyQ" />
+                <div class="project-overlay absolute inset-0 flex flex-col justify-end p-8">
+                    <span class="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-2">Residential •
+                        2024</span>
+                    <h3
+                        class="text-primary text-4xl md:text-6xl font-bold leading-none tracking-tighter uppercase break-words">
+                        Cyan <br />Crest</h3>
+                    <div
+                        class="mt-4 flex items-center gap-4 text-white/40 text-xs font-medium uppercase tracking-widest">
+                        <span>Malibu, USA</span>
+                        <span class="w-12 h-px bg-white/20"></span>
+                        <span>05/12</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 6 -->
+            <div class="project-card rounded-lg group cursor-pointer">
+                <img class="w-full h-auto transition-transform duration-700"
+                    data-alt="Abstract architectural spiral staircase"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfn9MBzMBUnFe7YYHNjNGiMGLCJT1UIurTLF56S6mY6P-Ld_YJABwekx1iVOrYpcqoKyyT4D0mi5XJI8QnTXOMgokHysacLhYkGPFhZTqJKvCNTdcHcWFvrtySz9Ym3cXKhCk4I3UV5MloVIqyCDcSqshJVOHkW8G3-59tB9ajHG1UWPjdwAtHf5gNyZDyasELh2Vdr99lF0C7WyVmcd8gP9HV27mzRTelFDtXY6hnMXHQBykfuif7Irq3yxeDZ8NCbHL_5QaIpGM" />
+                <div class="project-overlay absolute inset-0 flex flex-col justify-end p-8">
+                    <span class="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-2">Art &amp; Culture •
+                        2021</span>
+                    <h3
+                        class="text-primary text-4xl md:text-6xl font-bold leading-none tracking-tighter uppercase break-words">
+                        Helix <br />Pavilion</h3>
+                    <div
+                        class="mt-4 flex items-center gap-4 text-white/40 text-xs font-medium uppercase tracking-widest">
+                        <span>Kampala, UG</span>
+                        <span class="w-12 h-px bg-white/20"></span>
+                        <span>06/12</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Pagination / Load More -->
+        <div class="mt-20 flex flex-col items-center">
+            <button class="group flex flex-col items-center gap-4">
+                <span
+                    class="text-xs font-bold uppercase tracking-[0.5em] text-white/40 group-hover:text-primary transition-colors">Discover
+                    More</span>
+                <div class="w-px h-24 bg-gradient-to-b from-primary to-transparent"></div>
+            </button>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="border-t border-primary/10 py-16 px-6 md:px-12 bg-background-dark">
+        <div class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2">
+                <h4 class="text-primary text-xs font-bold uppercase tracking-[0.3em] mb-8">Inquiries</h4>
+                <a href="https://wa.me/256773748198" target="_blank"
+                    class="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-6 hover:text-primary transition-colors cursor-pointer block">
+                    HELLO@CHRISSELS.COM
+                </a>
+                <div class="flex gap-8">
+                    <a class="text-white/40 hover:text-primary text-xs font-bold uppercase tracking-widest transition-colors"
+                        href="#">Instagram</a>
+                    <a class="text-white/40 hover:text-primary text-xs font-bold uppercase tracking-widest transition-colors"
+                        href="#">LinkedIn</a>
+                    <a class="text-white/40 hover:text-primary text-xs font-bold uppercase tracking-widest transition-colors"
+                        href="#">Twitter X</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-primary/40 text-xs font-bold uppercase tracking-[0.3em] mb-8">Locations</h4>
+                <address class="not-italic text-sm text-white/60 leading-relaxed uppercase tracking-widest">
+                    Chrissels Plaza<br />
+                    Kampala, Uganda<br />
+                    <span class="text-white/30">+256 773 748 198</span>
+                </address>
+                <address class="not-italic text-sm text-white/60 leading-relaxed uppercase tracking-widest mt-6">
+                    Plot 12, Seven Hills<br />
+                    Kampala, Uganda<br />
+                    <span class="text-white/30">+256 773 748 198</span>
+                </address>
+            </div>
+            <div class="flex flex-col justify-between">
+                <div>
+                    <h4 class="text-primary/40 text-xs font-bold uppercase tracking-[0.3em] mb-8">Newsletter</h4>
+                    <div class="flex border-b border-white/10 pb-2">
+                        <input
+                            class="bg-transparent border-none p-0 text-xs font-bold tracking-widest focus:ring-0 w-full"
+                            placeholder="YOUR EMAIL" type="email" />
+                        <button class="text-primary material-icons">arrow_forward</button>
+                    </div>
+                </div>
+                <div class="mt-12 md:mt-0 text-[10px] text-white/20 uppercase tracking-[0.2em]">
+                    © 2024 CHRISSELS STUDIO — Architectural Visionaries
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="cursor.js"></script>
+</body>
+
+</html>

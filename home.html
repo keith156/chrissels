@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Architectural Firm | Defining The Future</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#68f91f",
+                        "background-light": "#f6f8f5",
+                        "background-dark": "#0a0c08",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="cursor.css">
+    <style>
+        /* Infinite Auto-Slider Animation */
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider-track {
+            display: flex;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+            gap: 2rem;
+            /* 32px */
+        }
+
+        .slider-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-50% - 1rem));
+                /* Account for gap */
+            }
+        }
+
+        /* Modern Project Card */
+        .project-card {
+            width: 300px;
+            /* Mobile width */
+            height: 400px;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            /* Slightly rounded */
+            cursor: none;
+            /* Custom cursor */
+        }
+
+        @media (min-width: 768px) {
+            .project-card {
+                width: 400px;
+                /* Desktop width */
+                height: 550px;
+            }
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease, box-shadow 0.3s ease;
+            filter: grayscale(0%);
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+            box-shadow: 0 0 30px rgba(104, 249, 31, 0.2);
+        }
+
+        .project-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            transform: translateY(20px);
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-info {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .project-category {
+            color: #68f91f;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        /* Hero Text Outline Animation */
+        .text-outline {
+            -webkit-text-stroke: 2px #68f91f;
+            color: transparent;
+            animation: stroke-pulse 2s infinite alternate;
+        }
+
+        @keyframes stroke-pulse {
+            0% {
+                -webkit-text-stroke-color: #68f91f;
+                opacity: 1;
+            }
+
+            100% {
+                -webkit-text-stroke-color: #3e9e0d;
+                opacity: 0.7;
+            }
+        }
+
+        .animate-draw-stroke {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw-stroke 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes draw-stroke {
+            0% {
+                stroke-dashoffset: 1000;
+                stroke: #68f91f;
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                stroke-dashoffset: 0;
+                stroke: #68f91f;
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display selection:bg-primary selection:text-black">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <a href="home.html" class="flex items-center gap-3">
+                <img src="assets/logo.png" alt="Chrissels Logo" class="h-20 w-auto object-contain">
+            </a>
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium tracking-widest uppercase">
+                <a class="hover:text-primary transition-colors" href="home.html">Home</a>
+                <a class="hover:text-primary transition-colors" href="portfolio.html">Portfolio</a>
+                <a class="hover:text-primary transition-colors" href="services.html">Services</a>
+                <a class="hover:text-primary transition-colors" href="process.html">Process</a>
+                <a class="hover:text-primary transition-colors" href="about.html">About</a>
+                <a class="hover:text-primary transition-colors" href="contact.html">Contact</a>
+            </div>
+            <a href="https://wa.me/256773748198" target="_blank"
+                class="bg-primary hover:bg-white text-black px-6 py-2 rounded-sm font-bold transition-all flex items-center gap-2">
+                <span class="text-xs uppercase tracking-widest">Start a Project</span>
+                <span class="material-icons text-sm">arrow_forward</span>
+            </a>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img alt="Hero architecture" class="w-full h-full object-cover" src="assets/hero-bg.jpg" />
+            <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-32">
+            <div class="flex flex-col">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="h-px w-12 bg-primary"></div>
+                    <span class="text-primary uppercase tracking-[0.5em] text-xs font-bold">Innovation first</span>
+                </div>
+                <h1 class="text-[8vw] leading-[0.85] font-bold tracking-tighter uppercase mb-8">
+                    Defining<br />
+                    <span class="relative block">
+                        <svg viewBox="0 0 600 120" class="w-full h-auto overflow-visible">
+                            <text x="50%" y="80%" text-anchor="middle" stroke="#68f91f" stroke-width="2"
+                                fill="transparent"
+                                class="text-[8vw] font-bold tracking-tighter uppercase animate-draw-stroke">THE
+                                FUTURE</text>
+                        </svg>
+                    </span>
+                </h1>
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-10">
+                    <p class="max-w-md text-lg text-slate-400 font-light leading-relaxed">
+                        Award-winning architectural studio pushing the boundaries of structural innovation and
+                        sustainable luxury through computational design.
+                    </p>
+                    <div class="flex flex-col items-start gap-4">
+                        <div class="flex gap-2">
+                            <span class="text-primary material-icons">star</span>
+                            <span class="text-primary material-icons">star</span>
+                            <span class="text-primary material-icons">star</span>
+                            <span class="text-primary material-icons">star</span>
+                            <span class="text-primary material-icons">star</span>
+                        </div>
+                        <span class="text-xs uppercase tracking-widest opacity-50">Global Architectural Excellence
+                            2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
+            <div class="w-px h-16 bg-gradient-to-b from-primary to-transparent"></div>
+            <span class="text-[10px] uppercase tracking-[0.3em] text-primary rotate-0">Scroll</span>
+        </div>
+    </section>
+    <!-- Metrics Section -->
+    <section class="py-24 bg-background-dark border-y border-primary/10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12">
+            <div class="flex flex-col gap-2">
+                <span class="text-5xl font-bold text-primary counter" data-target="120">0</span>
+                <span class="text-xs uppercase tracking-widest text-slate-500">Global Projects</span>
+            </div>
+            <div class="flex flex-col gap-2">
+                <span class="text-5xl font-bold text-primary counter" data-target="15">0</span>
+                <span class="text-xs uppercase tracking-widest text-slate-500">Design Awards</span>
+            </div>
+            <div class="flex flex-col gap-2">
+                <span class="text-5xl font-bold text-primary counter" data-target="8">0</span>
+                <span class="text-xs uppercase tracking-widest text-slate-500">Countries Active</span>
+            </div>
+            <div class="flex flex-col gap-2">
+                <span class="text-5xl font-bold text-primary counter" data-target="24000">0</span>
+                <span class="text-xs uppercase tracking-widest text-slate-500">Sqm Constructed</span>
+            </div>
+        </div>
+    </section>
+    <!-- Projects Section -->
+    <section class="py-32 bg-background-dark overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 mb-16">
+            <div class="text-left">
+                <h2 class="text-6xl font-bold tracking-tight uppercase mb-4">Portfolio<span
+                        class="text-primary">.</span></h2>
+                <p class="text-slate-500 uppercase tracking-widest text-xs">Curated Selection / 2020 — 2024</p>
+            </div>
+        </div>
+
+        <!-- Infinite Slider -->
+        <div class="slider-container">
+            <div class="slider-track">
+                <!-- Original Items -->
+
+                <!-- Zenith Pavilion -->
+                <div class="project-card group">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHCcwVAYG0jWEjMeFZ5ixsUtbJ3ohvPxtiqexs3HfWM64DYjxEmxa24xh3bVXmsVvZqSu9LVgXJZkeymP1Jwrby_Se6M5-vGOF4h1d5hPg_rj7LtPJDCaGzO854AK1Ft1kt1O3Fe5J4-9O3onXlxNjxbJmHd0A_9_jYSTzRNMMKYQfF3mq1SmAq53v9pJZCJlerNBYrmwkfTJ5nWFyCvgIHeabDbYLiYbDm3_hEUjmmNYeqXWELMNWF1U72S821sPLiZM7zKTypJw"
+                        alt="Zenith Pavilion">
+                    <div class="project-info">
+                        <span class="project-category">— Urban Design</span>
+                        <h3 class="project-title">The Zenith Pavilion</h3>
+                    </div>
+                </div>
+
+                <!-- Neo District -->
+                <div class="project-card group">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxmgiqWlcVy4Ey72PXmes4EwMaVn0623mHcRwOELYfp4mYqBmALLcq9oC3JMydyG7WDh-Ys9IcEZUFxhTqcP9bRPVPB_B-2oPWgv_Ok-VaLbdXDnHqqoSEYlTf0KRsZRbcamMo_FD28FTs90L5xCdxr8hdiZLxZEtw1i9jSYeJNxplTUlRHcmdJrMoj6Vd4Hzauw0RH54S2GM9Pkj_G1U1_G0yC_k2xBJ2CcPHy3yiZ7q4SsSZrujbOTROP3EFy4qOmcevAl79Hps"
+                        alt="Neo District">
+                    <div class="project-info">
+                        <span class="project-category">— Interiors</span>
+                        <h3 class="project-title">Neo District</h3>
+                    </div>
+                </div>
+
+                <!-- Vertex Center -->
+                <div class="project-card group">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5eYfHIkzIK3eAJY-I6IH-eOcned3nWdCgT4086HXMa7iFOM7vMrF0ZHOqL_SvLB0igVmVNAqvO_nzuefKLWjHu6MORfp9cZCLQy9vdGpU6g748cH4aKB05pa_wZxwLFmynn2Qy1Vkz4DbMOMkIX6Pn7bAHD6hIxhUA2YVgPxRhgleor0iPTkTt0zHxw5PgvagU3Ds2GXnMKwt0KH0rsE0V0GRqafUkc_cvdnjGaWTZGFLkaXjdKWtuubBP4h8Z94AAurZtvxA41o"
+                        alt="Vertex Center">
+                    <div class="project-info">
+                        <span class="project-category">— Commercial</span>
+                        <h3 class="project-title">Vertex Center</h3>
+                    </div>
+                </div>
+
+                <!-- Lumina Plaza -->
+                <div class="project-card group">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0o-W4BKQUQvdIY0_qAvGnDHEsdjfSjLidE7nVhK6RarzRHiCZTVCaLabFwsXzfGzIi88aYp-sqkA5CNMnBzGgq0ME0RR4ZzYNWY7w29wP0DRj_4MbdpdytN7ltVjDNiKVBTj50GlK0C8G1T5hpzvy6oujg1WMjeWKja3P1WlmLnD-K04Vc6C1uVbXeWG7CA10ssshxwpujC2-Q0vciW_-MtdVtzvKC79ShIEqn4iN_orywlJM2f22BkH2jkmu7ehqSqzuIwPsfvs"
+                        alt="Lumina Plaza">
+                    <div class="project-info">
+                        <span class="project-category">— Residential</span>
+                        <h3 class="project-title">Lumina Plaza</h3>
+                    </div>
+                </div>
+
+                <!-- Duplicated Items for Infinity Loop -->
+
+                <!-- Zenith Pavilion -->
+                <div class="project-card group">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHCcwVAYG0jWEjMeFZ5ixsUtbJ3ohvPxtiqexs3HfWM64DYjxEmxa24xh3bVXmsVvZqSu9LVgXJZkeymP1Jwrby_Se6M5-vGOF4h1d5hPg_rj7LtPJDCaGzO854AK1Ft1kt1O3Fe5J4-9O3onXlxNjxbJmHd0A_9_jYSTzRNMMKYQfF3mq1SmAq53v9pJZCJlerNBYrmwkfTJ5nWFyCvgIHeabDbYLiYbDm3_hEUjmmNYeqXWELMNWF1U72S821sPLiZM7zKTypJw"
+                        alt="Zenith Pavilion">
+                    <div class="project-info">
+                        <span class="project-category">— Urban Design</span>
+                        <h3 class="project-title">The Zenith Pavilion</h3>
+                    </div>
+                </div>
+
+                <!-- Neo District -->
+                <div class="project-card group">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxmgiqWlcVy4Ey72PXmes4EwMaVn0623mHcRwOELYfp4mYqBmALLcq9oC3JMydyG7WDh-Ys9IcEZUFxhTqcP9bRPVPB_B-2oPWgv_Ok-VaLbdXDnHqqoSEYlTf0KRsZRbcamMo_FD28FTs90L5xCdxr8hdiZLxZEtw1i9jSYeJNxplTUlRHcmdJrMoj6Vd4Hzauw0RH54S2GM9Pkj_G1U1_G0yC_k2xBJ2CcPHy3yiZ7q4SsSZrujbOTROP3EFy4qOmcevAl79Hps"
+                        alt="Neo District">
+                    <div class="project-info">
+                        <span class="project-category">— Interiors</span>
+                        <h3 class="project-title">Neo District</h3>
+                    </div>
+                </div>
+
+                <!-- Vertex Center -->
+                <div class="project-card group">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5eYfHIkzIK3eAJY-I6IH-eOcned3nWdCgT4086HXMa7iFOM7vMrF0ZHOqL_SvLB0igVmVNAqvO_nzuefKLWjHu6MORfp9cZCLQy9vdGpU6g748cH4aKB05pa_wZxwLFmynn2Qy1Vkz4DbMOMkIX6Pn7bAHD6hIxhUA2YVgPxRhgleor0iPTkTt0zHxw5PgvagU3Ds2GXnMKwt0KH0rsE0V0GRqafUkc_cvdnjGaWTZGFLkaXjdKWtuubBP4h8Z94AAurZtvxA41o"
+                        alt="Vertex Center">
+                    <div class="project-info">
+                        <span class="project-category">— Commercial</span>
+                        <h3 class="project-title">Vertex Center</h3>
+                    </div>
+                </div>
+
+                <!-- Lumina Plaza -->
+                <div class="project-card group">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0o-W4BKQUQvdIY0_qAvGnDHEsdjfSjLidE7nVhK6RarzRHiCZTVCaLabFwsXzfGzIi88aYp-sqkA5CNMnBzGgq0ME0RR4ZzYNWY7w29wP0DRj_4MbdpdytN7ltVjDNiKVBTj50GlK0C8G1T5hpzvy6oujg1WMjeWKja3P1WlmLnD-K04Vc6C1uVbXeWG7CA10ssshxwpujC2-Q0vciW_-MtdVtzvKC79ShIEqn4iN_orywlJM2f22BkH2jkmu7ehqSqzuIwPsfvs"
+                        alt="Lumina Plaza">
+                    <div class="project-info">
+                        <span class="project-category">— Residential</span>
+                        <h3 class="project-title">Lumina Plaza</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- View All Button -->
+        <div class="flex justify-center mt-20">
+            <a href="portfolio.html"
+                class="bg-transparent border border-white hover:bg-white hover:text-black text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest transition-all flex items-center gap-2 group">
+                <span>View All Projects</span>
+                <span class="material-icons group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
+        </div>
+    </section>
+    <!-- Vision / Philosophy Section (Redesigned) -->
+    <section class="py-40 relative flex items-center justify-center overflow-hidden">
+        <!-- Parallax Background -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqzFF2XTwXp9w1lub2uuy_gGAou9MzhU23Wtz6GnfeNjCCN5VAucw4JtYAQcb8FJCZ4tZmwOBZ0nw1jGob10zA9Wnnyk07yr6H_KX8hAU9EpcsRRrSSj2CoemPO-rF8RA6tw4ImcZAMpK0MuBjoWnwVLAWS4AvbUkIOgJ6IltfSMcAB5bAr6gX5gYG-XUcZ5a31i5itjJY6VDKpuaf7pVeA19YB5aYZ6eFhdK9qP0PnTcj0jeMWv2O41F8uF-VPLQ16POApzz6adg"
+                alt="Blueprint" class="w-full h-full object-cover opacity-30 fixed-bg-effect">
+            <div
+                class="absolute inset-0 bg-gradient-to-b from-background-dark via-background-dark/80 to-background-dark">
+            </div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <span class="text-primary uppercase tracking-[0.5em] text-sm font-bold mb-8 block animate-on-scroll">Our
+                Philosophy</span>
+            <h2 class="text-6xl md:text-7xl font-bold uppercase mb-10 leading-tight animate-on-scroll"
+                style="animation-delay: 0.1s;">
+                We build spaces that <br /><span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-white">Resonate with the
+                    Soul.</span>
+            </h2>
+            <p class="text-xl text-slate-300 font-light leading-relaxed mb-12 animate-on-scroll"
+                style="animation-delay: 0.2s;">
+                Architecture is the bridge between humanity and the environment. We leverage cutting-edge AI-assisted
+                design to create structures that are not only visually stunning but environmentally regenerative.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 animate-on-scroll" style="animation-delay: 0.3s;">
+                <div
+                    class="p-6 border border-white/10 rounded-lg hover:border-primary/50 transition-colors backdrop-blur-sm bg-white/5">
+                    <span class="material-icons text-primary text-3xl mb-4">public</span>
+                    <h4 class="uppercase tracking-widest text-sm font-bold">Carbon-Negative</h4>
+                </div>
+                <div
+                    class="p-6 border border-white/10 rounded-lg hover:border-primary/50 transition-colors backdrop-blur-sm bg-white/5">
+                    <span class="material-icons text-primary text-3xl mb-4">hexagon</span>
+                    <h4 class="uppercase tracking-widest text-sm font-bold">Bionic Structure</h4>
+                </div>
+                <div
+                    class="p-6 border border-white/10 rounded-lg hover:border-primary/50 transition-colors backdrop-blur-sm bg-white/5">
+                    <span class="material-icons text-primary text-3xl mb-4">smart_toy</span>
+                    <h4 class="uppercase tracking-widest text-sm font-bold">Smart Integration</h4>
+                </div>
+            </div>
+
+            <button
+                class="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-200 bg-transparent border-2 border-primary rounded-full hover:bg-primary hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary animate-on-scroll"
+                style="animation-delay: 0.4s;">
+                <span class="uppercase tracking-widest">Watch Studio Film</span>
+                <div class="absolute -right-3 -top-3 w-6 h-6 bg-primary rounded-full animate-ping opacity-75"></div>
+            </button>
+        </div>
+    </section>
+    <!-- Services / Grid List -->
+    <section class="py-32 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-px bg-primary/10">
+                <div class="p-12 bg-background-dark group hover:bg-primary transition-all duration-500">
+                    <span class="text-slate-500 group-hover:text-black text-sm mb-10 block">01</span>
+                    <h4 class="text-3xl font-bold uppercase group-hover:text-black mb-6">Urban<br />Planning</h4>
+                    <p class="text-slate-400 group-hover:text-black/70 mb-8">Designing the masterplans of future-proof
+                        cities with human-centric flows.</p>
+                    <span class="material-icons text-primary group-hover:text-black">arrow_outward</span>
+                </div>
+                <div class="p-12 bg-background-dark group hover:bg-primary transition-all duration-500">
+                    <span class="text-slate-500 group-hover:text-black text-sm mb-10 block">02</span>
+                    <h4 class="text-3xl font-bold uppercase group-hover:text-black mb-6">Digital<br />Twins</h4>
+                    <p class="text-slate-400 group-hover:text-black/70 mb-8">Precision 3D modeling and real-time
+                        environmental simulation for structures.</p>
+                    <span class="material-icons text-primary group-hover:text-black">arrow_outward</span>
+                </div>
+                <div class="p-12 bg-background-dark group hover:bg-primary transition-all duration-500">
+                    <span class="text-slate-500 group-hover:text-black text-sm mb-10 block">03</span>
+                    <h4 class="text-3xl font-bold uppercase group-hover:text-black mb-6">Interior<br />Bionics</h4>
+                    <p class="text-slate-400 group-hover:text-black/70 mb-8">Organic interior layouts that adapt to the
+                        physiological needs of inhabitants.</p>
+                    <span class="material-icons text-primary group-hover:text-black">arrow_outward</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Map/Location Teaser (Headquarters) -->
+    <section
+        class="min-h-[700px] relative overflow-hidden flex items-center justify-center group bg-black border-y border-primary/20">
+        <!-- Grid Background -->
+        <div class="absolute inset-0 z-0 opacity-20"
+            style="background-image: linear-gradient(rgba(104, 249, 31, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(104, 249, 31, 0.1) 1px, transparent 1px); background-size: 40px 40px;">
+        </div>
+
+        <div class="absolute inset-0 z-0 mix-blend-overlay opacity-40">
+            <img alt="Location" class="w-full h-full object-cover grayscale contrast-125"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAYLCXhfy9Ayfdkim_2z2BZrYVPkI6zZNBkD5uD2d7IIcaE_3mpqbmT_kGIMlAewhV92zMQx8ul7Bae4q0S7qKnA1SZbgNu7qPD0WxoVDHTdtbqSpydwTRs1tJFreQM89o98W_ffyKy5HcKT3K2kjvmT_S7WaozK9NCyiWoZMvs2MbuJr_XIdebn00sjgk5sWRnkMvj9oQ-v1F8z_Tzsm_MwA8rtXFOnSl2FoSTIKGwLZPuQlt0US5v_WWsa8hqdS3Y7XNX4f2ngo" />
+        </div>
+
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black z-10"></div>
+
+        <div class="relative z-20 text-center w-full max-w-4xl mx-auto px-6">
+            <div class="mb-12">
+                <span
+                    class="inline-block border border-primary text-primary px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-[0.3em] backdrop-blur-md bg-black/50 mb-6">
+                    Global Parameters
+                </span>
+                <h2 class="text-7xl md:text-9xl font-black uppercase tracking-tighter text-white mb-2 leading-none">
+                    Chrissels
+                </h2>
+                <div class="h-24 flex items-center justify-center">
+                    <span
+                        class="text-4xl md:text-6xl font-bold uppercase tracking-widest text-primary type-cycle"></span><span
+                        class="text-4xl md:text-6xl text-primary animate-pulse">_</span>
+                </div>
+            </div>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left border-t border-white/10 pt-12 mt-12 bg-black/40 backdrop-blur-sm p-8 rounded-lg border border-white/5">
+                <div>
+                    <span class="text-xs text-slate-500 uppercase tracking-widest block mb-2">Coordinates</span>
+                    <p class="text-xl text-white font-mono">0.3476° N<br />32.5825° E</p>
+                </div>
+                <div>
+                    <span class="text-xs text-slate-500 uppercase tracking-widest block mb-2">Location</span>
+                    <p class="text-xl text-white font-mono">Chrissels Plaza<br />Kampala, Uganda</p>
+                </div>
+                <div class="flex items-end justify-end gap-4">
+                    <a href="https://wa.me/256773748198" target="_blank"
+                        class="bg-primary text-background-dark px-8 py-4 rounded-sm font-bold uppercase tracking-widest text-xs hover:bg-white transition-all flex items-center gap-3">
+                        <span>Inquire</span>
+                        <span class="material-icons text-sm">arrow_forward</span>
+                    </a>
+                    <a href="https://wa.me/256773748198" target="_blank"
+                        class="border border-white/20 px-8 py-4 rounded-sm font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-background-dark transition-all flex items-center gap-3">
+                        <span class="material-icons text-sm">play_circle_filled</span>
+                        <span>Contact us</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-background-dark pt-32 pb-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-20 mb-32">
+                <div>
+                    <h2 class="text-8xl font-bold tracking-tighter uppercase leading-none mb-10">Let's Build<br /><span
+                            class="text-primary">Together.</span></h2>
+                    <a class="text-4xl font-light hover:text-primary transition-colors underline underline-offset-8 decoration-primary/30"
+                        href="mailto:contact@chrissels.com">contact@chrissels.com</a>
+                </div>
+                <div class="flex flex-col justify-between">
+                    <div class="grid grid-cols-2 gap-10 uppercase tracking-widest text-xs">
+                        <div class="flex flex-col gap-6">
+                            <span class="text-slate-500">Links</span>
+                            <a class="hover:text-primary transition-colors" href="#">Career</a>
+                            <a class="hover:text-primary transition-colors" href="#">Press Kit</a>
+                            <a class="hover:text-primary transition-colors" href="#">Sustainability Report</a>
+                        </div>
+                        <div class="flex flex-col gap-6">
+                            <span class="text-slate-500">Socials</span>
+                            <a class="hover:text-primary transition-colors" href="#">Instagram</a>
+                            <a class="hover:text-primary transition-colors" href="#">Behance</a>
+                            <a class="hover:text-primary transition-colors" href="#">LinkedIn</a>
+                        </div>
+                    </div>
+                    <div class="mt-20">
+                        <form class="relative">
+                            <input
+                                class="w-full bg-transparent border-0 border-b border-slate-800 pb-4 focus:ring-0 focus:border-primary uppercase tracking-widest text-sm"
+                                placeholder="JOIN THE NEWSLETTER" type="email" />
+                            <button
+                                class="absolute right-0 top-0 text-primary uppercase text-xs font-bold tracking-widest">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-12 border-t border-white/5">
+                <div class="flex items-center gap-4">
+                    <img src="assets/logo.png" alt="Chrissels Logo" class="h-18 w-auto">
+                    <span class="text-lg font-bold tracking-tighter uppercase">CHRISSELS</span>
+                </div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-[0.2em]">© 2024 Chrissels Architectural Studio.
+                    All
+                    Rights Reserved.</p>
+                <div class="flex gap-8 text-[10px] uppercase tracking-widest text-slate-500">
+                    <a class="hover:text-white" href="#">Privacy Policy</a>
+                    <a class="hover:text-white" href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Sidebar decorative element -->
+    <div class="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center gap-10">
+        <span class="vertical-text text-[10px] uppercase tracking-[0.5em] text-slate-600">Established 2012</span>
+        <div class="w-px h-24 bg-slate-800"></div>
+        <div class="flex flex-col gap-4">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-slate-800"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-slate-800"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-slate-800"></div>
+        </div>
+    </div>
+
+    <script src="cursor.js"></script>
+    <script>
+        // Stats Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // The lower the slower
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+
+                    // Lower inc to slow and higher to slow
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        // Add inc to count and output in counter
+                        counter.innerText = Math.ceil(count + inc);
+                        // Call function every ms
+                        setTimeout(updateCount, 20);
+                    } else {
+                        // specialized formatting
+                        if (target >= 1000) {
+                            counter.innerText = (target / 1000) + 'k';
+                        } else if (target === 120) {
+                            counter.innerText = target + '+';
+                        } else if (target < 10) {
+                            counter.innerText = '0' + target;
+                        } else {
+                            counter.innerText = target;
+                        }
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        // Trigger animation when stats section is in view
+        const statsSection = document.querySelector('.counter').closest('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(statsSection);
+
+        // Typing Effect for Cycle
+        const typeCycleElement = document.querySelector('.type-cycle');
+        if (typeCycleElement) {
+            const words = ["SPEED", "PRECISION", "INNOVATION", "AESTHETICS"];
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typeTimeout;
+
+            function typeEffect() {
+                const currentWord = words[wordIndex];
+
+                if (isDeleting) {
+                    typeCycleElement.textContent = currentWord.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typeCycleElement.textContent = currentWord.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                let typeSpeed = isDeleting ? 50 : 100;
+
+                if (!isDeleting && charIndex === currentWord.length) {
+                    typeSpeed = 2000; // Pause before deleting
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    typeSpeed = 500;
+                }
+
+                typeTimeout = setTimeout(typeEffect, typeSpeed);
+            }
+
+            // Start typing when section is in view
+            const cycleSection = typeCycleElement.closest('section');
+            const cycleObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        clearTimeout(typeTimeout);
+                        typeEffect();
+                        // cycleObserver.unobserve(entry.target); // Keep observing? Or run once? Let's run continuously
+                    }
+                });
+            });
+            cycleObserver.observe(cycleSection);
+        }
+    </script>
+</body>
+
+</html>

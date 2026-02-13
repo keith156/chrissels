@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Architectural Services Overview</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#68f91f",
+                        "background-light": "#f6f8f5",
+                        "background-dark": "#16230f",
+                        "charcoal": "#0a0f06",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #0a0c08;
+            color: #f6f8f5;
+            cursor: none;
+        }
+
+        .glass-nav {
+            background: rgba(10, 12, 8, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(104, 249, 31, 0.1);
+        }
+
+        .text-outline {
+            -webkit-text-stroke: 1px rgba(104, 249, 31, 0.3);
+            color: transparent;
+        }
+
+        .service-card:hover .overlay {
+            opacity: 1;
+        }
+
+        .service-card:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+    <link rel="stylesheet" href="cursor.css">
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-white font-display">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <a href="home.html" class="flex items-center gap-3">
+                <img src="assets/logo.png" alt="Chrissels Logo" class="h-20 w-auto object-contain">
+            </a>
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium tracking-widest uppercase">
+                <a class="hover:text-primary transition-colors" href="home.html">Home</a>
+                <a class="hover:text-primary transition-colors" href="portfolio.html">Portfolio</a>
+                <a class="text-primary" href="services.html">Services</a>
+                <a class="hover:text-primary transition-colors" href="process.html">Process</a>
+                <a class="hover:text-primary transition-colors" href="about.html">About</a>
+                <a class="hover:text-primary transition-colors" href="contact.html">Contact</a>
+            </div>
+            <a href="https://wa.me/256773748198" target="_blank"
+                class="bg-primary hover:bg-white text-black px-6 py-2 rounded-sm font-bold transition-all flex items-center gap-2">
+                <span class="text-xs uppercase tracking-widest">Start a Project</span>
+                <span class="material-icons text-sm">arrow_forward</span>
+            </a>
+        </div>
+    </nav>
+    <main class="pt-32 pb-20">
+        <!-- Hero Section -->
+        <section class="px-8 mb-16">
+            <div class="container mx-auto">
+                <div class="flex flex-col">
+                    <span class="text-primary text-xs font-bold tracking-[0.5em] uppercase mb-4">Our Services</span>
+                    <h1 class="text-7xl md:text-[10rem] font-bold leading-none tracking-tighter uppercase mb-4">
+                        OUR <br />
+                        <span class="text-outline">EXPERTISE</span>
+                    </h1>
+                    <div class="max-w-2xl mt-8">
+                        <p class="text-lg text-white/60 leading-relaxed">
+                            We combine technical precision with high-energy design to create architectural landmarks.
+                            Our services span from macro-level urban masterplans to micro-level bespoke interiors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services Grid -->
+        <section class="px-8">
+            <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service Item 1 -->
+                <div
+                    class="service-card relative h-[600px] overflow-hidden rounded-xl bg-charcoal group cursor-pointer">
+                    <img alt="Urban Planning"
+                        class="w-full h-full object-cover transition-transform duration-700 grayscale-0 hover:scale-105"
+                        data-alt="High angle modern skyscraper and city grid"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsQ6j6-2K-nWwXdmKXIV221LkfhYYK6eQH0BtSo340oii3xDscJhvosIeT3lfKlXd21XgrYA0VgZzD9CXHDp9zJOxGK_Lmt05IM8rl8LtM7SU5Z2MbFaUtZemmvdNZiFdBruCXhwZtYVEU1aK3r6n9z5jkvB497LAbqz2f0P1dgkCUlZJmzyej0fYpyyS7Fpml-DSTm1Yv_HH2M1X9wEIZUC3PTTlQzDXjwoqkWfg01R3QMw7W73CZrGFwcqz0PgfGygdRTn_4Ga0" />
+                    <div
+                        class="overlay absolute inset-0 bg-primary opacity-0 transition-opacity duration-500 flex flex-col justify-end p-10">
+                        <div
+                            class="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                            <h3 class="text-4xl font-bold text-black uppercase mb-4">Urban Planning</h3>
+                            <p class="text-black/80 mb-8 font-medium max-w-xs">
+                                Redefining cityscapes through strategic masterplanning and sustainable infrastructure
+                                development for the next generation.
+                            </p>
+                            <a class="inline-flex items-center gap-2 text-black font-bold uppercase text-sm border-b-2 border-black pb-1 hover:gap-4 transition-all"
+                                href="#">
+                                View Projects <span class="material-icons text-sm">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-6 left-6 group-hover:hidden transition-opacity">
+                        <h3 class="text-2xl font-bold uppercase tracking-tight">Urban Planning</h3>
+                    </div>
+                </div>
+                <!-- Service Item 2 -->
+                <div
+                    class="service-card relative h-[600px] overflow-hidden rounded-xl bg-charcoal group cursor-pointer">
+                    <img alt="Sustainable Architecture"
+                        class="w-full h-full object-cover transition-transform duration-700 grayscale-0 hover:scale-105"
+                        data-alt="Modern building with vertical gardens and glass"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAktS2YCUMDws3MamU78ktLjxc_IIqmItTS3ozzXtxMsvcBZm_89WnVRQkLByylIpyJCeB3Ma1NJHl5iOS-8A5Xh9EXkLvfTRseTtoZY34mbwonz1h5nr7Oq-mEQ3bCUOSDBf34AJrB6M9-SNllVmW-AAWQo9aQnqPV7bsgTypZfFhRo3faXSpYJpMHg69We1V5ZyUoPyQONxu3yMxPAB6falx63JbwynZgxpLESTOPXrNwpp_MgaJeAMbb9N1t8iTcQwj0XbkpRYc" />
+                    <div
+                        class="overlay absolute inset-0 bg-primary opacity-0 transition-opacity duration-500 flex flex-col justify-end p-10">
+                        <div
+                            class="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                            <h3 class="text-4xl font-bold text-black uppercase mb-4">Sustainable Architecture</h3>
+                            <p class="text-black/80 mb-8 font-medium max-w-xs">
+                                Zero-emission building designs that integrate renewable energy and natural ecosystems
+                                into the core structure.
+                            </p>
+                            <a class="inline-flex items-center gap-2 text-black font-bold uppercase text-sm border-b-2 border-black pb-1 hover:gap-4 transition-all"
+                                href="#">
+                                View Projects <span class="material-icons text-sm">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-6 left-6 group-hover:hidden transition-opacity">
+                        <h3 class="text-2xl font-bold uppercase tracking-tight">Sustainable Design</h3>
+                    </div>
+                </div>
+                <!-- Service Item 3 -->
+                <div
+                    class="service-card relative h-[600px] overflow-hidden rounded-xl bg-charcoal group cursor-pointer lg:col-span-1 md:col-span-2 lg:col-start-3">
+                    <img alt="Interior Design"
+                        class="w-full h-full object-cover transition-transform duration-700 grayscale-0 hover:scale-105"
+                        data-alt="Minimalist luxury interior with concrete and wood"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCsSgFH2kpeoHmlE7EqvQ-5wLbBgijxKRtSqaEuVf7o-HqbUdwynzMD595lspuSJshUihd7ajALYO9ieXPzCyPnmBRbX4wyyL8ey78AXLj3WKOn4uF6L4bAtV3lzmysYUcQaSCMlZ8js8L6nEL1CgMBBSiVfNHS838pMsp_NVxgLLL7JP_EU7yZGb4l_RfFlBtXZEQTK1L7oPHV-NLgJkrHXDmrnqGYa7_P7cgHWIJvr27GytPndQzpsy_-yF3BuhbM01aPf9OcwE" />
+                    <div
+                        class="overlay absolute inset-0 bg-primary opacity-0 transition-opacity duration-500 flex flex-col justify-end p-10">
+                        <div
+                            class="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                            <h3 class="text-4xl font-bold text-black uppercase mb-4">Interior Design</h3>
+                            <p class="text-black/80 mb-8 font-medium max-w-xs">
+                                High-end residential and commercial interiors focusing on flow, lighting, and bespoke
+                                material palettes.
+                            </p>
+                            <a class="inline-flex items-center gap-2 text-black font-bold uppercase text-sm border-b-2 border-black pb-1 hover:gap-4 transition-all"
+                                href="#">
+                                View Projects <span class="material-icons text-sm">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-6 left-6 group-hover:hidden transition-opacity">
+                        <h3 class="text-2xl font-bold uppercase tracking-tight">Interior Design</h3>
+                    </div>
+                </div>
+                <!-- Service Item 4 -->
+                <div
+                    class="service-card relative h-[600px] overflow-hidden rounded-xl bg-charcoal group cursor-pointer lg:col-span-2">
+                    <img alt="Commercial Development"
+                        class="w-full h-full object-cover transition-transform duration-700 grayscale-0 hover:scale-105"
+                        data-alt="Glass facade of a futuristic corporate office"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_tG0jY2ldL-fjPpOrMc8ZQ7U8eEiaKfQMjVuYUwW-LuLchdJKy5xc7exbu3CUYlY23bgzvkbMRT92lIi7Qj2gkFRt3M1yH6R0Ay0pclzcHQiklH9h2lGCylHKnj6ILRZmcxBdIzh1M-XYJa84y6VBTJuZlWIAnCIrjGvOgO8latM-5YIQAaUGhIJelRkxXbnMUrehq0aYGYGGvWwz9I8tPeDhHWa1PNhJauOjXTsWPiJlDGkCh5dC8xo4jPPVYkLX54joVkLDMVc" />
+                    <div
+                        class="overlay absolute inset-0 bg-primary opacity-0 transition-opacity duration-500 flex flex-col justify-end p-10">
+                        <div
+                            class="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                            <h3 class="text-4xl font-bold text-black uppercase mb-4">Commercial Development</h3>
+                            <p class="text-black/80 mb-8 font-medium max-w-md">
+                                Developing iconic headquarters and corporate hubs that foster innovation and brand
+                                identity through structural excellence.
+                            </p>
+                            <a class="inline-flex items-center gap-2 text-black font-bold uppercase text-sm border-b-2 border-black pb-1 hover:gap-4 transition-all"
+                                href="#">
+                                View Projects <span class="material-icons text-sm">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-6 left-6 group-hover:hidden transition-opacity">
+                        <h3 class="text-2xl font-bold uppercase tracking-tight">Commercial Development</h3>
+                    </div>
+                </div>
+                <!-- Service Item 5 -->
+                <div
+                    class="service-card relative h-[600px] overflow-hidden rounded-xl bg-charcoal group cursor-pointer">
+                    <img alt="Renovation"
+                        class="w-full h-full object-cover transition-transform duration-700 grayscale hover:grayscale-0"
+                        data-alt="Modernist renovation of an old industrial building"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwScy_r3Zp1QmKud3tmy7nN-QPFM27zjUzzZGoSJlkgoI1Zs5uUCQd7VFdiQyGOlzMUGbqmeubyfP5vDUiAJesfG-Zu5YrrP6jwlRiz0c5WdQvk2WGcJZ1jwmdrr_ON2o9_diLKWS5rqtAvbiS0esdlLfqVTnVh6IaGcLkIzVpcpMsmyrs_dxgjTt4W3iZULBm41wLQDdJgdzt8spP10TvFHSBTdDLI9plAece5-XCNMeXTWpBsIxiECMyg6BpZJLCNcvn4d-H3cE" />
+                    <div
+                        class="overlay absolute inset-0 bg-primary opacity-0 transition-opacity duration-500 flex flex-col justify-end p-10">
+                        <div
+                            class="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                            <h3 class="text-4xl font-bold text-black uppercase mb-4">Renovation</h3>
+                            <p class="text-black/80 mb-8 font-medium max-w-xs">
+                                Breathing new life into historic structures with modern aesthetics and state-of-the-art
+                                engineering.
+                            </p>
+                            <a class="inline-flex items-center gap-2 text-black font-bold uppercase text-sm border-b-2 border-black pb-1 hover:gap-4 transition-all"
+                                href="#">
+                                View Projects <span class="material-icons text-sm">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-6 left-6 group-hover:hidden transition-opacity">
+                        <h3 class="text-2xl font-bold uppercase tracking-tight">Renovation</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Section -->
+        <section class="mt-32 px-8">
+            <div
+                class="container mx-auto bg-primary rounded-xl p-16 text-black flex flex-col md:flex-row items-center justify-between gap-8">
+                <div>
+                    <h2 class="text-5xl font-bold uppercase mb-4 tracking-tighter">Ready to Build <br />the Future?</h2>
+                    <p class="text-black/80 font-medium max-w-md">Join our portfolio of world-class clients and create
+                        something extraordinary today.</p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <button
+                        class="bg-black text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+                        Start Your Project
+                    </button>
+                    <a class="text-center font-bold text-sm underline decoration-2 underline-offset-4" href="#">Browse
+                        All Work</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-charcoal border-t border-primary/20 py-20 px-8">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-8">
+                    <div class="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
+                        <span class="text-black font-bold text-xl">A</span>
+                    </div>
+                    <span class="text-2xl font-bold tracking-tighter uppercase">Apex / Studio</span>
+                </div>
+                <p class="text-white/40 max-w-sm mb-8">
+                    An international architectural practice based in Kampala, specializing in high-energy, sustainable
+                    design solutions.
+                </p>
+                <div class="flex gap-4">
+                    <a class="w-10 h-10 border border-primary/30 rounded-full flex items-center justify-center hover:bg-primary hover:text-black transition-all"
+                        href="#">
+                        <span class="material-icons text-sm">public</span>
+                    </a>
+                    <a class="w-10 h-10 border border-primary/30 rounded-full flex items-center justify-center hover:bg-primary hover:text-black transition-all"
+                        href="#">
+                        <span class="material-icons text-sm">camera_alt</span>
+                    </a>
+                    <a class="w-10 h-10 border border-primary/30 rounded-full flex items-center justify-center hover:bg-primary hover:text-black transition-all"
+                        href="#">
+                        <span class="material-icons text-sm">mail</span>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-primary font-bold uppercase text-xs tracking-[0.3em] mb-6">Expertise</h4>
+                <ul class="space-y-4 text-white/60">
+                    <li><a class="hover:text-primary" href="#">Urban Design</a></li>
+                    <li><a class="hover:text-primary" href="#">Masterplanning</a></li>
+                    <li><a class="hover:text-primary" href="#">Interiors</a></li>
+                    <li><a class="hover:text-primary" href="#">Sustainability</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-primary font-bold uppercase text-xs tracking-[0.3em] mb-6">Contact</h4>
+                <p class="text-white/60 mb-2">info@apex-studio.arch</p>
+                <p class="text-white/60 mb-8">+256 773 748 198</p>
+                <p class="text-white/40 text-sm">Kampala, Uganda</p>
+            </div>
+        </div>
+        <div
+            class="container mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between text-xs text-white/40 uppercase tracking-widest gap-4">
+            <p>© 2024 Apex Studio Architecture. All rights reserved.</p>
+            <div class="flex gap-8">
+                <a class="hover:text-primary" href="#">Privacy Policy</a>
+                <a class="hover:text-primary" href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="cursor.js"></script>
+</body>
+
+</html>

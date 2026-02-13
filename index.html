@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrissels - Architectural Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #68f91f 0%, #4dd917 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #888;
+            font-weight: 300;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(104, 249, 31, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(104, 249, 31, 0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(104, 249, 31, 0.4);
+            box-shadow: 0 20px 60px rgba(104, 249, 31, 0.15);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: rgba(104, 249, 31, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            color: #ffffff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card p {
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card a {
+            display: inline-block;
+            color: #68f91f;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .card a:hover {
+            color: #4dd917;
+            transform: translateX(5px);
+        }
+
+        .card a::after {
+            content: '→';
+            margin-left: 10px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .card a:hover::after {
+            margin-left: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #666;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="cursor.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>CHRISSELS</h1>
+            <p class="subtitle">Architectural Excellence Portfolio</p>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-number">01</div>
+                <h2>Home</h2>
+                <p>Architectural Firm Home Landing - Main landing page showcasing the firm's vision and philosophy.</p>
+                <a href="home.html">View Page</a>
+            </div>
+
+            <div class="card">
+                <div class="card-number">02</div>
+                <h2>Portfolio</h2>
+                <p>High-End Project Portfolio - Showcase of selected architectural works and projects.</p>
+                <a href="portfolio.html">View Page</a>
+            </div>
+
+            <div class="card">
+                <div class="card-number">03</div>
+                <h2>Services</h2>
+                <p>Architectural Services Overview - Comprehensive list of expertise and service offerings.</p>
+                <a href="services.html">View Page</a>
+            </div>
+
+            <div class="card">
+                <div class="card-number">04</div>
+                <h2>Process</h2>
+                <p>Architectural Process Workflow - Detailed breakdown of the design and execution methodology.</p>
+                <a href="process.html">View Page</a>
+            </div>
+
+            <div class="card">
+                <div class="card-number">05</div>
+                <h2>Contact</h2>
+                <p>Modern Contact Page - Get in touch for new projects and collaborations.</p>
+                <a href="contact.html">View Page</a>
+            </div>
+
+            <div class="card">
+                <div class="card-number">06</div>
+                <h2>About</h2>
+                <p>About The Studio - Learn about the team, philosophy, and design approach.</p>
+                <a href="about.html">View Page</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 Chrissels. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="cursor.js"></script>
+</body>
+
+</html>
