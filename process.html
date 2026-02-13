@@ -44,6 +44,26 @@
             font-family: 'Space Grotesk', sans-serif;
             background-color: #0a0c08;
             color: #f6f8f5;
+            overflow-x: hidden;
+        }
+
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .hamburger-btn {
+            display: none;
+        }
+
+        @media (max-width: 767px) {
+            .hamburger-btn {
+                display: flex;
+            }
         }
 
         .glass-nav {
@@ -79,24 +99,50 @@
             <!-- Navigation -->
             <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
                 <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
-                    <a href="home.html" class="flex items-center gap-3">
-                        <img src="assets/logo.png" alt="Chrissels Logo" class="h-20 w-auto object-contain">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <img src="assets/logo.png" alt="Chrissels Logo" class="h-16 md:h-20 w-auto object-contain">
                     </a>
+
+                    <!-- Desktop Menu -->
                     <div class="hidden md:flex items-center gap-10 text-sm font-medium tracking-widest uppercase">
-                        <a class="hover:text-primary transition-colors" href="home.html">Home</a>
+                        <a class="hover:text-primary transition-colors" href="index.html">Home</a>
                         <a class="hover:text-primary transition-colors" href="portfolio.html">Portfolio</a>
                         <a class="hover:text-primary transition-colors" href="services.html">Services</a>
                         <a class="text-primary" href="process.html">Process</a>
                         <a class="hover:text-primary transition-colors" href="about.html">About</a>
                         <a class="hover:text-primary transition-colors" href="contact.html">Contact</a>
                     </div>
-                    <a href="https://wa.me/256773748198" target="_blank"
-                        class="bg-primary hover:bg-white text-black px-6 py-2 rounded-sm font-bold transition-all flex items-center gap-2">
-                        <span class="text-xs uppercase tracking-widest">Start a Project</span>
-                        <span class="material-icons text-sm">arrow_forward</span>
-                    </a>
+
+                    <div class="flex items-center gap-4">
+                        <a href="https://wa.me/256773748198" target="_blank"
+                            class="hidden sm:flex bg-primary hover:bg-white text-black px-6 py-2 rounded-sm font-bold transition-all items-center gap-2">
+                            <span class="text-xs uppercase tracking-widest">Start a Project</span>
+                            <span class="material-icons text-sm">arrow_forward</span>
+                        </a>
+
+                        <!-- Hamburger Button -->
+                        <button id="menu-toggle" class="hamburger-btn md:hidden text-white focus:outline-none">
+                            <span class="material-icons text-4xl">menu</span>
+                        </button>
+                    </div>
                 </div>
             </nav>
+
+            <!-- Mobile Menu Overlay -->
+            <div id="mobile-menu"
+                class="fixed inset-0 z-[60] bg-background-dark flex flex-col items-center justify-center space-y-8 text-2xl uppercase tracking-[0.2em] font-bold md:hidden">
+                <button id="menu-close" class="absolute top-8 right-8 text-white focus:outline-none">
+                    <span class="material-icons text-4xl">close</span>
+                </button>
+                <a class="hover:text-primary transition-colors" href="index.html">Home</a>
+                <a class="hover:text-primary transition-colors" href="portfolio.html">Portfolio</a>
+                <a class="hover:text-primary transition-colors" href="services.html">Services</a>
+                <a class="text-primary" href="process.html">Process</a>
+                <a class="hover:text-primary transition-colors" href="about.html">About</a>
+                <a class="hover:text-primary transition-colors" href="contact.html">Contact</a>
+                <a href="https://wa.me/256773748198" target="_blank"
+                    class="bg-primary text-black px-8 py-3 rounded-sm text-sm">START A PROJECT</a>
+            </div>
             <main class="flex-1">
                 <!-- Hero Section -->
                 <section class="px-6 md:px-20 pt-20 pb-12 text-center max-w-5xl mx-auto">
@@ -325,6 +371,34 @@
     </div>
     <script src="cursor.js"></script>
     <script>
+        // Mobile Menu Toggle logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        if (menuClose && mobileMenu) {
+            menuClose.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
+
+        // Close menu on link click
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
         // Vertical Timeline Scroll Animation
         document.addEventListener('scroll', () => {
             const timelineSection = document.getElementById('process-timeline');

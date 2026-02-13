@@ -43,7 +43,26 @@
             font-family: "Space Grotesk", sans-serif;
             background-color: #0a0c08;
             color: #f6f8f5;
-            color: #f6f8f5;
+            overflow-x: hidden;
+        }
+
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .hamburger-btn {
+            display: none;
+        }
+
+        @media (max-width: 767px) {
+            .hamburger-btn {
+                display: flex;
+            }
         }
 
         .glass-nav {
@@ -118,24 +137,50 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
         <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
-            <a href="home.html" class="flex items-center gap-3">
-                <img src="assets/logo.png" alt="Chrissels Logo" class="h-20 w-auto object-contain">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="assets/logo.png" alt="Chrissels Logo" class="h-16 md:h-20 w-auto object-contain">
             </a>
+
+            <!-- Desktop Menu -->
             <div class="hidden md:flex items-center gap-10 text-sm font-medium tracking-widest uppercase">
-                <a class="hover:text-primary transition-colors" href="home.html">Home</a>
+                <a class="hover:text-primary transition-colors" href="index.html">Home</a>
                 <a class="hover:text-primary transition-colors" href="portfolio.html">Portfolio</a>
                 <a class="hover:text-primary transition-colors" href="services.html">Services</a>
                 <a class="hover:text-primary transition-colors" href="process.html">Process</a>
                 <a class="text-primary" href="about.html">About</a>
                 <a class="hover:text-primary transition-colors" href="contact.html">Contact</a>
             </div>
-            <a href="https://wa.me/256773748198" target="_blank"
-                class="bg-primary hover:bg-white text-black px-6 py-2 rounded-sm font-bold transition-all flex items-center gap-2">
-                <span class="text-xs uppercase tracking-widest">Start a Project</span>
-                <span class="material-icons text-sm">arrow_forward</span>
-            </a>
+
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/256773748198" target="_blank"
+                    class="hidden sm:flex bg-primary hover:bg-white text-black px-6 py-2 rounded-sm font-bold transition-all items-center gap-2">
+                    <span class="text-xs uppercase tracking-widest">Start a Project</span>
+                    <span class="material-icons text-sm">arrow_forward</span>
+                </a>
+
+                <!-- Hamburger Button -->
+                <button id="menu-toggle" class="hamburger-btn md:hidden text-white focus:outline-none">
+                    <span class="material-icons text-4xl">menu</span>
+                </button>
+            </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-background-dark flex flex-col items-center justify-center space-y-8 text-2xl uppercase tracking-[0.2em] font-bold md:hidden">
+        <button id="menu-close" class="absolute top-8 right-8 text-white focus:outline-none">
+            <span class="material-icons text-4xl">close</span>
+        </button>
+        <a class="hover:text-primary transition-colors" href="index.html">Home</a>
+        <a class="hover:text-primary transition-colors" href="portfolio.html">Portfolio</a>
+        <a class="hover:text-primary transition-colors" href="services.html">Services</a>
+        <a class="hover:text-primary transition-colors" href="process.html">Process</a>
+        <a class="text-primary" href="about.html">About</a>
+        <a class="hover:text-primary transition-colors" href="contact.html">Contact</a>
+        <a href="https://wa.me/256773748198" target="_blank"
+            class="bg-primary text-black px-8 py-3 rounded-sm text-sm">START A PROJECT</a>
+    </div>
     <main class="">
         <!-- Hero Section -->
         <section class="relative h-screen flex flex-col justify-center items-center overflow-hidden">
@@ -206,7 +251,8 @@
                         Beyond <br /> <span class="text-transparent text-outline">The Blueprint.</span>
                     </h2>
                     <p class="text-lg md:text-xl text-neutral-400 font-light leading-relaxed mb-8">
-                        "We were born from a desire to break the stagnant cycles of traditional urban planning. Studio.X
+                        "We were born from a desire to break the stagnant cycles of traditional urban planning.
+                        Chrissels
                         isn't just an architecture firm; it's a <span class="text-white font-medium">radical
                             alternative</span> to the mundane."
                     </p>
@@ -307,7 +353,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
                 <div class="md:col-span-2">
                     <div class="flex items-center gap-4 mb-8">
-                        <img src="assets/logo.png" alt="Chrissels Logo" class="h-18 w-auto">
+                        <img src="assets/logo.png" alt="Chrissels Logo" class="h-16 w-auto">
                         <span class="text-4xl font-bold tracking-tighter">CHRISSELS</span>
                     </div>
                     <p class="text-neutral-500 max-w-sm">Architectural disruption for a new era of urban living. High
@@ -316,7 +362,7 @@
                 <div>
                     <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Studio Location</h4>
                     <p class="text-neutral-300">Plot 12, Seven Hills<br />Nakasero Heights<br />Kampala, Uganda</p>
-                    <div class="mt-4" data-location="Kampala" style=""></div>
+                    <div class="mt-4" data-location="Kampala"></div>
                 </div>
                 <div>
                     <h5 class="text-primary font-bold uppercase mb-6 tracking-widest text-sm">Social</h5>
@@ -329,7 +375,7 @@
             </div>
             <div
                 class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-neutral-600 font-bold tracking-[0.2em] uppercase">
-                <span>© 2024 Studio.X Collective</span>
+                <span>© 2024 Chrissels Studio Collective</span>
                 <div class="flex gap-8 mt-4 md:mt-0">
                     <a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
                     <a class="hover:text-white transition-colors" href="#">Terms of Space</a>
@@ -339,6 +385,34 @@
     </main>
     <script src="cursor.js"></script>
     <script>
+        // Mobile Menu Toggle logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        if (menuClose && mobileMenu) {
+            menuClose.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
+
+        // Close menu on link click
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
         // Floating Letters Logic
         document.querySelectorAll('.interactive-text').forEach(textContainer => {
             const text = textContainer.innerText;
@@ -364,11 +438,11 @@
                     const charX = charRect.left + charRect.width / 2;
                     const charY = charRect.top + charRect.height / 2;
 
-                    const mouseX = e.clientX;
-                    const mouseY = e.clientY;
+                    const mX = e.clientX;
+                    const mY = e.clientY;
 
-                    const distX = mouseX - charX;
-                    const distY = mouseY - charY;
+                    const distX = mX - charX;
+                    const distY = mY - charY;
                     const dist = Math.sqrt(distX * distX + distY * distY);
 
                     const maxDist = 200; // Increased radius
