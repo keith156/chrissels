@@ -100,7 +100,8 @@
             <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
                 <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
                     <a href="index.html" class="flex items-center gap-3">
-                        <img src="assets/logo.png" alt="Chrissels Logo" class="h-16 md:h-20 w-auto object-contain">
+                        <img src="assets/logo.png" alt="Chrissels Logo"
+                            class="h-24 md:h-32 w-auto object-contain relative z-10">
                     </a>
 
                     <!-- Desktop Menu -->
@@ -115,14 +116,14 @@
 
                     <div class="flex items-center gap-4">
                         <a href="https://wa.me/256773748198" target="_blank"
-                            class="hidden sm:flex bg-primary hover:bg-white text-black px-6 py-2 rounded-sm font-bold transition-all items-center gap-2">
+                            class="hidden md:flex bg-primary hover:bg-white text-black px-6 py-2 rounded-sm font-bold transition-all items-center gap-2">
                             <span class="text-xs uppercase tracking-widest">Start a Project</span>
-                            <span class="material-icons text-sm">arrow_forward</span>
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
                         </a>
 
                         <!-- Hamburger Button -->
                         <button id="menu-toggle" class="hamburger-btn md:hidden text-white focus:outline-none">
-                            <span class="material-icons text-4xl">menu</span>
+                            <span class="material-symbols-outlined text-4xl">menu</span>
                         </button>
                     </div>
                 </div>
@@ -132,7 +133,7 @@
             <div id="mobile-menu"
                 class="fixed inset-0 z-[60] bg-background-dark flex flex-col items-center justify-center space-y-8 text-2xl uppercase tracking-[0.2em] font-bold md:hidden">
                 <button id="menu-close" class="absolute top-8 right-8 text-white focus:outline-none">
-                    <span class="material-icons text-4xl">close</span>
+                    <span class="material-symbols-outlined text-4xl">close</span>
                 </button>
                 <a class="hover:text-primary transition-colors" href="index.html">Home</a>
                 <a class="hover:text-primary transition-colors" href="portfolio.html">Portfolio</a>
@@ -149,7 +150,7 @@
                     <span
                         class="text-primary text-sm font-bold tracking-[0.3em] uppercase mb-4 block">Methodology</span>
                     <h1
-                        class="text-white tracking-tighter text-6xl md:text-8xl font-black leading-[0.9] uppercase mb-8">
+                        class="text-white tracking-tighter text-[clamp(3.5rem,15vw,8rem)] md:text-8xl font-black leading-[0.9] uppercase mb-8">
                         Our <br /><span class="text-primary">Workflow</span>
                     </h1>
                     <p class="text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
@@ -159,10 +160,11 @@
                 </section>
 
                 <!-- Vertical Timeline Section -->
-                <section class="relative px-6 md:px-10 py-32 overflow-hidden min-h-screen" id="process-timeline">
+                <section class="relative px-6 md:px-10 py-20 md:py-32 overflow-hidden min-h-screen"
+                    id="process-timeline">
                     <!-- Vertical Line Container -->
                     <div
-                        class="absolute left-6 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/10 -translate-x-1/2 h-full z-0">
+                        class="absolute left-9 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/10 -translate-x-1/2 h-full z-0">
                         <!-- Neon Progress Bar -->
                         <div id="timeline-progress"
                             class="w-full bg-primary neon-glow h-0 transition-all duration-100 linear"></div>
@@ -350,14 +352,7 @@
             <footer class="px-6 md:px-20 py-12 border-t border-primary/10 bg-background-dark">
                 <div class="flex flex-col md:flex-row justify-between items-center gap-8">
                     <div class="flex items-center gap-4 text-white">
-                        <div class="size-6 text-primary">
-                            <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
-                                    fill="currentColor"></path>
-                            </svg>
-                        </div>
-                        <h2 class="text-white text-sm font-bold tracking-widest">ARCHITECTS © 2024</h2>
+                        <!-- Logo Removed -->
                     </div>
                     <div class="flex gap-8 text-white/40 text-xs uppercase tracking-widest font-bold">
                         <a class="hover:text-primary" href="#">Instagram</a>

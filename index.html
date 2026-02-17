@@ -70,8 +70,9 @@
 
         /* Modern Project Card */
         .project-card {
-            width: 300px;
+            width: 85vw;
             /* Mobile width */
+            max-width: 300px;
             height: 400px;
             flex-shrink: 0;
             position: relative;
@@ -209,7 +210,8 @@
     <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
         <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-3">
-                <img src="assets/logo.png" alt="Chrissels Logo" class="h-16 md:h-20 w-auto object-contain">
+                <img src="assets/logo.png" alt="Chrissels Logo"
+                    class="h-24 md:h-32 w-auto object-contain relative z-10">
             </a>
 
             <!-- Desktop Menu -->
@@ -266,7 +268,8 @@
                     <div class="h-px w-12 bg-primary"></div>
                     <span class="text-primary uppercase tracking-[0.5em] text-xs font-bold">Innovation first</span>
                 </div>
-                <h1 class="text-[8vw] leading-[0.85] font-bold tracking-tighter uppercase mb-8">
+                <h1
+                    class="text-[clamp(3rem,10vw,8rem)] leading-none md:leading-[0.85] font-bold tracking-tighter uppercase mb-12 md:mb-8">
                     Defining<br />
                     <span class="relative block">
                         <svg viewBox="0 0 600 120" class="w-full h-auto overflow-visible">
@@ -304,7 +307,7 @@
     </section>
     <!-- Metrics Section -->
     <section class="py-24 bg-background-dark border-y border-primary/10">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
             <div class="flex flex-col gap-2">
                 <span class="text-5xl font-bold text-primary counter" data-target="120">0</span>
                 <span class="text-xs uppercase tracking-widest text-slate-500">Global Projects</span>
