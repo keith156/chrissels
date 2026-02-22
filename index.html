@@ -38,6 +38,11 @@
     </script>
     <link rel="stylesheet" href="cursor.css">
     <style>
+        /* ===== Global Overflow Fix ===== */
+        html {
+            overflow-x: hidden;
+        }
+
         /* Infinite Auto-Slider Animation */
         .slider-container {
             width: 100%;
@@ -50,7 +55,6 @@
             width: max-content;
             animation: scroll 40s linear infinite;
             gap: 2rem;
-            /* 32px */
         }
 
         .slider-track:hover {
@@ -64,29 +68,24 @@
 
             100% {
                 transform: translateX(calc(-50% - 1rem));
-                /* Account for gap */
             }
         }
 
         /* Modern Project Card */
         .project-card {
             width: 85vw;
-            /* Mobile width */
             max-width: 300px;
             height: 400px;
             flex-shrink: 0;
             position: relative;
             overflow: hidden;
             border-radius: 8px;
-            /* Slightly rounded */
             cursor: none;
-            /* Custom cursor */
         }
 
         @media (min-width: 768px) {
             .project-card {
                 width: 400px;
-                /* Desktop width */
                 height: 550px;
             }
         }
@@ -201,6 +200,181 @@
                 display: flex;
             }
         }
+
+        /* ===== MOBILE RESPONSIVE OVERHAUL ===== */
+        @media (max-width: 767px) {
+
+            /* --- Hero Section --- */
+            .hero-section {
+                min-height: 100svh;
+                display: flex;
+                align-items: flex-end;
+            }
+
+            .hero-content {
+                padding-top: 6rem;
+                padding-bottom: 5rem;
+            }
+
+            .hero-title {
+                font-size: clamp(2.8rem, 12vw, 4.5rem) !important;
+                line-height: 0.95 !important;
+                margin-bottom: 0.75rem !important;
+                word-break: break-word;
+            }
+
+            .hero-svg-wrapper {
+                width: 100%;
+                max-width: 100%;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-svg-wrapper svg {
+                width: 100%;
+                height: auto;
+            }
+
+            .hero-description {
+                font-size: 0.95rem !important;
+                line-height: 1.6 !important;
+            }
+
+            .hero-bottom-row {
+                flex-direction: column;
+                gap: 1.5rem !important;
+            }
+
+            /* --- Metrics Section --- */
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 2rem !important;
+            }
+
+            .metrics-grid .counter {
+                font-size: 2.5rem !important;
+            }
+
+            /* --- Philosophy Section --- */
+            .philosophy-heading {
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
+            }
+
+            .philosophy-text {
+                font-size: 1rem !important;
+            }
+
+            .philosophy-cards {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* --- Services Grid --- */
+            .services-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .services-grid>div {
+                padding: 2rem !important;
+            }
+
+            .services-grid h4 {
+                font-size: 1.5rem !important;
+            }
+
+            /* --- Headquarters Section --- */
+            .hq-section {
+                min-height: auto !important;
+                padding: 4rem 0;
+            }
+
+            .hq-title {
+                font-size: 2.5rem !important;
+            }
+
+            .hq-cycle-wrapper {
+                height: auto !important;
+                min-height: 3rem;
+            }
+
+            .hq-cycle-wrapper .type-cycle,
+            .hq-cycle-wrapper .animate-pulse {
+                font-size: 1.5rem !important;
+            }
+
+            .hq-info-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+                text-align: center;
+            }
+
+            .hq-info-grid>div:last-child {
+                justify-content: center !important;
+                flex-direction: column;
+                align-items: center !important;
+            }
+
+            .hq-info-grid a {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* --- Footer --- */
+            .footer-heading {
+                font-size: 2.5rem !important;
+                line-height: 1.1 !important;
+            }
+
+            .footer-email {
+                font-size: 1.1rem !important;
+                word-break: break-all;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr !important;
+                gap: 3rem !important;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem !important;
+            }
+        }
+
+        /* Small phones (< 375px) */
+        @media (max-width: 374px) {
+            .hero-title {
+                font-size: 2.2rem !important;
+            }
+
+            .hq-title {
+                font-size: 2rem !important;
+            }
+
+            .footer-heading {
+                font-size: 2rem !important;
+            }
+        }
+
+        /* Disable custom cursor on touch devices */
+        @media (hover: none) and (pointer: coarse) {
+
+            .custom-cursor,
+            .cursor-dot {
+                display: none !important;
+            }
+
+            body,
+            a,
+            button,
+            input,
+            textarea,
+            select,
+            [role="button"],
+            .project-card {
+                cursor: auto !important;
+            }
+        }
     </style>
 </head>
 
@@ -220,12 +394,13 @@
                 <a class="hover:text-primary transition-colors" href="portfolio.html">Portfolio</a>
                 <a class="hover:text-primary transition-colors" href="services.html">Services</a>
                 <a class="hover:text-primary transition-colors" href="process.html">Process</a>
+                <a class="hover:text-primary transition-colors" href="materials.html">Materials</a>
                 <a class="hover:text-primary transition-colors" href="about.html">About</a>
                 <a class="hover:text-primary transition-colors" href="contact.html">Contact</a>
             </div>
 
             <div class="flex items-center gap-4">
-                <a href="https://wa.me/256773748198" target="_blank"
+                <a href="https://wa.me/256773749198" target="_blank"
                     class="hidden sm:flex bg-primary hover:bg-white text-black px-6 py-2 rounded-sm font-bold transition-all items-center gap-2">
                     <span class="text-xs uppercase tracking-widest">Start a Project</span>
                     <span class="material-icons text-sm">arrow_forward</span>
@@ -249,90 +424,101 @@
         <a class="hover:text-primary transition-colors" href="portfolio.html">Portfolio</a>
         <a class="hover:text-primary transition-colors" href="services.html">Services</a>
         <a class="hover:text-primary transition-colors" href="process.html">Process</a>
+        <a class="hover:text-primary transition-colors" href="materials.html">Materials</a>
         <a class="hover:text-primary transition-colors" href="about.html">About</a>
         <a class="hover:text-primary transition-colors" href="contact.html">Contact</a>
-        <a href="https://wa.me/256773748198" target="_blank"
+        <a href="https://wa.me/256773749198" target="_blank"
             class="bg-primary text-black px-8 py-3 rounded-sm text-sm">START A PROJECT</a>
     </div>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center overflow-hidden">
+    <section class="hero-section relative min-h-screen flex items-end md:items-center overflow-hidden">
         <div class="absolute inset-0 z-0">
             <img alt="Hero architecture" class="w-full h-full object-cover"
                 src="assets/edgarwinkler-campus-3928908_1280.jpg" />
-            <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent"></div>
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent md:via-transparent">
+            </div>
+            <!-- Extra bottom gradient for mobile readability -->
+            <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent md:hidden"
+                style="opacity: 0.6;"></div>
         </div>
-        <div class="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-32">
+        <div class="hero-content relative z-10 max-w-7xl mx-auto px-5 md:px-6 pt-28 md:pt-24 pb-24 md:pb-32 w-full">
             <div class="flex flex-col">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="h-px w-12 bg-primary"></div>
-                    <span class="text-primary uppercase tracking-[0.5em] text-xs font-bold">Innovation first</span>
+                <div class="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
+                    <div class="h-px w-8 md:w-12 bg-primary"></div>
+                    <span
+                        class="text-primary uppercase tracking-[0.3em] md:tracking-[0.5em] text-[10px] md:text-xs font-bold">Innovation
+                        first</span>
                 </div>
                 <h1
-                    class="text-[clamp(3rem,10vw,8rem)] leading-none md:leading-[0.85] font-bold tracking-tighter uppercase mb-12 md:mb-8">
-                    Defining<br />
-                    <span class="relative block">
-                        <svg viewBox="0 0 600 120" class="w-full h-auto overflow-visible">
-                            <text x="50%" y="80%" text-anchor="middle" stroke="#68f91f" stroke-width="2"
-                                fill="transparent"
-                                class="text-[8vw] font-bold tracking-tighter uppercase animate-draw-stroke">THE
-                                FUTURE</text>
-                        </svg>
-                    </span>
+                    class="hero-title text-[clamp(3rem,10vw,8rem)] leading-none md:leading-[0.85] font-bold tracking-tighter uppercase mb-4 md:mb-8">
+                    Defining
                 </h1>
-                <div class="flex flex-col md:flex-row md:items-end justify-between gap-10">
-                    <p class="max-w-md text-lg text-slate-400 font-light leading-relaxed">
+                <div class="hero-svg-wrapper relative block mb-6 md:mb-8">
+                    <svg viewBox="0 0 400 70" class="w-full max-w-[500px] md:max-w-full h-auto overflow-visible"
+                        preserveAspectRatio="xMinYMid meet">
+                        <text x="0" y="85%" text-anchor="start" stroke="#68f91f" stroke-width="1.5" fill="transparent"
+                            font-family="Space Grotesk, sans-serif" font-size="60" font-weight="700" letter-spacing="-2"
+                            class="animate-draw-stroke">THE FUTURE</text>
+                    </svg>
+                </div>
+                <div class="hero-bottom-row flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-10">
+                    <p
+                        class="hero-description max-w-md text-base md:text-lg text-slate-300 md:text-slate-400 font-light leading-relaxed">
                         Award-winning architectural studio pushing the boundaries of structural innovation and
                         sustainable luxury through computational design.
                     </p>
-                    <div class="flex flex-col items-start gap-4">
-                        <div class="flex gap-2">
-                            <span class="text-primary material-icons">star</span>
-                            <span class="text-primary material-icons">star</span>
-                            <span class="text-primary material-icons">star</span>
-                            <span class="text-primary material-icons">star</span>
-                            <span class="text-primary material-icons">star</span>
+                    <div class="flex flex-col items-start gap-3 md:gap-4">
+                        <div class="flex gap-1.5 md:gap-2">
+                            <span class="text-primary material-icons text-xl md:text-2xl">star</span>
+                            <span class="text-primary material-icons text-xl md:text-2xl">star</span>
+                            <span class="text-primary material-icons text-xl md:text-2xl">star</span>
+                            <span class="text-primary material-icons text-xl md:text-2xl">star</span>
+                            <span class="text-primary material-icons text-xl md:text-2xl">star</span>
                         </div>
-                        <span class="text-xs uppercase tracking-widest opacity-50">Global Architectural Excellence
+                        <span class="text-[10px] md:text-xs uppercase tracking-widest opacity-50">Global Architectural
+                            Excellence
                             2024</span>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
-            <div class="w-px h-16 bg-gradient-to-b from-primary to-transparent"></div>
-            <span class="text-[10px] uppercase tracking-[0.3em] text-primary rotate-0">Scroll</span>
+        <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 md:gap-4">
+            <div class="w-px h-10 md:h-16 bg-gradient-to-b from-primary to-transparent"></div>
+            <span class="text-[10px] uppercase tracking-[0.3em] text-primary">Scroll</span>
         </div>
     </section>
     <!-- Metrics Section -->
-    <section class="py-24 bg-background-dark border-y border-primary/10">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
+    <section class="py-16 md:py-24 bg-background-dark border-y border-primary/10">
+        <div class="metrics-grid max-w-7xl mx-auto px-5 md:px-6 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             <div class="flex flex-col gap-2">
-                <span class="text-5xl font-bold text-primary counter" data-target="120">0</span>
-                <span class="text-xs uppercase tracking-widest text-slate-500">Global Projects</span>
+                <span class="text-4xl md:text-5xl font-bold text-primary counter" data-target="120">0</span>
+                <span class="text-[10px] md:text-xs uppercase tracking-widest text-slate-500">Global Projects</span>
             </div>
             <div class="flex flex-col gap-2">
-                <span class="text-5xl font-bold text-primary counter" data-target="15">0</span>
-                <span class="text-xs uppercase tracking-widest text-slate-500">Design Awards</span>
+                <span class="text-4xl md:text-5xl font-bold text-primary counter" data-target="15">0</span>
+                <span class="text-[10px] md:text-xs uppercase tracking-widest text-slate-500">Design Awards</span>
             </div>
             <div class="flex flex-col gap-2">
-                <span class="text-5xl font-bold text-primary counter" data-target="8">0</span>
-                <span class="text-xs uppercase tracking-widest text-slate-500">Countries Active</span>
+                <span class="text-4xl md:text-5xl font-bold text-primary counter" data-target="8">0</span>
+                <span class="text-[10px] md:text-xs uppercase tracking-widest text-slate-500">Countries Active</span>
             </div>
             <div class="flex flex-col gap-2">
-                <span class="text-5xl font-bold text-primary counter" data-target="24000">0</span>
-                <span class="text-xs uppercase tracking-widest text-slate-500">Sqm Constructed</span>
+                <span class="text-4xl md:text-5xl font-bold text-primary counter" data-target="24000">0</span>
+                <span class="text-[10px] md:text-xs uppercase tracking-widest text-slate-500">Sqm Constructed</span>
             </div>
         </div>
     </section>
     <!-- Projects Section -->
-    <section class="py-32 bg-background-dark overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 mb-16">
+    <section class="py-20 md:py-32 bg-background-dark overflow-hidden">
+        <div class="max-w-7xl mx-auto px-5 md:px-6 mb-12 md:mb-16">
             <div class="text-left">
-                <h2 class="text-6xl font-bold tracking-tight uppercase mb-4">Portfolio<span
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tight uppercase mb-3 md:mb-4">Portfolio<span
                         class="text-primary">.</span></h2>
-                <p class="text-slate-500 uppercase tracking-widest text-xs">Curated Selection / 2020 — 2024</p>
+                <p class="text-slate-500 uppercase tracking-widest text-[10px] md:text-xs">Curated Selection / 2020 —
+                    2024</p>
             </div>
         </div>
 
@@ -434,7 +620,7 @@
         </div>
     </section>
     <!-- Vision / Philosophy Section (Redesigned) -->
-    <section class="py-40 relative flex items-center justify-center overflow-hidden">
+    <section class="py-20 md:py-40 relative flex items-center justify-center overflow-hidden">
         <!-- Parallax Background -->
         <div class="absolute inset-0 z-0">
             <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqzFF2XTwXp9w1lub2uuy_gGAou9MzhU23Wtz6GnfeNjCCN5VAucw4JtYAQcb8FJCZ4tZmwOBZ0nw1jGob10zA9Wnnyk07yr6H_KX8hAU9EpcsRRrSSj2CoemPO-rF8RA6tw4ImcZAMpK0MuBjoWnwVLAWS4AvbUkIOgJ6IltfSMcAB5bAr6gX5gYG-XUcZ5a31i5itjJY6VDKpuaf7pVeA19YB5aYZ6eFhdK9qP0PnTcj0jeMWv2O41F8uF-VPLQ16POApzz6adg"
@@ -444,62 +630,70 @@
             </div>
         </div>
 
-        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-            <span class="text-primary uppercase tracking-[0.5em] text-sm font-bold mb-8 block animate-on-scroll">Our
+        <div class="relative z-10 max-w-4xl mx-auto px-5 md:px-6 text-center">
+            <span
+                class="text-primary uppercase tracking-[0.3em] md:tracking-[0.5em] text-xs md:text-sm font-bold mb-6 md:mb-8 block animate-on-scroll">Our
                 Philosophy</span>
-            <h2 class="text-6xl md:text-7xl font-bold uppercase mb-10 leading-tight animate-on-scroll"
+            <h2 class="philosophy-heading text-3xl md:text-6xl lg:text-7xl font-bold uppercase mb-6 md:mb-10 leading-tight animate-on-scroll"
                 style="animation-delay: 0.1s;">
                 We build spaces that <br /><span
                     class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-white">Resonate with the
                     Soul.</span>
             </h2>
-            <p class="text-xl text-slate-300 font-light leading-relaxed mb-12 animate-on-scroll"
+            <p class="philosophy-text text-base md:text-xl text-slate-300 font-light leading-relaxed mb-8 md:mb-12 animate-on-scroll"
                 style="animation-delay: 0.2s;">
                 Architecture is the bridge between humanity and the environment. We leverage cutting-edge AI-assisted
                 design to create structures that are not only visually stunning but environmentally regenerative.
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 animate-on-scroll" style="animation-delay: 0.3s;">
+            <div class="philosophy-cards grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-10 md:mb-16 animate-on-scroll"
+                style="animation-delay: 0.3s;">
                 <div
-                    class="p-6 border border-white/10 rounded-lg hover:border-primary/50 transition-colors backdrop-blur-sm bg-white/5">
-                    <span class="material-icons text-primary text-3xl mb-4">public</span>
-                    <h4 class="uppercase tracking-widest text-sm font-bold">Carbon-Negative</h4>
+                    class="p-5 md:p-6 border border-white/10 rounded-lg hover:border-primary/50 transition-colors backdrop-blur-sm bg-white/5">
+                    <span class="material-icons text-primary text-2xl md:text-3xl mb-3 md:mb-4">public</span>
+                    <h4 class="uppercase tracking-widest text-xs md:text-sm font-bold">Carbon-Negative</h4>
                 </div>
                 <div
-                    class="p-6 border border-white/10 rounded-lg hover:border-primary/50 transition-colors backdrop-blur-sm bg-white/5">
-                    <span class="material-icons text-primary text-3xl mb-4">hexagon</span>
-                    <h4 class="uppercase tracking-widest text-sm font-bold">Bionic Structure</h4>
+                    class="p-5 md:p-6 border border-white/10 rounded-lg hover:border-primary/50 transition-colors backdrop-blur-sm bg-white/5">
+                    <span class="material-icons text-primary text-2xl md:text-3xl mb-3 md:mb-4">hexagon</span>
+                    <h4 class="uppercase tracking-widest text-xs md:text-sm font-bold">Bionic Structure</h4>
                 </div>
                 <div
-                    class="p-6 border border-white/10 rounded-lg hover:border-primary/50 transition-colors backdrop-blur-sm bg-white/5">
-                    <span class="material-icons text-primary text-3xl mb-4">smart_toy</span>
-                    <h4 class="uppercase tracking-widest text-sm font-bold">Smart Integration</h4>
+                    class="p-5 md:p-6 border border-white/10 rounded-lg hover:border-primary/50 transition-colors backdrop-blur-sm bg-white/5">
+                    <span class="material-icons text-primary text-2xl md:text-3xl mb-3 md:mb-4">smart_toy</span>
+                    <h4 class="uppercase tracking-widest text-xs md:text-sm font-bold">Smart Integration</h4>
                 </div>
             </div>
         </div>
     </section>
     <!-- Services / Grid List -->
-    <section class="py-32 bg-slate-900/50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-px bg-primary/10">
-                <div class="p-12 bg-background-dark group hover:bg-primary transition-all duration-500">
-                    <span class="text-slate-500 group-hover:text-black text-sm mb-10 block">01</span>
-                    <h4 class="text-3xl font-bold uppercase group-hover:text-black mb-6">Urban<br />Planning</h4>
-                    <p class="text-slate-400 group-hover:text-black/70 mb-8">Designing the masterplans of future-proof
+    <section class="py-20 md:py-32 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-5 md:px-6">
+            <div class="services-grid grid md:grid-cols-3 gap-px bg-primary/10">
+                <div class="p-8 md:p-12 bg-background-dark group hover:bg-primary transition-all duration-500">
+                    <span class="text-slate-500 group-hover:text-black text-sm mb-6 md:mb-10 block">01</span>
+                    <h4 class="text-xl md:text-3xl font-bold uppercase group-hover:text-black mb-4 md:mb-6">
+                        Urban<br />Planning</h4>
+                    <p class="text-sm md:text-base text-slate-400 group-hover:text-black/70 mb-6 md:mb-8">Designing the
+                        masterplans of future-proof
                         cities with human-centric flows.</p>
                     <span class="material-icons text-primary group-hover:text-black">arrow_outward</span>
                 </div>
-                <div class="p-12 bg-background-dark group hover:bg-primary transition-all duration-500">
-                    <span class="text-slate-500 group-hover:text-black text-sm mb-10 block">02</span>
-                    <h4 class="text-3xl font-bold uppercase group-hover:text-black mb-6">Digital<br />Twins</h4>
-                    <p class="text-slate-400 group-hover:text-black/70 mb-8">Precision 3D modeling and real-time
+                <div class="p-8 md:p-12 bg-background-dark group hover:bg-primary transition-all duration-500">
+                    <span class="text-slate-500 group-hover:text-black text-sm mb-6 md:mb-10 block">02</span>
+                    <h4 class="text-xl md:text-3xl font-bold uppercase group-hover:text-black mb-4 md:mb-6">
+                        Digital<br />Twins</h4>
+                    <p class="text-sm md:text-base text-slate-400 group-hover:text-black/70 mb-6 md:mb-8">Precision 3D
+                        modeling and real-time
                         environmental simulation for structures.</p>
                     <span class="material-icons text-primary group-hover:text-black">arrow_outward</span>
                 </div>
-                <div class="p-12 bg-background-dark group hover:bg-primary transition-all duration-500">
-                    <span class="text-slate-500 group-hover:text-black text-sm mb-10 block">03</span>
-                    <h4 class="text-3xl font-bold uppercase group-hover:text-black mb-6">Interior<br />Bionics</h4>
-                    <p class="text-slate-400 group-hover:text-black/70 mb-8">Organic interior layouts that adapt to the
+                <div class="p-8 md:p-12 bg-background-dark group hover:bg-primary transition-all duration-500">
+                    <span class="text-slate-500 group-hover:text-black text-sm mb-6 md:mb-10 block">03</span>
+                    <h4 class="text-xl md:text-3xl font-bold uppercase group-hover:text-black mb-4 md:mb-6">
+                        Interior<br />Bionics</h4>
+                    <p class="text-sm md:text-base text-slate-400 group-hover:text-black/70 mb-6 md:mb-8">Organic
+                        interior layouts that adapt to the
                         physiological needs of inhabitants.</p>
                     <span class="material-icons text-primary group-hover:text-black">arrow_outward</span>
                 </div>
@@ -508,7 +702,7 @@
     </section>
     <!-- Map/Location Teaser (Headquarters) -->
     <section
-        class="min-h-[700px] relative overflow-hidden flex items-center justify-center group bg-black border-y border-primary/20">
+        class="hq-section min-h-[500px] md:min-h-[700px] relative overflow-hidden flex items-center justify-center group bg-black border-y border-primary/20">
         <!-- Grid Background -->
         <div class="absolute inset-0 z-0 opacity-20"
             style="background-image: linear-gradient(rgba(104, 249, 31, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(104, 249, 31, 0.1) 1px, transparent 1px); background-size: 40px 40px;">
@@ -521,40 +715,43 @@
 
         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black z-10"></div>
 
-        <div class="relative z-20 text-center w-full max-w-4xl mx-auto px-6">
-            <div class="mb-12">
+        <div class="relative z-20 text-center w-full max-w-4xl mx-auto px-5 md:px-6 py-12 md:py-0">
+            <div class="mb-8 md:mb-12">
                 <span
-                    class="inline-block border border-primary text-primary px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-[0.3em] backdrop-blur-md bg-black/50 mb-6">
+                    class="inline-block border border-primary text-primary px-4 md:px-6 py-2 rounded-sm text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] backdrop-blur-md bg-black/50 mb-4 md:mb-6">
                     Global Parameters
                 </span>
-                <h2 class="text-7xl md:text-9xl font-black uppercase tracking-tighter text-white mb-2 leading-none">
+                <h2
+                    class="hq-title text-4xl md:text-7xl lg:text-9xl font-black uppercase tracking-tighter text-white mb-2 leading-none">
                     Chrissels
                 </h2>
-                <div class="h-24 flex items-center justify-center">
+                <div class="hq-cycle-wrapper h-16 md:h-24 flex items-center justify-center">
                     <span
-                        class="text-4xl md:text-6xl font-bold uppercase tracking-widest text-primary type-cycle"></span><span
-                        class="text-4xl md:text-6xl text-primary animate-pulse">_</span>
+                        class="text-2xl md:text-4xl lg:text-6xl font-bold uppercase tracking-widest text-primary type-cycle"></span><span
+                        class="text-2xl md:text-4xl lg:text-6xl text-primary animate-pulse">_</span>
                 </div>
             </div>
 
             <div
-                class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left border-t border-white/10 pt-12 mt-12 bg-black/40 backdrop-blur-sm p-8 rounded-lg border border-white/5">
+                class="hq-info-grid grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-left border-t border-white/10 pt-8 md:pt-12 mt-8 md:mt-12 bg-black/40 backdrop-blur-sm p-5 md:p-8 rounded-lg border border-white/5">
                 <div>
-                    <span class="text-xs text-slate-500 uppercase tracking-widest block mb-2">Coordinates</span>
-                    <p class="text-xl text-white font-mono">0.3476° N<br />32.5825° E</p>
+                    <span
+                        class="text-[10px] md:text-xs text-slate-500 uppercase tracking-widest block mb-2">Coordinates</span>
+                    <p class="text-base md:text-xl text-white font-mono">0.3476° N<br />32.5825° E</p>
                 </div>
                 <div>
-                    <span class="text-xs text-slate-500 uppercase tracking-widest block mb-2">Location</span>
-                    <p class="text-xl text-white font-mono">Kampala, Uganda</p>
+                    <span
+                        class="text-[10px] md:text-xs text-slate-500 uppercase tracking-widest block mb-2">Location</span>
+                    <p class="text-base md:text-xl text-white font-mono">Kampala, Uganda</p>
                 </div>
-                <div class="flex items-end justify-end gap-4">
-                    <a href="https://wa.me/256773748198" target="_blank"
-                        class="bg-primary text-background-dark px-8 py-4 rounded-sm font-bold uppercase tracking-widest text-xs hover:bg-white transition-all flex items-center gap-3">
+                <div class="flex items-end justify-end gap-3 md:gap-4 flex-wrap">
+                    <a href="https://wa.me/256773749198" target="_blank"
+                        class="bg-primary text-background-dark px-5 md:px-8 py-3 md:py-4 rounded-sm font-bold uppercase tracking-widest text-[10px] md:text-xs hover:bg-white transition-all flex items-center gap-2 md:gap-3">
                         <span>Inquire</span>
                         <span class="material-icons text-sm">arrow_forward</span>
                     </a>
-                    <a href="https://wa.me/256773748198" target="_blank"
-                        class="border border-white/20 px-8 py-4 rounded-sm font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-background-dark transition-all flex items-center gap-3">
+                    <a href="https://wa.me/256773749198" target="_blank"
+                        class="border border-white/20 px-5 md:px-8 py-3 md:py-4 rounded-sm font-bold uppercase tracking-widest text-[10px] md:text-xs hover:bg-white hover:text-background-dark transition-all flex items-center gap-2 md:gap-3">
                         <span class="material-icons text-sm">play_circle_filled</span>
                         <span>Contact us</span>
                     </a>
@@ -563,50 +760,53 @@
         </div>
     </section>
     <!-- Footer -->
-    <footer class="bg-background-dark pt-32 pb-12 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-20 mb-32">
+    <footer class="bg-background-dark pt-16 md:pt-32 pb-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-5 md:px-6">
+            <div class="footer-grid grid md:grid-cols-2 gap-12 md:gap-20 mb-16 md:mb-32">
                 <div>
-                    <h2 class="text-8xl font-bold tracking-tighter uppercase leading-none mb-10">Let's Build<br /><span
-                            class="text-primary">Together.</span></h2>
-                    <a class="text-4xl font-light hover:text-primary transition-colors underline underline-offset-8 decoration-primary/30"
+                    <h2
+                        class="footer-heading text-4xl md:text-8xl font-bold tracking-tighter uppercase leading-none mb-6 md:mb-10">
+                        Let's Build<br /><span class="text-primary">Together.</span></h2>
+                    <a class="footer-email text-xl md:text-4xl font-light hover:text-primary transition-colors underline underline-offset-8 decoration-primary/30"
                         href="mailto:contact@chrissels.com">contact@chrissels.com</a>
                 </div>
                 <div class="flex flex-col justify-between">
-                    <div class="grid grid-cols-2 gap-10 uppercase tracking-widest text-xs">
-                        <div class="flex flex-col gap-6">
+                    <div class="grid grid-cols-2 gap-6 md:gap-10 uppercase tracking-widest text-xs">
+                        <div class="flex flex-col gap-4 md:gap-6">
                             <span class="text-slate-500">Links</span>
                             <a class="hover:text-primary transition-colors" href="#">Career</a>
                             <a class="hover:text-primary transition-colors" href="#">Press Kit</a>
                             <a class="hover:text-primary transition-colors" href="#">Sustainability Report</a>
                         </div>
-                        <div class="flex flex-col gap-6">
+                        <div class="flex flex-col gap-4 md:gap-6">
                             <span class="text-slate-500">Socials</span>
                             <a class="hover:text-primary transition-colors" href="#">Instagram</a>
                             <a class="hover:text-primary transition-colors" href="#">Behance</a>
                             <a class="hover:text-primary transition-colors" href="#">LinkedIn</a>
                         </div>
                     </div>
-                    <div class="mt-20">
+                    <div class="mt-10 md:mt-20">
                         <form class="relative">
                             <input
-                                class="w-full bg-transparent border-0 border-b border-slate-800 pb-4 focus:ring-0 focus:border-primary uppercase tracking-widest text-sm"
+                                class="w-full bg-transparent border-0 border-b border-slate-800 pb-4 focus:ring-0 focus:border-primary uppercase tracking-widest text-xs md:text-sm"
                                 placeholder="JOIN THE NEWSLETTER" type="email" />
                             <button
-                                class="absolute right-0 top-0 text-primary uppercase text-xs font-bold tracking-widest">Submit</button>
+                                class="absolute right-0 top-0 text-primary uppercase text-[10px] md:text-xs font-bold tracking-widest">Submit</button>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-12 border-t border-white/5">
+            <div
+                class="footer-bottom flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6 pt-8 md:pt-12 border-t border-white/5">
                 <div class="flex items-center gap-4">
                     <img src="assets/logo.png" alt="Chrissels Logo" class="h-10 md:h-18 w-auto">
                     <span class="text-sm md:text-lg font-bold tracking-tighter uppercase">CHRISSELS</span>
                 </div>
-                <p class="text-[10px] text-slate-500 uppercase tracking-[0.2em]">© 2024 Chrissels Architectural Studio.
+                <p class="text-[10px] text-slate-500 uppercase tracking-[0.2em] text-center">© 2024 Chrissels
+                    Architectural Studio.
                     All
                     Rights Reserved.</p>
-                <div class="flex gap-8 text-[10px] uppercase tracking-widest text-slate-500">
+                <div class="flex gap-6 md:gap-8 text-[10px] uppercase tracking-widest text-slate-500">
                     <a class="hover:text-white" href="#">Privacy Policy</a>
                     <a class="hover:text-white" href="#">Cookies</a>
                 </div>

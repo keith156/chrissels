@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Building Materials & Prices | Chrissels</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#68f91f",
+                        "background-light": "#f6f8f5",
+                        "background-dark": "#0a0c08",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="cursor.css">
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #0a0c08;
+            color: #f6f8f5;
+            overflow-x: hidden;
+        }
+
+        .glass-nav {
+            background: rgba(10, 12, 8, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(104, 249, 31, 0.1);
+        }
+
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .hamburger-btn {
+            display: none;
+        }
+
+        @media (max-width: 767px) {
+            .hamburger-btn {
+                display: flex;
+            }
+        }
+
+        .material-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(104, 249, 31, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .material-card:hover {
+            border-color: #68f91f;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(104, 249, 31, 0.1);
+        }
+
+        .text-outline {
+            -webkit-text-stroke: 2px #68f91f;
+            color: transparent;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="assets/logo.png" alt="Chrissels Logo"
+                    class="h-24 md:h-32 w-auto object-contain relative z-10">
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium tracking-widest uppercase">
+                <a class="hover:text-primary transition-colors" href="index.html">Home</a>
+                <a class="hover:text-primary transition-colors" href="portfolio.html">Portfolio</a>
+                <a class="hover:text-primary transition-colors" href="services.html">Services</a>
+                <a class="hover:text-primary transition-colors" href="process.html">Process</a>
+                <a class="text-primary transition-colors" href="materials.html">Materials</a>
+                <a class="hover:text-primary transition-colors" href="about.html">About</a>
+                <a class="hover:text-primary transition-colors" href="contact.html">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/256773749198" target="_blank"
+                    class="hidden sm:flex bg-primary hover:bg-white text-black px-6 py-2 rounded-sm font-bold transition-all items-center gap-2">
+                    <span class="text-xs uppercase tracking-widest">Start a Project</span>
+                    <span class="material-icons text-sm">arrow_forward</span>
+                </a>
+
+                <!-- Hamburger Button -->
+                <button id="menu-toggle" class="hamburger-btn md:hidden text-white focus:outline-none">
+                    <span class="material-icons text-4xl">menu</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-background-dark flex flex-col items-center justify-center space-y-8 text-2xl uppercase tracking-[0.2em] font-bold md:hidden">
+        <button id="menu-close" class="absolute top-8 right-8 text-white focus:outline-none">
+            <span class="material-icons text-4xl">close</span>
+        </button>
+        <a class="hover:text-primary transition-colors" href="index.html">Home</a>
+        <a class="hover:text-primary transition-colors" href="portfolio.html">Portfolio</a>
+        <a class="hover:text-primary transition-colors" href="services.html">Services</a>
+        <a class="hover:text-primary transition-colors" href="process.html">Process</a>
+        <a class="text-primary transition-colors" href="materials.html">Materials</a>
+        <a class="hover:text-primary transition-colors" href="about.html">About</a>
+        <a class="hover:text-primary transition-colors" href="contact.html">Contact</a>
+        <a href="https://wa.me/256773749198" target="_blank"
+            class="bg-primary text-black px-8 py-3 rounded-sm text-sm">START A PROJECT</a>
+    </div>
+
+    <main class="pt-32 pb-20">
+        <!-- Hero Section -->
+        <section class="max-w-7xl mx-auto px-6 py-16 md:py-24 text-center">
+            <span class="text-primary text-sm font-bold tracking-[0.5em] uppercase mb-4 block">Market Insights</span>
+            <h1 class="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-none mb-8">
+                Build <br /><span class="text-outline">Materials</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg text-slate-400 font-light leading-relaxed">
+                A curated list of current market prices for essential construction materials. Designed to help
+                architects and developers quote projects with precision.
+            </p>
+        </section>
+
+        <!-- Product Grid -->
+        <section class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Item 1 -->
+            <div class="material-card p-8 rounded-lg flex flex-col justify-between">
+                <div>
+                    <span class="text-[10px] uppercase tracking-widest text-primary font-bold mb-4 block">Binder</span>
+                    <h3 class="text-2xl font-bold uppercase mb-2">OPC Cement</h3>
+                    <p class="text-xs text-slate-500 mb-6 uppercase tracking-widest">50kg Bag / Grade 42.5</p>
+                </div>
+                <div>
+                    <div class="flex items-baseline gap-2 mb-4">
+                        <span class="text-3xl font-bold text-white">UGX 38,500</span>
+                        <span class="text-xs text-slate-500 uppercase">/ unit</span>
+                    </div>
+                    <a href="https://wa.me/256773749198?text=Hi%20Chrissels,%20I%20would%20like%20to%20confirm%20the%20price%20for%20OPC%20Cement."
+                        target="_blank"
+                        class="w-full border border-primary/30 hover:bg-primary hover:text-black py-3 rounded-sm text-[10px] font-black uppercase tracking-widest transition-all text-center block">
+                        Confirm Price
+                    </a>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="material-card p-8 rounded-lg flex flex-col justify-between">
+                <div>
+                    <span
+                        class="text-[10px] uppercase tracking-widest text-primary font-bold mb-4 block">Structural</span>
+                    <h3 class="text-2xl font-bold uppercase mb-2">Steel Bars</h3>
+                    <p class="text-xs text-slate-500 mb-6 uppercase tracking-widest">T12 / 12mm Diameter</p>
+                </div>
+                <div>
+                    <div class="flex items-baseline gap-2 mb-4">
+                        <span class="text-3xl font-bold text-white">UGX 45,000</span>
+                        <span class="text-xs text-slate-500 uppercase">/ length</span>
+                    </div>
+                    <a href="https://wa.me/256773749198?text=Hi%20Chrissels,%20I%20would%20like%20to%20confirm%20the%20price%20for%20Steel%20Bars."
+                        target="_blank"
+                        class="w-full border border-primary/30 hover:bg-primary hover:text-black py-3 rounded-sm text-[10px] font-black uppercase tracking-widest transition-all text-center block">
+                        Confirm Price
+                    </a>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="material-card p-8 rounded-lg flex flex-col justify-between">
+                <div>
+                    <span
+                        class="text-[10px] uppercase tracking-widest text-primary font-bold mb-4 block">Aggregates</span>
+                    <h3 class="text-2xl font-bold uppercase mb-2">Lake Sand</h3>
+                    <p class="text-xs text-slate-500 mb-6 uppercase tracking-widest">Forward Tipper (Small)</p>
+                </div>
+                <div>
+                    <div class="flex items-baseline gap-2 mb-4">
+                        <span class="text-3xl font-bold text-white">UGX 280,000</span>
+                        <span class="text-xs text-slate-500 uppercase">/ trip</span>
+                    </div>
+                    <a href="https://wa.me/256773749198?text=Hi%20Chrissels,%20I%20would%20like%20to%20confirm%20the%20price%20for%20Lake%20Sand."
+                        target="_blank"
+                        class="w-full border border-primary/30 hover:bg-primary hover:text-black py-3 rounded-sm text-[10px] font-black uppercase tracking-widest transition-all text-center block">
+                        Confirm Price
+                    </a>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="material-card p-8 rounded-lg flex flex-col justify-between">
+                <div>
+                    <span class="text-[10px] uppercase tracking-widest text-primary font-bold mb-4 block">Wall</span>
+                    <h3 class="text-2xl font-bold uppercase mb-2">Clay Bricks</h3>
+                    <p class="text-xs text-slate-500 mb-6 uppercase tracking-widest">Standard / Red Baked</p>
+                </div>
+                <div>
+                    <div class="flex items-baseline gap-2 mb-4">
+                        <span class="text-3xl font-bold text-white">UGX 450</span>
+                        <span class="text-xs text-slate-500 uppercase">/ brick</span>
+                    </div>
+                    <a href="https://wa.me/256773749198?text=Hi%20Chrissels,%20I%20would%20like%20to%20confirm%20the%20price%20for%20Clay%20Bricks."
+                        target="_blank"
+                        class="w-full border border-primary/30 hover:bg-primary hover:text-black py-3 rounded-sm text-[10px] font-black uppercase tracking-widest transition-all text-center block">
+                        Confirm Price
+                    </a>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="material-card p-8 rounded-lg flex flex-col justify-between">
+                <div>
+                    <span class="text-[10px] uppercase tracking-widest text-primary font-bold mb-4 block">Wall</span>
+                    <h3 class="text-2xl font-bold uppercase mb-2">Concrete Blocks</h3>
+                    <p class="text-xs text-slate-500 mb-6 uppercase tracking-widest">9" x 9" x 18" / Hollow</p>
+                </div>
+                <div>
+                    <div class="flex items-baseline gap-2 mb-4">
+                        <span class="text-3xl font-bold text-white">UGX 3,200</span>
+                        <span class="text-xs text-slate-500 uppercase">/ block</span>
+                    </div>
+                    <a href="https://wa.me/256773749198?text=Hi%20Chrissels,%20I%20would%20like%20to%20confirm%20the%20price%20for%20Concrete%20Blocks."
+                        target="_blank"
+                        class="w-full border border-primary/30 hover:bg-primary hover:text-black py-3 rounded-sm text-[10px] font-black uppercase tracking-widest transition-all text-center block">
+                        Confirm Price
+                    </a>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="material-card p-8 rounded-lg flex flex-col justify-between">
+                <div>
+                    <span class="text-[10px] uppercase tracking-widest text-primary font-bold mb-4 block">Roofing</span>
+                    <h3 class="text-2xl font-bold uppercase mb-2">Iron Sheets</h3>
+                    <p class="text-xs text-slate-500 mb-6 uppercase tracking-widest">G28 / Matte Finish</p>
+                </div>
+                <div>
+                    <div class="flex items-baseline gap-2 mb-4">
+                        <span class="text-3xl font-bold text-white">UGX 55,000</span>
+                        <span class="text-xs text-slate-500 uppercase">/ sheet</span>
+                    </div>
+                    <a href="https://wa.me/256773749198?text=Hi%20Chrissels,%20I%20would%20like%20to%20confirm%20the%20price%20for%20Iron%20Sheets."
+                        target="_blank"
+                        class="w-full border border-primary/30 hover:bg-primary hover:text-black py-3 rounded-sm text-[10px] font-black uppercase tracking-widest transition-all text-center block">
+                        Confirm Price
+                    </a>
+                </div>
+            </div>
+
+            <!-- Item 7 -->
+            <div class="material-card p-8 rounded-lg flex flex-col justify-between">
+                <div>
+                    <span
+                        class="text-[10px] uppercase tracking-widest text-primary font-bold mb-4 block">Aesthetics</span>
+                    <h3 class="text-2xl font-bold uppercase mb-2">Ceramic Tiles</h3>
+                    <p class="text-xs text-slate-500 mb-6 uppercase tracking-widest">60cm x 60cm / Glossy</p>
+                </div>
+                <div>
+                    <div class="flex items-baseline gap-2 mb-4">
+                        <span class="text-3xl font-bold text-white">UGX 42,000</span>
+                        <span class="text-xs text-slate-500 uppercase">/ box</span>
+                    </div>
+                    <a href="https://wa.me/256773749198?text=Hi%20Chrissels,%20I%20would%20like%20to%20confirm%20the%20price%20for%20Ceramic%20Tiles."
+                        target="_blank"
+                        class="w-full border border-primary/30 hover:bg-primary hover:text-black py-3 rounded-sm text-[10px] font-black uppercase tracking-widest transition-all text-center block">
+                        Confirm Price
+                    </a>
+                </div>
+            </div>
+
+            <!-- Item 8 -->
+            <div class="material-card p-8 rounded-lg flex flex-col justify-between">
+                <div>
+                    <span class="text-[10px] uppercase tracking-widest text-primary font-bold mb-4 block">Timber</span>
+                    <h3 class="text-2xl font-bold uppercase mb-2">Pine Wood</h3>
+                    <p class="text-xs text-slate-500 mb-6 uppercase tracking-widest">2" x 4" x 12ft / Planed</p>
+                </div>
+                <div>
+                    <div class="flex items-baseline gap-2 mb-4">
+                        <span class="text-3xl font-bold text-white">UGX 18,000</span>
+                        <span class="text-xs text-slate-500 uppercase">/ piece</span>
+                    </div>
+                    <a href="https://wa.me/256773749198?text=Hi%20Chrissels,%20I%20would%20like%20to%20confirm%20the%20price%20for%20Pine%20Wood."
+                        target="_blank"
+                        class="w-full border border-primary/30 hover:bg-primary hover:text-black py-3 rounded-sm text-[10px] font-black uppercase tracking-widest transition-all text-center block">
+                        Confirm Price
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Disclaimer Section -->
+        <section class="max-w-4xl mx-auto px-6 mt-32 p-12 bg-primary/5 border border-primary/20 rounded-lg">
+            <div class="flex items-center gap-4 mb-8">
+                <span class="material-icons text-primary text-4xl">warning</span>
+                <h2 class="text-3xl font-bold uppercase tracking-tighter">Price Disclaimer</h2>
+            </div>
+            <p class="text-slate-400 font-light leading-relaxed mb-8">
+                Please note that the prices listed above are <span class="text-white font-medium">indicative only</span>
+                and are based on average market rates in Kampala as of February 2024. Building material costs are highly
+                volatile and subject to frequent adjustments.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-primary font-bold uppercase text-xs tracking-widest mb-4">Factors for Change</h4>
+                    <ul class="space-y-3 text-sm text-slate-500">
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                            <span>Fuel and transportation costs</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                            <span>Foreign exchange rate fluctuations (USD/UGX)</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                            <span>Seasonal demand and supply chain disruptions</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                            <span>Quality variations and brand specifications</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-primary font-bold uppercase text-xs tracking-widest mb-4">Architect's Note</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed italic">
+                        "Accurate quoting requires real-time data from localized suppliers. We recommend confirming
+                        these rates with our procurement department before finalizing any project budgets or client
+                        contracts."
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-background-dark pt-16 md:pt-32 pb-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 leading-none">
+                Chrissels <br /><span class="text-primary italic">Materials Intelligence</span>
+            </h2>
+            <div class="flex justify-center gap-8 mb-12">
+                <a href="#"
+                    class="text-xs uppercase tracking-widest text-slate-500 hover:text-white transition-colors">Instagram</a>
+                <a href="#"
+                    class="text-xs uppercase tracking-widest text-slate-500 hover:text-white transition-colors">Behance</a>
+                <a href="#"
+                    class="text-xs uppercase tracking-widest text-slate-500 hover:text-white transition-colors">LinkedIn</a>
+            </div>
+            <div class="pt-8 border-t border-white/5 text-[10px] text-slate-700 uppercase tracking-widest">
+                &copy; 2024 Chrissels Architectural Excellence. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="cursor.js"></script>
+    <script>
+        // Mobile Menu Toggle logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        if (menuClose && mobileMenu) {
+            menuClose.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
+
+        // Close menu on link click
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    </script>
+</body>
+
+</html>
