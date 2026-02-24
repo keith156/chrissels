@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Privacy Policy | Chrissels Architectural Excellence</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#68f91f",
+                        "background-light": "#f6f8f5",
+                        "background-dark": "#0a0c08",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="cursor.css">
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #0a0c08;
+            color: #f6f8f5;
+        }
+
+        .glass-nav {
+            background: rgba(10, 12, 8, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(104, 249, 31, 0.1);
+        }
+
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .privacy-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #68f91f;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .privacy-content p {
+            color: rgba(246, 248, 245, 0.7);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .privacy-content ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .privacy-content li {
+            position: relative;
+            padding-left: 1.5rem;
+            color: rgba(246, 248, 245, 0.7);
+            margin-bottom: 0.75rem;
+        }
+
+        .privacy-content li::before {
+            content: "•";
+            color: #68f91f;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark text-white font-display selection:bg-primary selection:text-black">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="assets/logo.png" alt="Chrissels Logo"
+                    class="h-24 md:h-32 w-auto object-contain relative z-10">
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium tracking-widest uppercase">
+                <a class="hover:text-primary transition-colors" href="index.html">Home</a>
+                <a class="hover:text-primary transition-colors" href="portfolio.html">Portfolio</a>
+                <a class="hover:text-primary transition-colors" href="services.html">Services</a>
+                <a class="hover:text-primary transition-colors" href="process.html">Process</a>
+                <a class="hover:text-primary transition-colors" href="materials.html">Materials</a>
+                <a class="hover:text-primary transition-colors" href="about.html">About</a>
+                <a class="hover:text-primary transition-colors" href="contact.html">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/256773749198" target="_blank"
+                    class="hidden sm:flex bg-primary hover:bg-white text-black px-6 py-2 rounded-sm font-bold transition-all items-center gap-2">
+                    <span class="text-xs uppercase tracking-widest">Start a Project</span>
+                    <span class="material-icons text-sm">arrow_forward</span>
+                </a>
+
+                <!-- Hamburger Button -->
+                <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+                    <span class="material-icons text-4xl">menu</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-background-dark flex flex-col items-center justify-center space-y-8 text-2xl uppercase tracking-[0.2em] font-bold md:hidden">
+        <button id="menu-close" class="absolute top-8 right-8 text-white focus:outline-none">
+            <span class="material-icons text-4xl">close</span>
+        </button>
+        <a class="hover:text-primary transition-colors" href="index.html">Home</a>
+        <a class="hover:text-primary transition-colors" href="portfolio.html">Portfolio</a>
+        <a class="hover:text-primary transition-colors" href="services.html">Services</a>
+        <a class="hover:text-primary transition-colors" href="process.html">Process</a>
+        <a class="hover:text-primary transition-colors" href="materials.html">Materials</a>
+        <a class="hover:text-primary transition-colors" href="about.html">About</a>
+        <a class="hover:text-primary transition-colors" href="contact.html">Contact</a>
+        <a href="https://wa.me/256773749198" target="_blank"
+            class="bg-primary text-black px-8 py-3 rounded-sm text-sm">START A PROJECT</a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-48 pb-32 px-6">
+        <div class="max-w-4xl mx-auto">
+            <header class="mb-16">
+                <span class="text-primary text-xs font-bold tracking-[0.5em] uppercase mb-4 block">Compliance</span>
+                <h1 class="text-5xl md:text-8xl font-bold leading-none tracking-tighter uppercase">
+                    Privacy <br /> <span class="italic text-primary">Policy</span>
+                </h1>
+                <p class="mt-8 text-white/40 uppercase tracking-widest text-xs">Last Updated: February 24, 2026</p>
+            </header>
+
+            <div class="privacy-content">
+                <p>Welcome to Chrissels Architectural Studio. Your privacy is critically important to us. This Privacy
+                    Policy document contains types of information that is collected and recorded by Chrissels and how we
+                    use it.</p>
+
+                <h2>Information We Collect</h2>
+                <p>We collect information to provide better services to all our clients. The types of personal
+                    information we collect include:</p>
+                <ul>
+                    <li>Contact Information: Name, email address, phone number, and mailing address.</li>
+                    <li>Project Details: Information about your architectural vision, site location, and specific
+                        requirements.</li>
+                    <li>Communication History: Records of our interactions via email, WhatsApp, or through our contact
+                        forms.</li>
+                </ul>
+
+                <h2>How We Use Your Information</h2>
+                <p>We use the information we collect in various ways, including to:</p>
+                <ul>
+                    <li>Provide, operate, and maintain our website and services.</li>
+                    <li>Improve, personalize, and expand our architectural offerings.</li>
+                    <li>Understand and analyze how you use our website.</li>
+                    <li>Develop new products, services, features, and functionality.</li>
+                    <li>Communicate with you, either directly or through one of our partners, for customer service, to
+                        provide you with updates and other information relating to the website, and for marketing and
+                        promotional purposes.</li>
+                    <li>Send you emails or messages via WhatsApp.</li>
+                    <li>Find and prevent fraud.</li>
+                </ul>
+
+                <h2>Log Files</h2>
+                <p>Chrissels follows a standard procedure of using log files. These files log visitors when they visit
+                    websites. All hosting companies do this as part of hosting services' analytics. The information
+                    collected by log files includes internet protocol (IP) addresses, browser type, Internet Service
+                    Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks.</p>
+
+                <h2>Cookies and Web Beacons</h2>
+                <p>Like any other website, Chrissels uses 'cookies'. These cookies are used to store information
+                    including visitors' preferences, and the pages on the website that the visitor accessed or visited.
+                    The information is used to optimize the users' experience by customizing our web page content based
+                    on visitors' browser type and/or other information.</p>
+
+                <h2>GDPR Data Protection Rights</h2>
+                <p>We would like to make sure you are fully aware of all of your data protection rights. Every user is
+                    entitled to the following:</p>
+                <ul>
+                    <li>The right to access – You have the right to request copies of your personal data.</li>
+                    <li>The right to rectification – You have the right to request that we correct any information you
+                        believe is inaccurate.</li>
+                    <li>The right to erasure – You have the right to request that we erase your personal data, under
+                        certain conditions.</li>
+                    <li>The right to restrict processing – You have the right to request that we restrict the processing
+                        of your personal data, under certain conditions.</li>
+                    <li>The right to data portability – You have the right to request that we transfer the data that we
+                        have collected to another organization, or directly to you, under certain conditions.</li>
+                </ul>
+
+                <h2>Contact Us</h2>
+                <p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at
+                    hello@chrissels.com.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-background-dark py-20 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-4">
+                <img src="assets/logo.png" alt="Chrissels Logo" class="h-12 w-auto">
+                <span class="text-xl font-bold tracking-tighter uppercase">Chrissels</span>
+            </div>
+            <div class="text-[10px] text-white/20 uppercase tracking-[0.2em]">
+                © 2026 CHRISSELS STUDIO — Architectural Visionaries
+            </div>
+            <div class="flex gap-8 text-[10px] uppercase tracking-widest text-white/40">
+                <a class="hover:text-primary transition-colors" href="privacy-policy.html">Privacy Policy</a>
+                <a class="hover:text-primary transition-colors" href="#">Terms of Space</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="cursor.js"></script>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        if (menuClose && mobileMenu) {
+            menuClose.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
+
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    </script>
+</body>
+
+</html>

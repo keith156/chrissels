@@ -1,0 +1,25 @@
+{
+  "name": "chrissels",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cursor.js",
+  "scripts": {
+    "dev": "browser-sync start --server --files \"*.html, *.css, *.js\" --host 192.168.100.191 --port 3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keith156/chrissels.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/keith156/chrissels/issues"
+  },
+  "homepage": "https://github.com/keith156/chrissels#readme",
+  "devDependencies": {
+    "browser-sync": "^3.0.4"
+  }
+}
