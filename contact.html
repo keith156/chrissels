@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Modern Contact Page | Architecture Firm</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3cf91a",
+                        "background-light": "#f6f8f5",
+                        "background-dark": "#12230f",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: "Space Grotesk", sans-serif;
+            background-color: #0a0c08;
+            color: #f6f8f5;
+            overflow-x: hidden;
+        }
+
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .hamburger-btn {
+            display: none;
+        }
+
+        @media (max-width: 767px) {
+            .hamburger-btn {
+                display: flex;
+            }
+        }
+
+        .glass-nav {
+            background: rgba(10, 12, 8, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(104, 249, 31, 0.1);
+        }
+
+        .arch-watermark {
+            background-image: linear-gradient(rgba(18, 35, 15, 0.95), rgba(18, 35, 15, 0.95)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuBV8hKJRrl3ILOKZclGzHoLmgOeSbv4WUsuT_9ckM_7NKo6CmaxjJeUyV8AGpQukX6yotz9u7bVIyV_lwt8hJkWNHKzH6K54sgYdqjs1cOWVb2SFudR90Z_00s-uBpMTz4KB4tVL1NnFWf3urk7YL3AvOp3iqmO7E5ZB5l-fyz64uNDIQ1wkNsNHm9NDyjhQkVilyrcDGumC1Zk8bJmD3tILpty7kxZv78ckTbtCl1xPxR2h-8KXywniGcwpSMAkaEpjcobtvUgEfQ);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat
+        }
+
+        .neon-glow:focus {
+            box-shadow: 0 0 15px rgba(60, 249, 26, 0.2)
+        }
+    </style>
+    <link rel="stylesheet" href="cursor.css">
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-white font-display overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="assets/logo.png" alt="Chrissels Logo"
+                    class="h-24 md:h-32 w-auto object-contain relative z-10">
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium tracking-widest uppercase">
+                <a class="hover:text-primary transition-colors" href="index.html">Home</a>
+                <a class="hover:text-primary transition-colors" href="portfolio.html">Portfolio</a>
+                <a class="hover:text-primary transition-colors" href="services.html">Services</a>
+                <a class="hover:text-primary transition-colors" href="process.html">Process</a>
+                <a class="hover:text-primary transition-colors" href="materials.html">Materials</a>
+                <a class="hover:text-primary transition-colors" href="about.html">About</a>
+                <a class="text-primary" href="contact.html">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/256773749198" target="_blank"
+                    class="hidden sm:flex bg-primary hover:bg-white text-black px-6 py-2 rounded-sm font-bold transition-all items-center gap-2">
+                    <span class="text-xs uppercase tracking-widest">Start a Project</span>
+                    <span class="material-icons text-sm">arrow_forward</span>
+                </a>
+
+                <!-- Hamburger Button -->
+                <button id="menu-toggle" class="hamburger-btn md:hidden text-white focus:outline-none">
+                    <span class="material-icons text-4xl">menu</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-background-dark flex flex-col items-center justify-center space-y-8 text-2xl uppercase tracking-[0.2em] font-bold md:hidden">
+        <button id="menu-close" class="absolute top-8 right-8 text-white focus:outline-none">
+            <span class="material-icons text-4xl">close</span>
+        </button>
+        <a class="hover:text-primary transition-colors" href="index.html">Home</a>
+        <a class="hover:text-primary transition-colors" href="portfolio.html">Portfolio</a>
+        <a class="hover:text-primary transition-colors" href="services.html">Services</a>
+        <a class="hover:text-primary transition-colors" href="process.html">Process</a>
+        <a class="hover:text-primary transition-colors" href="materials.html">Materials</a>
+        <a class="hover:text-primary transition-colors" href="about.html">About</a>
+        <a class="text-primary" href="contact.html">Contact</a>
+        <a href="https://wa.me/256773749198" target="_blank"
+            class="bg-primary text-black px-8 py-3 rounded-sm text-sm">START A PROJECT</a>
+    </div>
+    <!-- Main Content -->
+    <main class="min-h-screen arch-watermark flex flex-col lg:flex-row pt-24"
+        data-alt="Technical architectural facade drawing background pattern">
+        <!-- Left Side: Typography Heavy Info -->
+        <section class="w-full lg:w-1/2 p-8 lg:p-20 flex flex-col justify-between">
+            <div class="space-y-12">
+                <header>
+                    <p class="text-primary text-sm uppercase tracking-[0.3em] mb-4 font-semibold">Available for
+                        Commissions</p>
+                    <h1 class="text-[15vw] lg:text-[9rem] leading-none font-bold text-white uppercase tracking-tighter">
+                        GET IN <br /> <span class="text-primary">TOUCH</span>
+                    </h1>
+                </header>
+                <div class="space-y-8 mt-12">
+                    <div class="group cursor-pointer">
+                        <p class="text-white/40 text-xs uppercase tracking-widest mb-2">New Projects</p>
+                        <h2
+                            class="text-2xl lg:text-4xl font-medium group-hover:text-primary transition-colors underline decoration-white/10 decoration-1 underline-offset-8">
+                            hello@chrissels.com</h2>
+                    </div>
+                    <div class="group cursor-pointer">
+                        <p class="text-white/40 text-xs uppercase tracking-widest mb-2">Phone</p>
+                        <h2 class="text-2xl lg:text-4xl font-medium group-hover:text-primary transition-colors">
+                            +256 773 748 198</h2>
+                    </div>
+                    <div class="group cursor-pointer">
+                        <p class="text-white/40 text-xs uppercase tracking-widest mb-2">Office</p>
+                        <h2 class="text-2xl lg:text-4xl font-medium group-hover:text-primary transition-colors">
+                            KAMPALA, UGANDA</h2>
+                        <a class="inline-flex items-center text-primary text-xs uppercase tracking-widest mt-4 group"
+                            href="#">
+                            View on map <span class="material-icons text-sm ml-2">north_east</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Social Links -->
+            <div class="mt-20 flex gap-8">
+                <a class="text-xs uppercase tracking-widest hover:text-primary border-b border-transparent hover:border-primary pb-1 transition-all"
+                    href="#">Instagram</a>
+                <a class="text-xs uppercase tracking-widest hover:text-primary border-b border-transparent hover:border-primary pb-1 transition-all"
+                    href="#">LinkedIn</a>
+                <a class="text-xs uppercase tracking-widest hover:text-primary border-b border-transparent hover:border-primary pb-1 transition-all"
+                    href="#">Twitter</a>
+            </div>
+        </section>
+        <!-- Right Side: Minimalist Form -->
+        <section
+            class="w-full lg:w-1/2 p-8 lg:p-20 bg-white/5 backdrop-blur-sm flex flex-col justify-center border-l border-white/5">
+            <div class="max-w-xl mx-auto w-full">
+                <div class="mb-12">
+                    <h3 class="text-3xl font-bold uppercase tracking-tight mb-2">Start a conversation</h3>
+                    <p class="text-white/60 font-light">Tell us about your vision. We translate complex requirements
+                        into architectural excellence.</p>
+                </div>
+                <form class="space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="relative">
+                            <input
+                                class="w-full bg-transparent border-0 border-b border-white/20 py-4 focus:ring-0 focus:border-primary text-primary placeholder:text-white/20 uppercase text-xs tracking-widest transition-all neon-glow"
+                                id="name" name="name" placeholder="FULL NAME" type="text" />
+                        </div>
+                        <div class="relative">
+                            <input
+                                class="w-full bg-transparent border-0 border-b border-white/20 py-4 focus:ring-0 focus:border-primary text-primary placeholder:text-white/20 uppercase text-xs tracking-widest transition-all neon-glow"
+                                id="email" name="email" placeholder="EMAIL ADDRESS" type="email" />
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <select
+                            class="w-full bg-transparent border-0 border-b border-white/20 py-4 focus:ring-0 focus:border-primary text-primary placeholder:text-white/20 uppercase text-xs tracking-widest transition-all appearance-none"
+                            id="service" name="service">
+                            <option class="bg-background-dark">SELECT SERVICE TYPE</option>
+                            <option class="bg-background-dark">RESIDENTIAL ARCHITECTURE</option>
+                            <option class="bg-background-dark">COMMERCIAL DEVELOPMENT</option>
+                            <option class="bg-background-dark">URBAN PLANNING</option>
+                            <option class="bg-background-dark">INTERIOR DESIGN</option>
+                        </select>
+                    </div>
+                    <div class="relative">
+                        <textarea
+                            class="w-full bg-transparent border-0 border-b border-white/20 py-4 focus:ring-0 focus:border-primary text-primary placeholder:text-white/20 uppercase text-xs tracking-widest transition-all neon-glow resize-none"
+                            id="message" name="message" placeholder="PROJECT BRIEF" rows="4"></textarea>
+                    </div>
+                    <div class="flex items-center space-x-4 py-4">
+                        <input class="w-4 h-4 bg-transparent border-white/20 text-primary rounded focus:ring-0" id="nda"
+                            type="checkbox" />
+                        <label class="text-[10px] uppercase tracking-widest text-white/40" for="nda">I agree to the <a
+                                href="privacy-policy.html" class="text-primary underline">Privacy Policy</a> and request
+                            preliminary non-disclosure agreement</label>
+                    </div>
+                    <button
+                        class="w-full bg-primary text-black font-bold py-6 px-10 rounded-none uppercase tracking-[0.2em] flex justify-between items-center group hover:bg-white transition-all duration-300"
+                        type="submit">
+                        <span>Send Message</span>
+                        <span class="material-icons group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                    </button>
+                </form>
+                <div
+                    class="mt-12 pt-12 border-t border-white/5 flex justify-between items-center text-[10px] uppercase tracking-widest text-white/30">
+                    <p>Average response time: 24-48 hours</p>
+                    <p>UTC-05:00 EST</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Map Preview Placeholder (Footer Area) -->
+    <footer class="w-full h-64 relative overflow-hidden">
+        <div class="absolute inset-0 bg-background-dark/60 z-10 pointer-events-none"></div>
+        <img class="w-full h-full object-cover grayscale brightness-50 opacity-30"
+            data-alt="Monochrome dark satellite map view of Kampala" data-location="Kampala"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuClNhC71au1ilCnpuil48-QHbSqOGMBxE7GcbBLwbpboqpLI1HgrIjQzLQ2T7naBtPlzq7ucWdmGi7e6f_RjjMXRIuuyJitw1CBkTjaB670y9MD4-kRl5vBUBtqg-ellOaj6KIxn7esLhaUDm1t1kJXMkTQhHWf8rjs-R9FoSJnyovhL-g8iotnKS89aNbyRipt3D34sG2UmuD7PGN2zZX05T1z_NeRkGeMqISw73yqtZtunfbIw5BgiWeBvdqnd5b5x7drtxJV9gw" />
+        <div class="absolute inset-0 z-20 flex items-center justify-center">
+            <div class="flex flex-col items-center">
+                <div class="w-12 h-12 bg-primary flex items-center justify-center rounded-full mb-4 animate-pulse">
+                    <span class="material-icons text-black">location_on</span>
+                </div>
+                <span class="text-xs uppercase tracking-widest font-bold">HQ: 0.3476° N, 32.5825° E</span>
+            </div>
+        </div>
+    </footer>
+    <script src="cursor.js"></script>
+    <script>
+        // Mobile Menu Toggle logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        if (menuClose && mobileMenu) {
+            menuClose.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
+
+        // Close menu on link click
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    </script>
+</body>
+
+</html>
