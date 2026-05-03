@@ -68,7 +68,7 @@
             }
 
             100% {
-                transform: translateX(calc(-50% - 1rem));
+                transform: translateX(-50%);
             }
         }
 
@@ -157,6 +157,24 @@
                 -webkit-text-stroke-color: #3e9e0d;
                 opacity: 0.7;
             }
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100%); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(100%); opacity: 0; }
+        }
+        .animate-scan {
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes radar-scan {
+            0% { top: 0; opacity: 0; }
+            50% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        .animate-radar-scan {
+            animation: radar-scan 6s linear infinite;
         }
 
         .animate-draw-stroke {
@@ -513,173 +531,88 @@
         </div>
     </section>
     <!-- Projects Section -->
-    <section class="pt-20 md:pt-32 pb-12 md:pb-16 bg-background-dark overflow-hidden">
-        <div class="max-w-7xl mx-auto px-5 md:px-6 mb-12 md:mb-16">
-            <div class="text-left">
-                <h2 class="text-4xl md:text-6xl font-bold tracking-tight uppercase mb-3 md:mb-4">Portfolio<span
-                        class="text-primary">.</span></h2>
-                <p class="text-slate-500 uppercase tracking-widest text-[10px] md:text-xs">Curated Selection / 2020 —
-                    2024</p>
+    <section class="pt-12 md:pt-20 pb-12 md:pb-16 bg-background-dark overflow-hidden">
+        <div class="max-w-7xl mx-auto px-5 md:px-6 mb-16 md:mb-24">
+            <div class="relative">
+                <span class="absolute -top-12 left-0 text-[15vw] md:text-[12rem] font-bold text-white/[0.03] uppercase tracking-tighter leading-none pointer-events-none select-none">Portfolio</span>
+                <div class="relative z-10 flex items-end gap-4 md:gap-6">
+                    <div>
+                        <h2 class="text-5xl md:text-8xl font-black uppercase leading-[0.85] tracking-tighter text-white">Selected</h2>
+                        <h2 class="text-5xl md:text-8xl font-black uppercase leading-[0.85] tracking-tighter text-primary italic">Works</h2>
+                    </div>
+                    <div class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-primary shadow-[0_0_20px_rgba(104,249,31,0.8)] mb-2 md:mb-4 animate-pulse"></div>
+                </div>
             </div>
         </div>
 
         <!-- Infinite Slider -->
         <div class="slider-container">
-            <div class="slider-track">
-                <!-- Original Items -->
-
-                <!-- Zenith Pavilion -->
+            <div class="slider-track" id="slider-track">
+                <!-- Original Items (4 Real Projects) -->
                 <div class="project-card group">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHCcwVAYG0jWEjMeFZ5ixsUtbJ3ohvPxtiqexs3HfWM64DYjxEmxa24xh3bVXmsVvZqSu9LVgXJZkeymP1Jwrby_Se6M5-vGOF4h1d5hPg_rj7LtPJDCaGzO854AK1Ft1kt1O3Fe5J4-9O3onXlxNjxbJmHd0A_9_jYSTzRNMMKYQfF3mq1SmAq53v9pJZCJlerNBYrmwkfTJ5nWFyCvgIHeabDbYLiYbDm3_hEUjmmNYeqXWELMNWF1U72S821sPLiZM7zKTypJw"
-                        alt="Zenith Pavilion">
-                    <div class="project-info">
-                        <span class="project-category">— Urban Design</span>
-                        <h3 class="project-title">The Zenith Pavilion</h3>
-                    </div>
-                </div>
-
-                <!-- Neo District -->
-                <div class="project-card group">
-                    <img src="assets/12019-osaka-2225441_1280.jpg" alt="Neo District">
-                    <div class="project-info">
-                        <span class="project-category">— Interiors</span>
-                        <h3 class="project-title">Neon District</h3>
-                    </div>
-                </div>
-
-                <!-- Vertex Center -->
-                <div class="project-card group">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5eYfHIkzIK3eAJY-I6IH-eOcned3nWdCgT4086HXMa7iFOM7vMrF0ZHOqL_SvLB0igVmVNAqvO_nzuefKLWjHu6MORfp9cZCLQy9vdGpU6g748cH4aKB05pa_wZxwLFmynn2Qy1Vkz4DbMOMkIX6Pn7bAHD6hIxhUA2YVgPxRhgleor0iPTkTt0zHxw5PgvagU3Ds2GXnMKwt0KH0rsE0V0GRqafUkc_cvdnjGaWTZGFLkaXjdKWtuubBP4h8Z94AAurZtvxA41o"
-                        alt="Vertex Center">
+                    <img src="assets/public/portfolio/chrissels_portfolio (1).jpeg" alt="Rehema Mall">
                     <div class="project-info">
                         <span class="project-category">— Commercial</span>
-                        <h3 class="project-title">Vertex Center</h3>
+                        <h3 class="project-title">Rehema Mall</h3>
                     </div>
                 </div>
 
-                <!-- Lumina Plaza -->
                 <div class="project-card group">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0o-W4BKQUQvdIY0_qAvGnDHEsdjfSjLidE7nVhK6RarzRHiCZTVCaLabFwsXzfGzIi88aYp-sqkA5CNMnBzGgq0ME0RR4ZzYNWY7w29wP0DRj_4MbdpdytN7ltVjDNiKVBTj50GlK0C8G1T5hpzvy6oujg1WMjeWKja3P1WlmLnD-K04Vc6C1uVbXeWG7CA10ssshxwpujC2-Q0vciW_-MtdVtzvKC79ShIEqn4iN_orywlJM2f22BkH2jkmu7ehqSqzuIwPsfvs"
-                        alt="Lumina Plaza">
+                    <img src="assets/public/portfolio/chrissels_portfolio (2).jpeg" alt="Modern Villa">
                     <div class="project-info">
                         <span class="project-category">— Residential</span>
-                        <h3 class="project-title">Lumina Plaza</h3>
+                        <h3 class="project-title">Modern Villa</h3>
                     </div>
                 </div>
 
-                <!-- Emerald Sanctum -->
                 <div class="project-card group">
-                    <img src="assets/public/portfolio/chrissels_portfolio (1).jpeg" alt="Emerald Sanctum">
+                    <img src="assets/public/portfolio/chrissels_portfolio (3).jpeg" alt="Sunset Heights">
                     <div class="project-info">
                         <span class="project-category">— Residential</span>
-                        <h3 class="project-title">Emerald Sanctum</h3>
+                        <h3 class="project-title">Sunset Heights</h3>
                     </div>
                 </div>
 
-                <!-- Titan Plaza -->
                 <div class="project-card group">
-                    <img src="assets/public/portfolio/chrissels_portfolio (2).jpeg" alt="Titan Plaza">
+                    <img src="assets/public/portfolio/chrissels_portfolio (4).jpeg" alt="Grand Estate">
+                    <div class="project-info">
+                        <span class="project-category">— Residential</span>
+                        <h3 class="project-title">Grand Estate</h3>
+                    </div>
+                </div>
+
+                <!-- Duplicated for Infinite Loop -->
+                <div class="project-card group">
+                    <img src="assets/public/portfolio/chrissels_portfolio (1).jpeg" alt="Rehema Mall">
                     <div class="project-info">
                         <span class="project-category">— Commercial</span>
-                        <h3 class="project-title">Titan Plaza</h3>
+                        <h3 class="project-title">Rehema Mall</h3>
                     </div>
                 </div>
 
-                <!-- Solaris Wing -->
                 <div class="project-card group">
-                    <img src="assets/public/portfolio/chrissels_portfolio (3).jpeg" alt="Solaris Wing">
-                    <div class="project-info">
-                        <span class="project-category">— Sustainable</span>
-                        <h3 class="project-title">Solaris Wing</h3>
-                    </div>
-                </div>
-
-                <!-- Nebula Gallery -->
-                <div class="project-card group">
-                    <img src="assets/public/portfolio/chrissels_portfolio (4).jpeg" alt="Nebula Gallery">
-                    <div class="project-info">
-                        <span class="project-category">— Art & Culture</span>
-                        <h3 class="project-title">Nebula Gallery</h3>
-                    </div>
-                </div>
-
-                <!-- Duplicated Items for Infinity Loop -->
-
-                <!-- Zenith Pavilion -->
-                <div class="project-card group">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHCcwVAYG0jWEjMeFZ5ixsUtbJ3ohvPxtiqexs3HfWM64DYjxEmxa24xh3bVXmsVvZqSu9LVgXJZkeymP1Jwrby_Se6M5-vGOF4h1d5hPg_rj7LtPJDCaGzO854AK1Ft1kt1O3Fe5J4-9O3onXlxNjxbJmHd0A_9_jYSTzRNMMKYQfF3mq1SmAq53v9pJZCJlerNBYrmwkfTJ5nWFyCvgIHeabDbYLiYbDm3_hEUjmmNYeqXWELMNWF1U72S821sPLiZM7zKTypJw"
-                        alt="Zenith Pavilion">
-                    <div class="project-info">
-                        <span class="project-category">— Urban Design</span>
-                        <h3 class="project-title">The Zenith Pavilion</h3>
-                    </div>
-                </div>
-
-                <!-- Emerald Sanctum -->
-                <div class="project-card group">
-                    <img src="assets/public/portfolio/chrissels_portfolio (1).jpeg" alt="Emerald Sanctum">
+                    <img src="assets/public/portfolio/chrissels_portfolio (2).jpeg" alt="Modern Villa">
                     <div class="project-info">
                         <span class="project-category">— Residential</span>
-                        <h3 class="project-title">Emerald Sanctum</h3>
+                        <h3 class="project-title">Modern Villa</h3>
                     </div>
                 </div>
 
-                <!-- Titan Plaza -->
                 <div class="project-card group">
-                    <img src="assets/public/portfolio/chrissels_portfolio (2).jpeg" alt="Titan Plaza">
-                    <div class="project-info">
-                        <span class="project-category">— Commercial</span>
-                        <h3 class="project-title">Titan Plaza</h3>
-                    </div>
-                </div>
-
-                <!-- Neo District -->
-                <div class="project-card group">
-                    <img src="assets/12019-osaka-2225441_1280.jpg" alt="Neo District">
-                    <div class="project-info">
-                        <span class="project-category">— Interiors</span>
-                        <h3 class="project-title">Neon District</h3>
-                    </div>
-                </div>
-
-                <!-- Vertex Center -->
-                <div class="project-card group">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5eYfHIkzIK3eAJY-I6IH-eOcned3nWdCgT4086HXMa7iFOM7vMrF0ZHOqL_SvLB0igVmVNAqvO_nzuefKLWjHu6MORfp9cZCLQy9vdGpU6g748cH4aKB05pa_wZxwLFmynn2Qy1Vkz4DbMOMkIX6Pn7bAHD6hIxhUA2YVgPxRhgleor0iPTkTt0zHxw5PgvagU3Ds2GXnMKwt0KH0rsE0V0GRqafUkc_cvdnjGaWTZGFLkaXjdKWtuubBP4h8Z94AAurZtvxA41o"
-                        alt="Vertex Center">
-                    <div class="project-info">
-                        <span class="project-category">— Commercial</span>
-                        <h3 class="project-title">Vertex Center</h3>
-                    </div>
-                </div>
-
-                <!-- Solaris Wing -->
-                <div class="project-card group">
-                    <img src="assets/public/portfolio/chrissels_portfolio (3).jpeg" alt="Solaris Wing">
-                    <div class="project-info">
-                        <span class="project-category">— Sustainable</span>
-                        <h3 class="project-title">Solaris Wing</h3>
-                    </div>
-                </div>
-
-                <!-- Lumina Plaza -->
-                <div class="project-card group">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0o-W4BKQUQvdIY0_qAvGnDHEsdjfSjLidE7nVhK6RarzRHiCZTVCaLabFwsXzfGzIi88aYp-sqkA5CNMnBzGgq0ME0RR4ZzYNWY7w29wP0DRj_4MbdpdytN7ltVjDNiKVBTj50GlK0C8G1T5hpzvy6oujg1WMjeWKja3P1WlmLnD-K04Vc6C1uVbXeWG7CA10ssshxwpujC2-Q0vciW_-MtdVtzvKC79ShIEqn4iN_orywlJM2f22BkH2jkmu7ehqSqzuIwPsfvs"
-                        alt="Lumina Plaza">
+                    <img src="assets/public/portfolio/chrissels_portfolio (3).jpeg" alt="Sunset Heights">
                     <div class="project-info">
                         <span class="project-category">— Residential</span>
-                        <h3 class="project-title">Lumina Plaza</h3>
+                        <h3 class="project-title">Sunset Heights</h3>
                     </div>
                 </div>
 
-                <!-- Nebula Gallery -->
                 <div class="project-card group">
-                    <img src="assets/public/portfolio/chrissels_portfolio (4).jpeg" alt="Nebula Gallery">
+                    <img src="assets/public/portfolio/chrissels_portfolio (4).jpeg" alt="Grand Estate">
                     <div class="project-info">
-                        <span class="project-category">— Art & Culture</span>
-                        <h3 class="project-title">Nebula Gallery</h3>
+                        <span class="project-category">— Residential</span>
+                        <h3 class="project-title">Grand Estate</h3>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -692,49 +625,65 @@
             </a>
         </div>
     </section>
-    <!-- Vision / Philosophy Section (Redesigned) -->
-    <section class="pt-20 md:pt-40 pb-16 md:pb-24 relative flex items-center justify-center overflow-hidden">
-        <!-- Parallax Background -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqzFF2XTwXp9w1lub2uuy_gGAou9MzhU23Wtz6GnfeNjCCN5VAucw4JtYAQcb8FJCZ4tZmwOBZ0nw1jGob10zA9Wnnyk07yr6H_KX8hAU9EpcsRRrSSj2CoemPO-rF8RA6tw4ImcZAMpK0MuBjoWnwVLAWS4AvbUkIOgJ6IltfSMcAB5bAr6gX5gYG-XUcZ5a31i5itjJY6VDKpuaf7pVeA19YB5aYZ6eFhdK9qP0PnTcj0jeMWv2O41F8uF-VPLQ16POApzz6adg"
-                alt="Blueprint" class="w-full h-full object-cover opacity-30 fixed-bg-effect">
-            <div
-                class="absolute inset-0 bg-gradient-to-b from-background-dark via-background-dark/80 to-background-dark">
-            </div>
+    <!-- Vision / Philosophy Section (Design-Focused Update) -->
+    <section class="py-24 md:py-40 relative overflow-hidden bg-background-dark">
+        <!-- Background Imagery -->
+        <div class="absolute inset-0 z-0 opacity-20">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,_rgba(104,249,31,0.08),_transparent_40%)]"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,_rgba(255,255,255,0.05),_transparent_50%)]"></div>
         </div>
 
-        <div class="relative z-10 max-w-4xl mx-auto px-5 md:px-6 text-center">
-            <span
-                class="text-primary uppercase tracking-[0.3em] md:tracking-[0.5em] text-xs md:text-sm font-bold mb-6 md:mb-8 block animate-on-scroll">Our
-                Philosophy</span>
-            <h2 class="philosophy-heading text-3xl md:text-6xl lg:text-7xl font-bold uppercase mb-6 md:mb-10 leading-tight animate-on-scroll"
-                style="animation-delay: 0.1s;">
-                We build spaces that <br /><span
-                    class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-white">Resonate with the
-                    Soul.</span>
-            </h2>
-            <p class="philosophy-text text-base md:text-xl text-slate-300 font-light leading-relaxed mb-8 md:mb-12 animate-on-scroll"
-                style="animation-delay: 0.2s;">
-                Architecture is the bridge between humanity and the environment. We leverage cutting-edge AI-assisted
-                design to create structures that are not only visually stunning but environmentally regenerative.
-            </p>
+        <div class="max-w-7xl mx-auto px-5 md:px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 items-center">
+                <div class="lg:col-span-7">
+                    <div class="relative mb-12">
+                        <span class="absolute -top-12 md:-top-16 left-0 text-[12vw] md:text-[9rem] font-bold text-white/[0.02] uppercase tracking-tighter leading-none pointer-events-none select-none">Philosophy</span>
+                        <div class="relative z-10">
+                            <h2 class="text-5xl md:text-7xl font-black uppercase leading-[0.9] tracking-tighter text-white mb-2">Shaping</h2>
+                            <h2 class="text-5xl md:text-7xl font-black uppercase leading-[0.9] tracking-tighter text-primary italic pl-8 md:pl-16">The Future</h2>
+                        </div>
+                    </div>
+                    
+                    <p class="text-lg md:text-xl text-slate-300 font-light leading-relaxed mb-12 max-w-2xl border-l-2 border-primary/30 pl-6 md:pl-8">
+                        Architecture transcends mere shelter; it is the physical manifestation of human aspiration. At Chrissels, we treat space as a fluid medium—sculpting light, materiality, and nature into cohesive, emotionally resonant environments that stand the test of time.
+                    </p>
 
-            <div class="philosophy-cards grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-6 md:mb-10 animate-on-scroll"
-                style="animation-delay: 0.3s;">
-                <div
-                    class="p-5 md:p-6 border border-white/10 rounded-lg hover:border-primary/50 transition-colors backdrop-blur-sm bg-white/5">
-                    <span class="material-icons text-primary text-2xl md:text-3xl mb-3 md:mb-4">public</span>
-                    <h4 class="uppercase tracking-widest text-xs md:text-sm font-bold">Carbon-Negative</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                        <div class="group relative">
+                            <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-transparent opacity-0 group-hover:opacity-20 transition duration-500 rounded-xl blur"></div>
+                            <div class="relative p-8 bg-white/5 border border-white/5 rounded-xl backdrop-blur-sm hover:border-primary/30 transition-all">
+                                <span class="text-primary text-4xl font-thin mb-6 block">01</span>
+                                <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-3">Contextual Harmony</h4>
+                                <p class="text-slate-400 text-sm leading-relaxed">Designs that dialogue with their surroundings, respecting local vernacular while introducing contemporary elegance.</p>
+                            </div>
+                        </div>
+                        <div class="group relative">
+                            <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-transparent opacity-0 group-hover:opacity-20 transition duration-500 rounded-xl blur"></div>
+                            <div class="relative p-8 bg-white/5 border border-white/5 rounded-xl backdrop-blur-sm hover:border-primary/30 transition-all md:mt-12">
+                                <span class="text-primary text-4xl font-thin mb-6 block">02</span>
+                                <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-3">Material Honesty</h4>
+                                <p class="text-slate-400 text-sm leading-relaxed">Curating pure, tactile materials that age gracefully, developing character and patina alongside the inhabitants.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div
-                    class="p-5 md:p-6 border border-white/10 rounded-lg hover:border-primary/50 transition-colors backdrop-blur-sm bg-white/5">
-                    <span class="material-icons text-primary text-2xl md:text-3xl mb-3 md:mb-4">hexagon</span>
-                    <h4 class="uppercase tracking-widest text-xs md:text-sm font-bold">Bionic Structure</h4>
-                </div>
-                <div
-                    class="p-5 md:p-6 border border-white/10 rounded-lg hover:border-primary/50 transition-colors backdrop-blur-sm bg-white/5">
-                    <span class="material-icons text-primary text-2xl md:text-3xl mb-3 md:mb-4">smart_toy</span>
-                    <h4 class="uppercase tracking-widest text-xs md:text-sm font-bold">Smart Integration</h4>
+
+                <div class="lg:col-span-5 relative">
+                    <div class="aspect-[3/4] rounded-2xl overflow-hidden relative group">
+                        <img src="assets/services/interior%20design.jpg" 
+                             alt="Design Philosophy" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">
+                            <div class="w-12 h-px bg-primary mb-6"></div>
+                            <p class="text-lg md:text-xl font-light text-white/90 leading-relaxed mb-4">
+                                "We don't just fill space. We give it purpose, breath, and a soul."
+                            </p>
+                            <span class="text-[10px] text-primary uppercase font-bold tracking-[0.3em] block">— The Chrissels Approach</span>
+                        </div>
+                    </div>
+                    <!-- Artistic decorative element -->
+                    <div class="absolute -bottom-8 -left-8 w-48 h-48 border border-primary/20 rounded-full mix-blend-screen pointer-events-none"></div>
+                    <div class="absolute -top-8 -right-8 w-32 h-32 border border-white/10 rounded-full mix-blend-screen pointer-events-none"></div>
                 </div>
             </div>
         </div>
@@ -742,92 +691,121 @@
     <!-- Services / Grid List -->
     <section class="py-20 md:py-32 bg-slate-900/50">
         <div class="max-w-7xl mx-auto px-5 md:px-6">
+            <div class="relative mb-16 md:mb-24">
+                <span class="absolute -top-12 left-0 text-[15vw] md:text-[12rem] font-bold text-white/[0.03] uppercase tracking-tighter leading-none pointer-events-none select-none">Services</span>
+                <div class="relative z-10 flex items-end gap-4 md:gap-6">
+                    <div>
+                        <h2 class="text-5xl md:text-8xl font-black uppercase leading-[0.85] tracking-tighter text-white">Our</h2>
+                        <h2 class="text-5xl md:text-8xl font-black uppercase leading-[0.85] tracking-tighter text-primary italic">Expertise</h2>
+                    </div>
+                    <div class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-primary shadow-[0_0_20px_rgba(104,249,31,0.8)] mb-2 md:mb-4 animate-pulse"></div>
+                </div>
+            </div>
             <div class="services-grid grid md:grid-cols-3 gap-px bg-primary/10">
-                <div class="p-8 md:p-12 bg-background-dark group hover:bg-primary transition-all duration-500">
-                    <span class="text-slate-500 group-hover:text-black text-sm mb-6 md:mb-10 block">01</span>
-                    <h4 class="text-xl md:text-3xl font-bold uppercase group-hover:text-black mb-4 md:mb-6">
-                        Urban<br />Planning</h4>
-                    <p class="text-sm md:text-base text-slate-400 group-hover:text-black/70 mb-6 md:mb-8">Designing the
-                        masterplans of future-proof
-                        cities with human-centric flows.</p>
-                    <span class="material-icons text-primary group-hover:text-black">arrow_outward</span>
+                <div class="p-8 md:p-12 bg-background-dark group hover:bg-primary transition-all duration-500 relative overflow-hidden">
+                    <img src="assets/services/urbanplanning.jpg" alt="Urban Planning" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity">
+                    <div class="relative z-10">
+                        <span class="text-slate-500 group-hover:text-black text-sm mb-6 md:mb-10 block">01</span>
+                        <h4 class="text-xl md:text-3xl font-bold uppercase group-hover:text-black mb-4 md:mb-6">
+                            Urban<br />Planning</h4>
+                        <p class="text-sm md:text-base text-slate-400 group-hover:text-black/70 mb-6 md:mb-8">Designing the
+                            masterplans of future-proof
+                            cities with human-centric flows.</p>
+                        <span class="material-icons text-primary group-hover:text-black">arrow_outward</span>
+                    </div>
                 </div>
-                <div class="p-8 md:p-12 bg-background-dark group hover:bg-primary transition-all duration-500">
-                    <span class="text-slate-500 group-hover:text-black text-sm mb-6 md:mb-10 block">02</span>
-                    <h4 class="text-xl md:text-3xl font-bold uppercase group-hover:text-black mb-4 md:mb-6">
-                        Digital<br />Twins</h4>
-                    <p class="text-sm md:text-base text-slate-400 group-hover:text-black/70 mb-6 md:mb-8">Precision 3D
-                        modeling and real-time
-                        environmental simulation for structures.</p>
-                    <span class="material-icons text-primary group-hover:text-black">arrow_outward</span>
+                <div class="p-8 md:p-12 bg-background-dark group hover:bg-primary transition-all duration-500 relative overflow-hidden">
+                    <img src="assets/services/commercial.jpg" alt="Commercial Design" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity">
+                    <div class="relative z-10">
+                        <span class="text-slate-500 group-hover:text-black text-sm mb-6 md:mb-10 block">02</span>
+                        <h4 class="text-xl md:text-3xl font-bold uppercase group-hover:text-black mb-4 md:mb-6">
+                            Commercial<br />Design</h4>
+                        <p class="text-sm md:text-base text-slate-400 group-hover:text-black/70 mb-6 md:mb-8">Developing iconic headquarters and corporate hubs that foster innovation.</p>
+                        <span class="material-icons text-primary group-hover:text-black">arrow_outward</span>
+                    </div>
                 </div>
-                <div class="p-8 md:p-12 bg-background-dark group hover:bg-primary transition-all duration-500">
-                    <span class="text-slate-500 group-hover:text-black text-sm mb-6 md:mb-10 block">03</span>
-                    <h4 class="text-xl md:text-3xl font-bold uppercase group-hover:text-black mb-4 md:mb-6">
-                        Interior<br />Bionics</h4>
-                    <p class="text-sm md:text-base text-slate-400 group-hover:text-black/70 mb-6 md:mb-8">Organic
-                        interior layouts that adapt to the
-                        physiological needs of inhabitants.</p>
-                    <span class="material-icons text-primary group-hover:text-black">arrow_outward</span>
+                <div class="p-8 md:p-12 bg-background-dark group hover:bg-primary transition-all duration-500 relative overflow-hidden">
+                    <img src="assets/services/interior%20design.jpg" alt="Interior Design" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity">
+                    <div class="relative z-10">
+                        <span class="text-slate-500 group-hover:text-black text-sm mb-6 md:mb-10 block">03</span>
+                        <h4 class="text-xl md:text-3xl font-bold uppercase group-hover:text-black mb-4 md:mb-6">
+                            Interior<br />Design</h4>
+                        <p class="text-sm md:text-base text-slate-400 group-hover:text-black/70 mb-6 md:mb-8">High-end residential and commercial interiors focusing on flow and lighting.</p>
+                        <span class="material-icons text-primary group-hover:text-black">arrow_outward</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Map/Location Teaser (Headquarters) -->
-    <section
-        class="hq-section min-h-[500px] md:min-h-[700px] relative overflow-hidden flex items-center justify-center group bg-black border-y border-primary/20">
-        <!-- Grid Background -->
-        <div class="absolute inset-0 z-0 opacity-20"
-            style="background-image: linear-gradient(rgba(104, 249, 31, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(104, 249, 31, 0.1) 1px, transparent 1px); background-size: 40px 40px;">
+    <!-- The Studio / Atelier Section (Design-Focused Redesign) -->
+    <section class="py-24 md:py-40 relative overflow-hidden bg-background-dark border-t border-white/5">
+        <!-- Soft ambient background -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-background-dark via-slate-900/20 to-background-dark"></div>
+            <div class="absolute right-0 top-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
         </div>
 
-        <div class="absolute inset-0 z-0 mix-blend-overlay opacity-40">
-            <img alt="Location" class="w-full h-full object-cover grayscale contrast-125"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAYLCXhfy9Ayfdkim_2z2BZrYVPkI6zZNBkD5uD2d7IIcaE_3mpqbmT_kGIMlAewhV92zMQx8ul7Bae4q0S7qKnA1SZbgNu7qPD0WxoVDHTdtbqSpydwTRs1tJFreQM89o98W_ffyKy5HcKT3K2kjvmT_S7WaozK9NCyiWoZMvs2MbuJr_XIdebn00sjgk5sWRnkMvj9oQ-v1F8z_Tzsm_MwA8rtXFOnSl2FoSTIKGwLZPuQlt0US5v_WWsa8hqdS3Y7XNX4f2ngo" />
-        </div>
-
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black z-10"></div>
-
-        <div class="relative z-20 text-center w-full max-w-4xl mx-auto px-5 md:px-6 py-12 md:py-0">
-            <div class="mb-8 md:mb-12">
-                <span
-                    class="inline-block border border-primary text-primary px-4 md:px-6 py-2 rounded-sm text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] backdrop-blur-md bg-black/50 mb-4 md:mb-6">
-                    Global Parameters
-                </span>
-                <h2
-                    class="hq-title text-4xl md:text-7xl lg:text-9xl font-black uppercase tracking-tighter text-white mb-2 leading-none">
-                    Chrissels
-                </h2>
-                <div class="hq-cycle-wrapper h-16 md:h-24 flex items-center justify-center">
-                    <span
-                        class="text-2xl md:text-4xl lg:text-6xl font-bold uppercase tracking-widest text-primary type-cycle"></span><span
-                        class="text-2xl md:text-4xl lg:text-6xl text-primary animate-pulse">_</span>
+        <div class="max-w-7xl mx-auto px-5 md:px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-16 md:gap-24">
+                <div class="w-full lg:w-1/2 order-2 lg:order-1 relative">
+                    <div class="relative rounded-2xl overflow-hidden aspect-square md:aspect-[4/3] group">
+                        <img src="assets/public/portfolio/chrissels_portfolio (1).jpeg" 
+                             alt="Chrissels Studio Atelier" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700">
+                        <div class="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none"></div>
+                        <!-- Design elements over image -->
+                        <div class="absolute top-8 left-8 w-2 h-2 bg-primary rounded-full"></div>
+                        <div class="absolute bottom-8 right-8 text-[10px] uppercase tracking-[0.4em] text-white/50 origin-bottom-right -rotate-90">Kampala • Uganda</div>
+                    </div>
+                    
+                    <!-- Floating stat card -->
+                    <div class="absolute -bottom-8 lg:-right-8 bg-background-dark/80 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-xl shadow-2xl max-w-xs">
+                        <div class="flex items-start gap-4">
+                            <span class="material-icons text-primary text-3xl">architecture</span>
+                            <div>
+                                <h4 class="text-white uppercase tracking-widest text-xs font-bold mb-2">The Atelier</h4>
+                                <p class="text-slate-400 text-sm leading-relaxed">A collaborative hub where visionary concepts are translated into tangible reality.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div
-                class="hq-info-grid grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-left border-t border-white/10 pt-8 md:pt-12 mt-8 md:mt-12 bg-black/40 backdrop-blur-sm p-5 md:p-8 rounded-lg border border-white/5">
-                <div>
-                    <span
-                        class="text-[10px] md:text-xs text-slate-500 uppercase tracking-widest block mb-2">Coordinates</span>
-                    <p class="text-base md:text-xl text-white font-mono">0.3476° N<br />32.5825° E</p>
-                </div>
-                <div>
-                    <span
-                        class="text-[10px] md:text-xs text-slate-500 uppercase tracking-widest block mb-2">Location</span>
-                    <p class="text-base md:text-xl text-white font-mono">Kampala, Uganda</p>
-                </div>
-                <div class="flex items-end justify-end gap-3 md:gap-4 flex-wrap">
-                    <a href="https://wa.me/256773749198" target="_blank"
-                        class="bg-primary text-background-dark px-5 md:px-8 py-3 md:py-4 rounded-sm font-bold uppercase tracking-widest text-[10px] md:text-xs hover:bg-white transition-all flex items-center gap-2 md:gap-3">
-                        <span>Inquire</span>
-                        <span class="material-icons text-sm">arrow_forward</span>
-                    </a>
-                    <a href="https://wa.me/256773749198" target="_blank"
-                        class="border border-white/20 px-5 md:px-8 py-3 md:py-4 rounded-sm font-bold uppercase tracking-widest text-[10px] md:text-xs hover:bg-white hover:text-background-dark transition-all flex items-center gap-2 md:gap-3">
-                        <span class="material-icons text-sm">play_circle_filled</span>
-                        <span>Contact us</span>
-                    </a>
+                <div class="w-full lg:w-1/2 order-1 lg:order-2">
+                    <div class="inline-flex items-center gap-3 border border-white/10 px-4 py-2 rounded-full mb-8 md:mb-12">
+                        <span class="text-white/70 text-[10px] font-bold uppercase tracking-[0.2em]">Our Base of Operations</span>
+                    </div>
+
+                    <div class="relative mb-10">
+                        <span class="absolute -top-10 left-0 text-[12vw] md:text-[8rem] font-bold text-white/[0.02] uppercase tracking-tighter leading-none pointer-events-none select-none">Studio</span>
+                        <div class="relative z-10">
+                            <h2 class="text-5xl md:text-7xl font-black uppercase leading-[0.9] tracking-tighter text-white">Chrissels</h2>
+                            <h2 class="text-5xl md:text-7xl font-black uppercase leading-[0.9] tracking-tighter text-primary italic">Atelier</h2>
+                        </div>
+                    </div>
+
+                    <p class="text-lg text-slate-300 font-light leading-relaxed mb-10">
+                        Located in the heart of Kampala, our studio is a laboratory for design innovation. We believe that the best architecture emerges from a cross-pollination of disciplines, cultures, and ideas. Our global perspective is anchored by a deep commitment to craftsmanship and localized impact.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 mb-12">
+                        <div class="flex-1 p-6 border border-white/5 bg-white/[0.02] rounded-xl hover:bg-white/[0.05] transition-colors">
+                            <span class="text-primary text-3xl font-light mb-2 block">24</span>
+                            <span class="text-[10px] text-white uppercase tracking-widest font-bold">Creative Minds</span>
+                        </div>
+                        <div class="flex-1 p-6 border border-white/5 bg-white/[0.02] rounded-xl hover:bg-white/[0.05] transition-colors">
+                            <span class="text-primary text-3xl font-light mb-2 block">08</span>
+                            <span class="text-[10px] text-white uppercase tracking-widest font-bold">Countries Reached</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-6">
+                        <a href="about.html" class="bg-white hover:bg-primary text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs transition-all flex items-center gap-3">
+                            <span>Meet The Team</span>
+                            <span class="material-icons text-sm">arrow_forward</span>
+                        </a>
+                        <a href="contact.html" class="text-white hover:text-primary text-xs font-bold uppercase tracking-[0.2em] transition-colors border-b border-transparent hover:border-primary pb-1">
+                            Visit Us
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

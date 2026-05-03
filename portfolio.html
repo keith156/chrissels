@@ -172,13 +172,14 @@
         <!-- Header Section -->
         <header class="mb-16 md:mb-24">
             <div class="relative">
-                <h1
-                    class="text-7xl md:text-[12rem] font-bold leading-none tracking-tighter uppercase mb-4 opacity-10 absolute -top-12 md:-top-24 left-0 select-none">
-                    Portfolio
-                </h1>
-                <h2 class="text-5xl md:text-8xl font-bold leading-none tracking-tighter uppercase relative z-10">
-                    Selected <br /> <span class="text-primary italic">Works</span>
-                </h2>
+                <span class="absolute -top-12 md:-top-24 left-0 text-[15vw] md:text-[12rem] font-bold text-white/[0.03] uppercase tracking-tighter leading-none pointer-events-none select-none">Portfolio</span>
+                <div class="relative z-10 flex items-end gap-4 md:gap-6">
+                    <div>
+                        <h2 class="text-5xl md:text-8xl font-black uppercase leading-[0.85] tracking-tighter text-white">Selected</h2>
+                        <h2 class="text-5xl md:text-8xl font-black uppercase leading-[0.85] tracking-tighter text-primary italic">Works</h2>
+                    </div>
+                    <div class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-primary shadow-[0_0_20px_rgba(104,249,31,0.8)] mb-2 md:mb-4 animate-pulse"></div>
+                </div>
             </div>
             <div class="mt-12 flex flex-wrap gap-4 items-center">
                 <span class="text-xs uppercase tracking-[0.2em] font-bold text-primary/60 mr-4">Filter by
@@ -196,74 +197,57 @@
                     class="px-6 py-2 rounded-full border border-white/10 hover:border-primary transition-all text-white/60 hover:text-primary font-bold text-xs uppercase tracking-widest">Interior</button>
             </div>
         </header>
-        <!-- Masonry Grid -->
-        <div class="masonry-grid">
-            <!-- Project 1 -->
-            <div class="project-card rounded-lg group cursor-pointer">
-                <img class="w-full h-auto transition-transform duration-700"
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 lg:gap-6 auto-rows-[300px] md:auto-rows-[400px]">
+            <!-- Project 1: Rehema Mall -->
+            <div class="project-card rounded-lg group cursor-pointer overflow-hidden relative md:col-span-2 md:row-span-2 h-full">
+                <img class="w-full h-full object-cover transition-transform duration-700"
                     src="assets/public/portfolio/chrissels_portfolio (1).jpeg" alt="Rehema Mall" />
-                <div class="project-overlay absolute inset-0 flex flex-col justify-end p-8">
-                    <span class="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-2">Commercial • 2024</span>
-                    <h3
-                        class="text-primary text-4xl md:text-6xl font-bold leading-none tracking-tighter uppercase break-words">
+                <div class="project-overlay absolute inset-0 flex flex-col justify-end p-8 md:p-12">
+                    <span class="text-primary text-xs md:text-sm font-bold tracking-[0.3em] uppercase mb-4">Commercial • 2024</span>
+                    <h3 class="text-primary text-4xl md:text-6xl font-bold leading-none tracking-tighter uppercase break-words">
                         Rehema <br />Mall</h3>
-                    <div
-                        class="mt-4 flex items-center gap-4 text-white/40 text-xs font-medium uppercase tracking-widest">
+                    <div class="mt-6 flex items-center gap-4 text-white/40 text-xs md:text-sm font-medium uppercase tracking-widest">
                         <span>Kampala, UG</span>
                         <span class="w-12 h-px bg-white/20"></span>
                         <span>01/04</span>
                     </div>
                 </div>
             </div>
-            <!-- Project 2 -->
-            <div class="project-card rounded-lg group cursor-pointer">
-                <img class="w-full h-auto transition-transform duration-700"
+
+            <!-- Project 2: Modern Villa -->
+            <div class="project-card rounded-lg group cursor-pointer overflow-hidden relative md:col-span-2 md:row-span-1 h-full">
+                <img class="w-full h-full object-cover transition-transform duration-700"
                     src="assets/public/portfolio/chrissels_portfolio (2).jpeg" alt="Modern Villa" />
-                <div class="project-overlay absolute inset-0 flex flex-col justify-end p-8">
+                <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6 md:p-8">
                     <span class="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-2">Residential • 2024</span>
-                    <h3
-                        class="text-primary text-4xl md:text-6xl font-bold leading-none tracking-tighter uppercase break-words">
+                    <h3 class="text-primary text-3xl md:text-4xl font-bold leading-none tracking-tighter uppercase break-words">
                         Modern <br />Villa</h3>
-                    <div
-                        class="mt-4 flex items-center gap-4 text-white/40 text-xs font-medium uppercase tracking-widest">
+                    <div class="mt-4 flex items-center gap-4 text-white/40 text-xs font-medium uppercase tracking-widest">
                         <span>Kampala, UG</span>
-                        <span class="w-12 h-px bg-white/20"></span>
-                        <span>02/04</span>
                     </div>
                 </div>
             </div>
-            <!-- Project 3 -->
-            <div class="project-card rounded-lg group cursor-pointer">
-                <img class="w-full h-auto transition-transform duration-700"
+
+            <!-- Project 3: Sunset Heights -->
+            <div class="project-card rounded-lg group cursor-pointer overflow-hidden relative md:col-span-1 md:row-span-1 h-full">
+                <img class="w-full h-full object-cover transition-transform duration-700"
                     src="assets/public/portfolio/chrissels_portfolio (3).jpeg" alt="Sunset Heights" />
-                <div class="project-overlay absolute inset-0 flex flex-col justify-end p-8">
-                    <span class="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-2">Residential • 2024</span>
-                    <h3
-                        class="text-primary text-4xl md:text-6xl font-bold leading-none tracking-tighter uppercase break-words">
+                <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6">
+                    <span class="text-primary text-[10px] font-bold tracking-[0.3em] uppercase mb-2">Residential</span>
+                    <h3 class="text-primary text-2xl font-bold leading-none tracking-tighter uppercase">
                         Sunset <br />Heights</h3>
-                    <div
-                        class="mt-4 flex items-center gap-4 text-white/40 text-xs font-medium uppercase tracking-widest">
-                        <span>Kampala, UG</span>
-                        <span class="w-12 h-px bg-white/20"></span>
-                        <span>03/04</span>
-                    </div>
                 </div>
             </div>
-            <!-- Project 4 -->
-            <div class="project-card rounded-lg group cursor-pointer">
-                <img class="w-full h-auto transition-transform duration-700"
+
+            <!-- Project 4: Grand Estate -->
+            <div class="project-card rounded-lg group cursor-pointer overflow-hidden relative md:col-span-1 md:row-span-1 h-full">
+                <img class="w-full h-full object-cover transition-transform duration-700"
                     src="assets/public/portfolio/chrissels_portfolio (4).jpeg" alt="Grand Estate" />
-                <div class="project-overlay absolute inset-0 flex flex-col justify-end p-8">
-                    <span class="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-2">Residential • 2024</span>
-                    <h3
-                        class="text-primary text-4xl md:text-6xl font-bold leading-none tracking-tighter uppercase break-words">
+                <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6">
+                    <span class="text-primary text-[10px] font-bold tracking-[0.3em] uppercase mb-2">Residential</span>
+                    <h3 class="text-primary text-2xl font-bold leading-none tracking-tighter uppercase">
                         Grand <br />Estate</h3>
-                    <div
-                        class="mt-4 flex items-center gap-4 text-white/40 text-xs font-medium uppercase tracking-widest">
-                        <span>Entebbe, UG</span>
-                        <span class="w-12 h-px bg-white/20"></span>
-                        <span>04/04</span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -277,46 +261,57 @@
             </button>
         </div>
     </main>
-    <!-- Footer -->
-    <footer class="border-t border-primary/10 py-16 px-6 md:px-12 bg-background-dark">
-        <div class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div class="col-span-1 md:col-span-2">
-                <h4 class="text-primary text-xs font-bold uppercase tracking-[0.3em] mb-8">Inquiries</h4>
-                <a href="https://wa.me/256773749198" target="_blank"
-                    class="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-6 hover:text-primary transition-colors cursor-pointer block">
-                    HELLO@CHRISSELS.COM
-                </a>
-                <div class="flex gap-8">
-                    <a class="text-white/40 hover:text-primary text-xs font-bold uppercase tracking-widest transition-colors"
-                        href="#">Instagram</a>
-                    <a class="text-white/40 hover:text-primary text-xs font-bold uppercase tracking-widest transition-colors"
-                        href="#">LinkedIn</a>
-                    <a class="text-white/40 hover:text-primary text-xs font-bold uppercase tracking-widest transition-colors"
-                        href="#">Twitter X</a>
-                </div>
-            </div>
-            <div>
-                <address class="not-italic text-sm text-white/60 leading-relaxed uppercase tracking-widest">
-                    Kampala, Uganda<br />
-                    <span class="text-white/30">+256 773 748 198</span>
-                </address>
-            </div>
-            <div class="flex flex-col justify-between">
+        <!-- Footer -->
+    <footer class="bg-background-dark pt-16 md:pt-32 pb-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-5 md:px-6">
+            <div class="footer-grid grid md:grid-cols-2 gap-12 md:gap-20 mb-16 md:mb-32">
                 <div>
-                    <h4 class="text-primary/40 text-xs font-bold uppercase tracking-[0.3em] mb-8">Newsletter</h4>
-                    <div class="flex border-b border-white/10 pb-2">
-                        <input
-                            class="bg-transparent border-none p-0 text-xs font-bold tracking-widest focus:ring-0 w-full"
-                            placeholder="YOUR EMAIL" type="email" />
-                        <button class="text-primary material-icons">arrow_forward</button>
+                    <h2
+                        class="footer-heading text-4xl md:text-8xl font-bold tracking-tighter uppercase leading-none mb-6 md:mb-10">
+                        Let's Build<br /><span class="text-primary">Together.</span></h2>
+                    <a class="footer-email text-xl md:text-4xl font-light hover:text-primary transition-colors underline underline-offset-8 decoration-primary/30"
+                        href="mailto:contact@chrissels.com">contact@chrissels.com</a>
+                </div>
+                <div class="flex flex-col justify-between">
+                    <div class="grid grid-cols-2 gap-6 md:gap-10 uppercase tracking-widest text-xs">
+                        <div class="flex flex-col gap-4 md:gap-6">
+                            <span class="text-slate-500">Links</span>
+                            <a class="hover:text-primary transition-colors" href="#">Career</a>
+                            <a class="hover:text-primary transition-colors" href="#">Press Kit</a>
+                            <a class="hover:text-primary transition-colors" href="#">Sustainability Report</a>
+                        </div>
+                        <div class="flex flex-col gap-4 md:gap-6">
+                            <span class="text-slate-500">Socials</span>
+                            <a class="hover:text-primary transition-colors" href="#">Instagram</a>
+                            <a class="hover:text-primary transition-colors" href="#">Behance</a>
+                            <a class="hover:text-primary transition-colors" href="#">LinkedIn</a>
+                        </div>
+                    </div>
+                    <div class="mt-10 md:mt-20">
+                        <form class="relative">
+                            <input
+                                class="w-full bg-transparent border-0 border-b border-slate-800 pb-4 focus:ring-0 focus:border-primary uppercase tracking-widest text-xs md:text-sm"
+                                placeholder="JOIN THE NEWSLETTER" type="email" />
+                            <button
+                                class="absolute right-0 top-0 text-primary uppercase text-[10px] md:text-xs font-bold tracking-widest">Submit</button>
+                        </form>
                     </div>
                 </div>
-                <div class="mt-12 md:mt-0 flex flex-col items-end gap-2">
-                    <div class="text-[10px] text-white/20 uppercase tracking-[0.2em]">
-                        © 2024 CHRISSELS STUDIO — Architectural Visionaries
-                    </div>
-                    <a class="text-white/40 hover:text-primary transition-colors text-[10px] uppercase tracking-widest font-bold"
-                        href="privacy-policy.html">Privacy Policy</a>
+            </div>
+            <div
+                class="footer-bottom flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6 pt-8 
+md:pt-12 border-t border-white/5">
+                <div class="flex items-center gap-4">
+                    <img src="assets/logo.png" alt="Chrissels Logo" class="h-10 md:h-18 w-auto">
+                    <span class="text-sm md:text-lg font-bold tracking-tighter uppercase">CHRISSELS</span>
+                </div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-[0.2em] text-center">Ac 2024 Chrissels
+                    Architectural Studio.
+                    All
+                    Rights Reserved.</p>
+                <div class="flex gap-6 md:gap-8 text-[10px] uppercase tracking-widest text-slate-500">
+                    <a class="hover:text-white" href="privacy-policy.html">Privacy Policy</a>
+                    <a class="hover:text-white" href="#">Cookies</a>
                 </div>
             </div>
         </div>

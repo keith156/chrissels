@@ -149,13 +149,19 @@
             </div>
             <main class="flex-1">
                 <!-- Hero Section -->
-                <section class="px-6 md:px-20 pt-20 pb-12 text-center max-w-5xl mx-auto">
+                <section class="px-6 md:px-20 pt-20 pb-12 text-center max-w-5xl mx-auto flex flex-col items-center">
                     <span
                         class="text-primary text-sm font-bold tracking-[0.3em] uppercase mb-4 block">Methodology</span>
-                    <h1
-                        class="text-white tracking-tighter text-[clamp(3.5rem,15vw,8rem)] md:text-8xl font-black leading-[0.9] uppercase mb-8">
-                        Our <br /><span class="text-primary">Workflow</span>
-                    </h1>
+                    <div class="relative">
+                        <span class="absolute -top-12 left-1/2 -translate-x-1/2 text-[15vw] md:text-[12rem] font-bold text-white/[0.03] uppercase tracking-tighter leading-none pointer-events-none select-none">Method</span>
+                        <div class="relative z-10 flex items-end gap-4 md:gap-6">
+                            <div>
+                                <h2 class="text-6xl md:text-[8rem] font-black uppercase leading-[0.8] tracking-tighter text-white">Our</h2>
+                                <h2 class="text-6xl md:text-[8rem] font-black uppercase leading-[0.8] tracking-tighter text-primary italic">Workflow</h2>
+                            </div>
+                            <div class="w-4 h-4 md:w-6 md:h-6 rounded-full bg-primary shadow-[0_0_30px_rgba(104,249,31,0.8)] mb-3 md:mb-6 animate-pulse"></div>
+                        </div>
+                    </div>
                     <p class="text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
                         Precision-engineered architectural excellence. From initial site intelligence to final spatial
                         delivery, our process is built on high-energy innovation and technical rigor.
@@ -351,23 +357,61 @@
                     </div>
                 </section>
             </main>
-            <!-- Footer -->
-            <footer class="px-6 md:px-20 py-12 border-t border-primary/10 bg-background-dark">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                    <div class="flex items-center gap-4 text-white">
-                        <!-- Logo Removed -->
-                    </div>
-                    <a class="hover:text-primary" href="privacy-policy.html">Privacy Policy</a>
-                    <a class="hover:text-primary" href="#">Instagram</a>
-                    <a class="hover:text-primary" href="#">LinkedIn</a>
-                    <a class="hover:text-primary" href="#">Behance</a>
-                    <a class="hover:text-primary" href="#">Contact</a>
+                <!-- Footer -->
+    <footer class="bg-background-dark pt-16 md:pt-32 pb-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-5 md:px-6">
+            <div class="footer-grid grid md:grid-cols-2 gap-12 md:gap-20 mb-16 md:mb-32">
+                <div>
+                    <h2
+                        class="footer-heading text-4xl md:text-8xl font-bold tracking-tighter uppercase leading-none mb-6 md:mb-10">
+                        Let's Build<br /><span class="text-primary">Together.</span></h2>
+                    <a class="footer-email text-xl md:text-4xl font-light hover:text-primary transition-colors underline underline-offset-8 decoration-primary/30"
+                        href="mailto:contact@chrissels.com">contact@chrissels.com</a>
                 </div>
+                <div class="flex flex-col justify-between">
+                    <div class="grid grid-cols-2 gap-6 md:gap-10 uppercase tracking-widest text-xs">
+                        <div class="flex flex-col gap-4 md:gap-6">
+                            <span class="text-slate-500">Links</span>
+                            <a class="hover:text-primary transition-colors" href="#">Career</a>
+                            <a class="hover:text-primary transition-colors" href="#">Press Kit</a>
+                            <a class="hover:text-primary transition-colors" href="#">Sustainability Report</a>
+                        </div>
+                        <div class="flex flex-col gap-4 md:gap-6">
+                            <span class="text-slate-500">Socials</span>
+                            <a class="hover:text-primary transition-colors" href="#">Instagram</a>
+                            <a class="hover:text-primary transition-colors" href="#">Behance</a>
+                            <a class="hover:text-primary transition-colors" href="#">LinkedIn</a>
+                        </div>
+                    </div>
+                    <div class="mt-10 md:mt-20">
+                        <form class="relative">
+                            <input
+                                class="w-full bg-transparent border-0 border-b border-slate-800 pb-4 focus:ring-0 focus:border-primary uppercase tracking-widest text-xs md:text-sm"
+                                placeholder="JOIN THE NEWSLETTER" type="email" />
+                            <button
+                                class="absolute right-0 top-0 text-primary uppercase text-[10px] md:text-xs font-bold tracking-widest">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="footer-bottom flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6 pt-8 
+md:pt-12 border-t border-white/5">
+                <div class="flex items-center gap-4">
+                    <img src="assets/logo.png" alt="Chrissels Logo" class="h-10 md:h-18 w-auto">
+                    <span class="text-sm md:text-lg font-bold tracking-tighter uppercase">CHRISSELS</span>
+                </div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-[0.2em] text-center">Ac 2024 Chrissels
+                    Architectural Studio.
+                    All
+                    Rights Reserved.</p>
+                <div class="flex gap-6 md:gap-8 text-[10px] uppercase tracking-widest text-slate-500">
+                    <a class="hover:text-white" href="privacy-policy.html">Privacy Policy</a>
+                    <a class="hover:text-white" href="#">Cookies</a>
+                </div>
+            </div>
         </div>
-        <div class="mt-8 pt-8 border-t border-white/5 text-[10px] text-white/20 uppercase tracking-widest text-center">
-            © 2024 CHRISSELS STUDIO — Architectural Visionaries
-        </div>
-        </footer>
+    </footer>
     </div>
     </div>
     <script src="cursor.js"></script>
