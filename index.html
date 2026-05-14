@@ -548,71 +548,7 @@
         <!-- Infinite Slider -->
         <div class="slider-container">
             <div class="slider-track" id="slider-track">
-                <!-- Original Items (4 Real Projects) -->
-                <div class="project-card group">
-                    <img src="assets/public/portfolio/chrissels_portfolio (1).jpeg" alt="Rehema Mall">
-                    <div class="project-info">
-                        <span class="project-category">— Commercial</span>
-                        <h3 class="project-title">Rehema Mall</h3>
-                    </div>
-                </div>
-
-                <div class="project-card group">
-                    <img src="assets/public/portfolio/chrissels_portfolio (2).jpeg" alt="Modern Villa">
-                    <div class="project-info">
-                        <span class="project-category">— Residential</span>
-                        <h3 class="project-title">Modern Villa</h3>
-                    </div>
-                </div>
-
-                <div class="project-card group">
-                    <img src="assets/public/portfolio/chrissels_portfolio (3).jpeg" alt="Sunset Heights">
-                    <div class="project-info">
-                        <span class="project-category">— Residential</span>
-                        <h3 class="project-title">Sunset Heights</h3>
-                    </div>
-                </div>
-
-                <div class="project-card group">
-                    <img src="assets/public/portfolio/chrissels_portfolio (4).jpeg" alt="Grand Estate">
-                    <div class="project-info">
-                        <span class="project-category">— Residential</span>
-                        <h3 class="project-title">Grand Estate</h3>
-                    </div>
-                </div>
-
-                <!-- Duplicated for Infinite Loop -->
-                <div class="project-card group">
-                    <img src="assets/public/portfolio/chrissels_portfolio (1).jpeg" alt="Rehema Mall">
-                    <div class="project-info">
-                        <span class="project-category">— Commercial</span>
-                        <h3 class="project-title">Rehema Mall</h3>
-                    </div>
-                </div>
-
-                <div class="project-card group">
-                    <img src="assets/public/portfolio/chrissels_portfolio (2).jpeg" alt="Modern Villa">
-                    <div class="project-info">
-                        <span class="project-category">— Residential</span>
-                        <h3 class="project-title">Modern Villa</h3>
-                    </div>
-                </div>
-
-                <div class="project-card group">
-                    <img src="assets/public/portfolio/chrissels_portfolio (3).jpeg" alt="Sunset Heights">
-                    <div class="project-info">
-                        <span class="project-category">— Residential</span>
-                        <h3 class="project-title">Sunset Heights</h3>
-                    </div>
-                </div>
-
-                <div class="project-card group">
-                    <img src="assets/public/portfolio/chrissels_portfolio (4).jpeg" alt="Grand Estate">
-                    <div class="project-info">
-                        <span class="project-category">— Residential</span>
-                        <h3 class="project-title">Grand Estate</h3>
-                    </div>
-                </div>
+                <!-- Dynamically populated via JS -->
             </div>
         </div>
 
@@ -645,7 +581,7 @@
                     </div>
                     
                     <p class="text-lg md:text-xl text-slate-300 font-light leading-relaxed mb-12 max-w-2xl border-l-2 border-primary/30 pl-6 md:pl-8">
-                        Architecture transcends mere shelter; it is the physical manifestation of human aspiration. At Chrissels, we treat space as a fluid medium—sculpting light, materiality, and nature into cohesive, emotionally resonant environments that stand the test of time.
+                        Architecture transcends mere shelter; it is the physical manifestation of human aspiration. At Chrissels, we treat space as a fluid mediumâ€”sculpting light, materiality, and nature into cohesive, emotionally resonant environments that stand the test of time.
                     </p>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
@@ -678,7 +614,7 @@
                             <p class="text-lg md:text-xl font-light text-white/90 leading-relaxed mb-4">
                                 "We don't just fill space. We give it purpose, breath, and a soul."
                             </p>
-                            <span class="text-[10px] text-primary uppercase font-bold tracking-[0.3em] block">— The Chrissels Approach</span>
+                            <span class="text-[10px] text-primary uppercase font-bold tracking-[0.3em] block">â€” The Chrissels Approach</span>
                         </div>
                     </div>
                     <!-- Artistic decorative element -->
@@ -754,7 +690,7 @@
                         <div class="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none"></div>
                         <!-- Design elements over image -->
                         <div class="absolute top-8 left-8 w-2 h-2 bg-primary rounded-full"></div>
-                        <div class="absolute bottom-8 right-8 text-[10px] uppercase tracking-[0.4em] text-white/50 origin-bottom-right -rotate-90">Kampala • Uganda</div>
+                        <div class="absolute bottom-8 right-8 text-[10px] uppercase tracking-[0.4em] text-white/50 origin-bottom-right -rotate-90">Kampala â€¢ Uganda</div>
                     </div>
                     
                     <!-- Floating stat card -->
@@ -850,10 +786,10 @@
             <div
                 class="footer-bottom flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6 pt-8 md:pt-12 border-t border-white/5">
                 <div class="flex items-center gap-4">
-                    <img src="assets/logo.png" alt="Chrissels Logo" class="h-10 md:h-18 w-auto">
+                    <img id="footer-logo" src="assets/logo.png" alt="Chrissels Logo" class="h-10 md:h-18 w-auto">
                     <span class="text-sm md:text-lg font-bold tracking-tighter uppercase">CHRISSELS</span>
                 </div>
-                <p class="text-[10px] text-slate-500 uppercase tracking-[0.2em] text-center">© 2024 Chrissels
+                <p class="text-[10px] text-slate-500 uppercase tracking-[0.2em] text-center">Â© 2024 Chrissels
                     Architectural Studio.
                     All
                     Rights Reserved.</p>
@@ -876,6 +812,9 @@
         </div>
     </div>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="gsap-animations.js"></script>
     <script src="cursor.js"></script>
     <script>
         // Mobile Menu Toggle logic
@@ -1005,6 +944,47 @@
             cycleObserver.observe(cycleSection);
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const track = document.getElementById('slider-track');
+            
+            const { data, error } = await supabaseClient
+                .from('projects')
+                .select('*')
+                .order('created_at', { ascending: false })
+                .limit(4);
+                
+            if (error || !data || data.length === 0) {
+                console.error('Error fetching projects for slider:', error);
+                return;
+            }
+            
+            track.innerHTML = '';
+            
+            // Function to create HTML for a project card
+            const createCardHTML = (project) => {
+                const imgUrl = project.image_urls && project.image_urls.length > 0 ? project.image_urls[0] : 'assets/logo.png';
+                return `
+                <div class="project-card group">
+                    <img src="${imgUrl}" alt="${project.title || 'Project'}">
+                    <div class="project-info">
+                        <span class="project-category">â€” ${project.category || 'Category'}</span>
+                        <h3 class="project-title">${project.title || 'Project'}</h3>
+                    </div>
+                </div>
+                `;
+            };
+
+            // Generate original items
+            let itemsHTML = data.map(createCardHTML).join('');
+            
+            // Duplicate them for the infinite loop effect
+            track.innerHTML = itemsHTML + itemsHTML;
+        });
+    </script>
+<script src="admin-access.js"></script>
 </body>
 
 </html>
