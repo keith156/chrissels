@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = document.getElementById('login-username').value;
         const pass = document.getElementById('login-password').value;
         
-        if (user === 'chrissels' && pass === 'chrissels.com@christian') {
+        if (user === 'chrissels' && pass === 'chrissels@2026') {
             sessionStorage.setItem('adminAuth', 'true');
             checkAuth();
         } else {
