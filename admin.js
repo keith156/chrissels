@@ -32,24 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const uploadFile = async (file) => {
-        const fileExt = file.name.split('.').pop();
-        const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`;
-        const filePath = `public/${fileName}`;
-
-        const { data, error } = await supabaseClient.storage
-            .from('uploads')
-            .upload(filePath, file);
-
-        if (error) {
-            console.error('Upload error:', error);
-            throw error;
-        }
-
-        const { data: publicUrlData } = supabaseClient.storage
-            .from('uploads')
-            .getPublicUrl(filePath);
-
-        return publicUrlData.publicUrl;
+        return await dbHelper.uploadFile(file);
     };
 
     // --- Login Logic ---
@@ -105,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Data Fetching & Rendering ---
     const loadData = async (type) => {
         toggleLoading(true);
-        const { data, error } = await supabaseClient.from(type).select('*').order('created_at', { ascending: false });
+        const { data, error } = await dbHelper.fetchItems(type);
         toggleLoading(false);
 
         if (error) {
@@ -227,13 +210,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 // append new ones
                 projectData.image_urls = [...projectData.image_urls, ...newImageUrls];
 
-                const { error } = await supabaseClient.from('projects').update(projectData).eq('id', id);
+                const { error } = await dbHelper.updateItem('projects', id, projectData);
                 if (error) throw error;
                 showToast('Project updated successfully');
             } else {
                 // Adding
                 projectData.image_urls = newImageUrls;
-                const { error } = await supabaseClient.from('projects').insert([projectData]);
+                const { error } = await dbHelper.insertItem('projects', projectData);
                 if (error) throw error;
                 showToast('Project added successfully');
             }
@@ -241,6 +224,8 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModals();
             loadData('projects');
         } catch (error) {
+            console.error("Failed to save project:", error);
+            alert("Error: " + (error.message || error));
             showToast(error.message || 'Error saving project', 'error');
         } finally {
             toggleLoading(false);
@@ -270,11 +255,11 @@ document.addEventListener('DOMContentLoaded', () => {
             let materialData = { category, name, subtitle, price, unit };
 
             if (id) {
-                const { error } = await supabaseClient.from('materials').update(materialData).eq('id', id);
+                const { error } = await dbHelper.updateItem('materials', id, materialData);
                 if (error) throw error;
                 showToast('Material updated successfully');
             } else {
-                const { error } = await supabaseClient.from('materials').insert([materialData]);
+                const { error } = await dbHelper.insertItem('materials', materialData);
                 if (error) throw error;
                 showToast('Material added successfully');
             }
@@ -341,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const newUrls = [...project.image_urls];
             newUrls.splice(imageIndex, 1);
             
-            const { error } = await supabaseClient.from('projects').update({ image_urls: newUrls }).eq('id', projectId);
+            const { error } = await dbHelper.updateItem('projects', projectId, { image_urls: newUrls });
             if(error) throw error;
             
             project.image_urls = newUrls;
@@ -365,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         toggleLoading(true);
         try {
-            const { error } = await supabaseClient.from(deleteTarget.type).delete().eq('id', deleteTarget.id);
+            const { error } = await dbHelper.deleteItem(deleteTarget.type, deleteTarget.id);
             if (error) throw error;
             
             showToast('Item deleted');
