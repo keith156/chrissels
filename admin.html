@@ -31,8 +31,10 @@
             },
         }
     </script>
-    <!-- Supabase library -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Firebase compat libraries -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
     <style>
         body { font-family: 'Space Grotesk', sans-serif; }
         .hidden { display: none !important; }
@@ -252,7 +254,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="supabase-config.js"></script>
-    <script src="admin.js"></script>
+    <script src="firebase-config.js?v=2"></script>
+    <script src="admin.js?v=2"></script>
 </body>
 </html>
