@@ -20,7 +20,13 @@ const dbHelper = {
       if (limitVal) {
         query = query.limit(limitVal);
       }
-      const snapshot = await query.get();
+      
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error("Database request timed out after 15 seconds. Please check your internet connection.")), 15000)
+      );
+
+      const snapshot = await Promise.race([query.get(), timeoutPromise]);
+      
       const items = [];
       snapshot.forEach(doc => {
         items.push({ id: doc.id, ...doc.data() });
@@ -38,7 +44,10 @@ const dbHelper = {
         ...itemData,
         created_at: new Date().toISOString()
       };
-      const docRef = await db.collection(collectionName).add(data);
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error("Database request timed out after 15 seconds. Please check your internet connection.")), 15000)
+      );
+      const docRef = await Promise.race([db.collection(collectionName).add(data), timeoutPromise]);
       return { data: { id: docRef.id, ...data }, error: null };
     } catch (error) {
       console.error(`Error inserting into ${collectionName}:`, error);
@@ -48,7 +57,10 @@ const dbHelper = {
 
   async updateItem(collectionName, id, itemData) {
     try {
-      await db.collection(collectionName).doc(id).update(itemData);
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error("Database request timed out after 15 seconds. Please check your internet connection.")), 15000)
+      );
+      await Promise.race([db.collection(collectionName).doc(id).update(itemData), timeoutPromise]);
       return { error: null };
     } catch (error) {
       console.error(`Error updating in ${collectionName}:`, error);
