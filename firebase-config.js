@@ -79,45 +79,28 @@ const dbHelper = {
   },
 
   async uploadFile(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        if (file.type.startsWith('image/')) {
-          const img = new Image();
-          img.onload = () => {
-            const maxWidth = 800; // Reduced size to stay under Firestore 1MB limit
-            const maxHeight = 800;
-            let width = img.width;
-            let height = img.height;
-
-            if (width > maxWidth) {
-              height = Math.round((height * maxWidth) / width);
-              width = maxWidth;
-            }
-            if (height > maxHeight) {
-              width = Math.round((width * maxHeight) / height);
-              height = maxHeight;
-            }
-
-            const canvas = document.createElement('canvas');
-            canvas.width = width;
-            canvas.height = height;
-
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0, width, height);
-
-            // Return as base64 string directly
-            resolve(canvas.toDataURL('image/jpeg', 0.6));
-          };
-          img.onerror = () => resolve(event.target.result); // Fallback to original
-          img.src = event.target.result;
-        } else {
-          // Non-image file, just return base64
-          resolve(event.target.result);
-        }
-      };
-      reader.onerror = (error) => reject(error);
-      reader.readAsDataURL(file);
-    });
+    const formData = new FormData();
+    // Using the ImgBB API key provided by the user
+    formData.append('key', '779c9ec19b9f5c8189fc20c8ae228314');
+    formData.append('image', file);
+    
+    try {
+      const response = await fetch('https://api.imgbb.com/1/upload', {
+        method: 'POST',
+        body: formData
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        // Return the direct URL to the image hosted on ImgBB
+        return data.data.url;
+      } else {
+        throw new Error(data.error.message || 'Image upload failed');
+      }
+    } catch (error) {
+      console.error('ImgBB upload error:', error);
+      throw error;
+    }
   }
 };
