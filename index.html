@@ -940,17 +940,14 @@
             cycleObserver.observe(cycleSection);
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="supabase-config.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js?v=3"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const track = document.getElementById('slider-track');
             
-            const { data, error } = await supabaseClient
-                .from('projects')
-                .select('*')
-                .order('created_at', { ascending: false })
-                .limit(4);
+            const { data, error } = await dbHelper.fetchItems('projects', 4);
                 
             if (error || !data || data.length === 0) {
                 console.error('Error fetching projects for slider:', error);

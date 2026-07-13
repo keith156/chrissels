@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const textElements = document.querySelectorAll("h1, h2, h3, main p:not(.no-anim)");
     
     textElements.forEach((el) => {
-        if (el.closest('#mobile-menu') || el.closest('nav')) return;
+        if (el.closest('#mobile-menu') || el.closest('nav') || el.closest('.services-grid')) return;
 
         gsap.fromTo(el, 
             { y: 30, opacity: 0 }, 
@@ -33,6 +33,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     // 2. Image Reveal / Scale-up (Optimized: Removed grayscale filter which causes heavy lag on large images)
     const images = document.querySelectorAll("img.object-cover:not(.no-anim)");
     images.forEach((img) => {
+        if (img.closest('.services-grid')) return;
+
         gsap.fromTo(img, 
             { scale: 1.05, opacity: 0 }, 
             { 
@@ -52,6 +54,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     // 3. Stagger Animations for Grids
     const grids = document.querySelectorAll(".grid, .masonry-grid, .flex-wrap");
     grids.forEach((grid) => {
+        if (grid.classList.contains('services-grid')) return;
+
         const items = Array.from(grid.children).filter(child => 
             child.classList.contains("project-card") || 
             child.classList.contains("flex-1") ||

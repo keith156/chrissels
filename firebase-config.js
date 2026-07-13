@@ -22,7 +22,7 @@ const dbHelper = {
       }
       
       const timeoutPromise = new Promise((_, reject) => 
-        setTimeout(() => reject(new Error("Database request timed out after 15 seconds. Please check your internet connection.")), 15000)
+        setTimeout(() => reject(new Error("Database request timed out after 60 seconds. Please check your internet connection or wait longer.")), 60000)
       );
 
       const snapshot = await Promise.race([query.get(), timeoutPromise]);
@@ -45,7 +45,7 @@ const dbHelper = {
         created_at: new Date().toISOString()
       };
       const timeoutPromise = new Promise((_, reject) => 
-        setTimeout(() => reject(new Error("Database request timed out after 15 seconds. Please check your internet connection.")), 15000)
+        setTimeout(() => reject(new Error("Database request timed out after 60 seconds. Please check your internet connection or wait longer.")), 60000)
       );
       const docRef = await Promise.race([db.collection(collectionName).add(data), timeoutPromise]);
       return { data: { id: docRef.id, ...data }, error: null };
@@ -58,7 +58,7 @@ const dbHelper = {
   async updateItem(collectionName, id, itemData) {
     try {
       const timeoutPromise = new Promise((_, reject) => 
-        setTimeout(() => reject(new Error("Database request timed out after 15 seconds. Please check your internet connection.")), 15000)
+        setTimeout(() => reject(new Error("Database request timed out after 60 seconds. Please check your internet connection or wait longer.")), 60000)
       );
       await Promise.race([db.collection(collectionName).doc(id).update(itemData), timeoutPromise]);
       return { error: null };
