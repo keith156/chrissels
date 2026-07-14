@@ -11,7 +11,6 @@ const firebaseConfig = {
 // Initialize Firebase compat
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-const storage = firebase.storage();
 
 const dbHelper = {
   async fetchItems(collectionName, limitVal = null) {
