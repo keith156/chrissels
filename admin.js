@@ -151,29 +151,54 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn-add-project').addEventListener('click', () => {
         document.getElementById('form-project').reset();
         document.getElementById('project-id').value = '';
-        document.getElementById('project-images-preview').innerHTML = '';
+        
+        const thumbPreview = document.getElementById('project-thumbnail-preview');
+        thumbPreview.innerHTML = '';
+        thumbPreview.classList.add('hidden');
+        
+        document.getElementById('project-gallery-preview').innerHTML = '';
+        
         document.getElementById('modal-project-title').textContent = 'Add Project';
         document.getElementById('modal-project').classList.remove('hidden');
     });
 
-    // Project image preview logic
-    document.getElementById('project-images').addEventListener('change', (e) => {
-        const previewContainer = document.getElementById('project-images-preview');
+    // Project thumbnail preview logic
+    document.getElementById('project-thumbnail').addEventListener('change', (e) => {
+        const previewContainer = document.getElementById('project-thumbnail-preview');
+        previewContainer.innerHTML = '';
+        if (e.target.files.length > 0) {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                previewContainer.innerHTML = `
+                    <div class="relative h-full w-full group">
+                        <img src="${event.target.result}" class="w-full h-full object-cover">
+                        <div class="absolute inset-x-0 bottom-0 bg-primary/80 text-black text-[8px] uppercase tracking-widest text-center py-0.5 font-bold">New Cover</div>
+                    </div>
+                `;
+                previewContainer.classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        } else {
+            previewContainer.classList.add('hidden');
+        }
+    });
+
+    // Project gallery preview logic
+    document.getElementById('project-gallery').addEventListener('change', (e) => {
+        const previewContainer = document.getElementById('project-gallery-preview');
         // If we are adding a new project (no id), clear the preview container first
-        // If editing, we might want to append, but for simplicity we just append the new local files
         if (!document.getElementById('project-id').value) {
             previewContainer.innerHTML = '';
         }
         
-        Array.from(e.target.files).forEach((file, index) => {
+        Array.from(e.target.files).forEach((file) => {
             const reader = new FileReader();
-            reader.onload = (e) => {
-                const imgUrl = e.target.result;
-                // Add a visual indicator that this is a new unsaved image
+            reader.onload = (event) => {
                 previewContainer.innerHTML += `
-                    <div class="relative group aspect-square rounded overflow-hidden border-2 border-primary border-dashed">
-                        <img src="${imgUrl}" class="w-full h-full object-cover">
-                        <div class="absolute inset-x-0 bottom-0 bg-primary/80 text-black text-[8px] uppercase tracking-widest text-center py-1 font-bold">New</div>
+                    <div class="relative aspect-square rounded overflow-hidden border border-primary border-dashed">
+                        <img src="${event.target.result}" class="w-full h-full object-cover">
+                        <div class="absolute inset-x-0 bottom-0 bg-primary/80 text-black text-[8px] uppercase tracking-widest text-center py-0.5 font-bold">New</div>
                     </div>
                 `;
             };
@@ -191,13 +216,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const category = document.getElementById('project-category').value;
             const description = document.getElementById('project-description').value;
             
-            // Handle images
-            const fileInput = document.getElementById('project-images');
-            let newImageUrls = [];
-            if (fileInput.files.length > 0) {
-                for (const file of fileInput.files) {
+            // Upload Thumbnail
+            const thumbInput = document.getElementById('project-thumbnail');
+            let newThumbnailUrl = '';
+            if (thumbInput.files.length > 0) {
+                newThumbnailUrl = await uploadFile(thumbInput.files[0]);
+            }
+
+            // Upload Gallery Images
+            const galleryInput = document.getElementById('project-gallery');
+            let newGalleryUrls = [];
+            if (galleryInput.files.length > 0) {
+                for (const file of galleryInput.files) {
                     const url = await uploadFile(file);
-                    newImageUrls.push(url);
+                    newGalleryUrls.push(url);
                 }
             }
 
@@ -206,16 +238,37 @@ document.addEventListener('DOMContentLoaded', () => {
             if (id) {
                 // Editing
                 const existingProject = dataCache.projects.find(p => p.id === id);
-                projectData.image_urls = existingProject.image_urls || [];
-                // append new ones
-                projectData.image_urls = [...projectData.image_urls, ...newImageUrls];
+                
+                // Handle thumbnail update
+                if (newThumbnailUrl) {
+                    projectData.thumbnail_url = newThumbnailUrl;
+                } else {
+                    projectData.thumbnail_url = existingProject.thumbnail_url || (existingProject.image_urls && existingProject.image_urls.length > 0 ? existingProject.image_urls[0] : '');
+                }
+
+                // Handle gallery update
+                let existingGallery = [];
+                if (existingProject.gallery_urls) {
+                    existingGallery = existingProject.gallery_urls;
+                } else if (existingProject.image_urls) {
+                    existingGallery = existingProject.image_urls.slice(1);
+                }
+                projectData.gallery_urls = [...existingGallery, ...newGalleryUrls];
+
+                // Legacy fallback support
+                projectData.image_urls = [projectData.thumbnail_url, ...projectData.gallery_urls].filter(Boolean);
 
                 const { error } = await dbHelper.updateItem('projects', id, projectData);
                 if (error) throw error;
                 showToast('Project updated successfully');
             } else {
                 // Adding
-                projectData.image_urls = newImageUrls;
+                projectData.thumbnail_url = newThumbnailUrl;
+                projectData.gallery_urls = newGalleryUrls;
+
+                // Legacy fallback support
+                projectData.image_urls = [newThumbnailUrl, ...newGalleryUrls].filter(Boolean);
+
                 const { error } = await dbHelper.insertItem('projects', projectData);
                 if (error) throw error;
                 showToast('Project added successfully');
@@ -284,21 +337,45 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('project-category').value = item.category;
             document.getElementById('project-description').value = item.description || '';
             
-            // Show existing images
-            const previewContainer = document.getElementById('project-images-preview');
-            previewContainer.innerHTML = '';
-            if (item.image_urls) {
-                item.image_urls.forEach((url, index) => {
-                    previewContainer.innerHTML += `
-                        <div class="relative group aspect-square rounded overflow-hidden">
-                            <img src="${url}" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                                <button type="button" onclick="window.removeProjectImage('${item.id}', ${index})" class="text-red-500 hover:text-white material-icons">delete</button>
-                            </div>
+            // Show existing thumbnail preview
+            const thumbPreview = document.getElementById('project-thumbnail-preview');
+            thumbPreview.innerHTML = '';
+            const thumbUrl = item.thumbnail_url || (item.image_urls && item.image_urls.length > 0 ? item.image_urls[0] : '');
+            if (thumbUrl) {
+                thumbPreview.innerHTML = `
+                    <div class="relative h-full w-full group">
+                        <img src="${thumbUrl}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                            <button type="button" onclick="window.removeThumbnail('${item.id}')" class="text-red-500 hover:text-white material-icons">delete</button>
                         </div>
-                    `;
-                });
+                    </div>
+                `;
+                thumbPreview.classList.remove('hidden');
+            } else {
+                thumbPreview.classList.add('hidden');
             }
+
+            // Show existing gallery images preview
+            const galleryPreview = document.getElementById('project-gallery-preview');
+            galleryPreview.innerHTML = '';
+            
+            let galleryUrls = [];
+            if (item.gallery_urls) {
+                galleryUrls = item.gallery_urls;
+            } else if (item.image_urls) {
+                galleryUrls = item.image_urls.slice(1);
+            }
+
+            galleryUrls.forEach((url, index) => {
+                galleryPreview.innerHTML += `
+                    <div class="relative group aspect-square rounded overflow-hidden">
+                        <img src="${url}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                            <button type="button" onclick="window.removeGalleryImage('${item.id}', ${index})" class="text-red-500 hover:text-white material-icons">delete</button>
+                        </div>
+                    </div>
+                `;
+            });
 
             document.getElementById('modal-project-title').textContent = 'Edit Project';
             document.getElementById('modal-project').classList.remove('hidden');
@@ -315,24 +392,75 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    window.removeProjectImage = async (projectId, imageIndex) => {
-        if(!confirm('Remove this image?')) return;
+    window.removeThumbnail = async (projectId) => {
+        if(!confirm('Remove thumbnail?')) return;
         
         const project = dataCache.projects.find(p => p.id === projectId);
-        if(!project || !project.image_urls) return;
+        if(!project) return;
 
         toggleLoading(true);
         try {
-            const newUrls = [...project.image_urls];
-            newUrls.splice(imageIndex, 1);
-            
-            const { error } = await dbHelper.updateItem('projects', projectId, { image_urls: newUrls });
+            const updateData = { thumbnail_url: '' };
+            // If they had legacy image_urls, we remove the first element
+            if (project.image_urls && project.image_urls.length > 0) {
+                const legacyImageUrls = [...project.image_urls];
+                legacyImageUrls[0] = '';
+                updateData.image_urls = legacyImageUrls.filter(Boolean);
+            }
+
+            const { error } = await dbHelper.updateItem('projects', projectId, updateData);
             if(error) throw error;
             
-            project.image_urls = newUrls;
+            project.thumbnail_url = '';
+            if (project.image_urls && project.image_urls.length > 0) {
+                project.image_urls.shift();
+            }
+
             window.editItem('projects', projectId); // Refresh preview
             loadData('projects'); // Refresh grid silently
-            showToast('Image removed');
+            showToast('Thumbnail removed');
+        } catch(error) {
+            showToast('Error removing thumbnail', 'error');
+        } finally {
+            toggleLoading(false);
+        }
+    };
+
+    window.removeGalleryImage = async (projectId, imageIndex) => {
+        if(!confirm('Remove this gallery image?')) return;
+        
+        const project = dataCache.projects.find(p => p.id === projectId);
+        if(!project) return;
+
+        // Get current gallery
+        let gallery = [];
+        if (project.gallery_urls) {
+            gallery = [...project.gallery_urls];
+        } else if (project.image_urls) {
+            gallery = project.image_urls.slice(1);
+        }
+
+        gallery.splice(imageIndex, 1);
+
+        toggleLoading(true);
+        try {
+            const updateData = { gallery_urls: gallery };
+            
+            // If it had legacy image_urls, we should update both
+            if (project.image_urls && project.image_urls.length > 0) {
+                const legacyImageUrls = [project.image_urls[0], ...gallery];
+                updateData.image_urls = legacyImageUrls.filter(Boolean);
+            }
+            
+            const { error } = await dbHelper.updateItem('projects', projectId, updateData);
+            if(error) throw error;
+            
+            if (project.gallery_urls) project.gallery_urls = gallery;
+            if (project.image_urls) project.image_urls = [project.image_urls[0], ...gallery].filter(Boolean);
+
+            window.editItem('projects', projectId); // Refresh preview
+            loadData('projects'); // Refresh grid silently
+            showToast('Gallery image removed');
         } catch(error) {
             showToast('Error removing image', 'error');
         } finally {

@@ -276,18 +276,19 @@
                 if (index % 4 === 0) spanClasses = 'md:col-span-2 md:row-span-2';
                 else if (index % 4 === 1) spanClasses = 'md:col-span-2 md:row-span-1';
                 
-                const imgUrl = item.image_urls && item.image_urls.length > 0 ? item.image_urls[0] : 'assets/logo.png';
-                const createdYear = new Date(item.created_at).getFullYear();
+                const imgUrl = item.thumbnail_url || (item.image_urls && item.image_urls.length > 0 ? item.image_urls[0] : 'assets/logo.png');
+                const createdYear = item.created_at ? new Date(item.created_at).getFullYear() : '2026';
                 
-                const card = document.createElement('div');
-                card.className = `project-card rounded-lg group cursor-pointer overflow-hidden relative ${spanClasses} h-full`;
+                const card = document.createElement('a');
+                card.href = `project-detail.html?id=${item.id}`;
+                card.className = `project-card rounded-lg group cursor-pointer overflow-hidden relative ${spanClasses} h-full block`;
                 card.innerHTML = `
                     <img class="w-full h-full object-cover transition-transform duration-700" src="${imgUrl}" alt="${item.title || 'Project'}" />
                     <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6 md:p-8">
-                        <span class="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-2">${item.category || 'CATEGORY'} â€¢ ${createdYear}</span>
+                        <span class="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-2">${item.category || 'CATEGORY'} • ${createdYear}</span>
                         <h3 class="text-primary text-3xl md:text-4xl font-bold leading-none tracking-tighter uppercase break-words">${(item.title || 'Project').replace(/ /g, ' <br />')}</h3>
                         ${item.description ? `
-                        <div class="mt-4 flex items-center gap-4 text-white/40 text-xs font-medium uppercase tracking-widest">
+                        <div class="mt-4 flex items-center gap-4 text-white/40 text-xs font-medium uppercase tracking-widest line-clamp-2">
                             <span>${item.description}</span>
                         </div>` : ''}
                     </div>

@@ -37,6 +37,23 @@ const dbHelper = {
     }
   },
 
+  async fetchItemById(collectionName, id) {
+    try {
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error("Database request timed out after 60 seconds. Please check your internet connection or wait longer.")), 60000)
+      );
+      const doc = await Promise.race([db.collection(collectionName).doc(id).get(), timeoutPromise]);
+      if (doc.exists) {
+        return { data: { id: doc.id, ...doc.data() }, error: null };
+      } else {
+        return { data: null, error: new Error("Document not found") };
+      }
+    } catch (error) {
+      console.error(`Error fetching document ${id} from ${collectionName}:`, error);
+      return { data: null, error };
+    }
+  },
+
   async insertItem(collectionName, itemData) {
     try {
       const data = {
